@@ -1,4 +1,11 @@
-url-your-book-url-like-httpsbookdown.orgyihuibookdown
+def:unlabeled-div-1
+def:unlabeled-div-2
+def:unlabeled-div-3
+def:unlabeled-div-4
+def:unlabeled-div-5
+def:unlabeled-div-6
+def:unlabeled-div-7
+information-of-the-course
 course-description
 instructor
 course-coordinator

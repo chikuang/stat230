@@ -45,6 +45,35 @@
             "type": "book"
         },
         {
+            "URL": "https://github.com/rstudio/blogdown",
+            "author": [
+                {
+                    "family": "Xie",
+                    "given": "Yihui"
+                },
+                {
+                    "family": "Dervieux",
+                    "given": "Christophe"
+                },
+                {
+                    "family": "Presmanes Hill",
+                    "given": "Alison"
+                }
+            ],
+            "id": "R-blogdown",
+            "issued": {
+                "date-parts": [
+                    [
+                        2023
+                    ]
+                ]
+            },
+            "note": "R package version 1.18, https://pkgs.rstudio.com/blogdown/",
+            "title": "Blogdown: Create blogs and websites with r markdown",
+            "title-short": "Blogdown",
+            "type": "book"
+        },
+        {
             "URL": "https://github.com/rstudio/bookdown",
             "author": [
                 {
@@ -145,6 +174,37 @@
             "note": "R package version 2.25, https://pkgs.rstudio.com/rmarkdown/",
             "title": "Rmarkdown: Dynamic documents for r",
             "title-short": "Rmarkdown",
+            "type": "book"
+        },
+        {
+            "ISBN": "978-0815363729",
+            "URL": "https://bookdown.org/yihui/blogdown/",
+            "author": [
+                {
+                    "family": "Xie",
+                    "given": "Yihui"
+                },
+                {
+                    "family": "Hill",
+                    "given": "Alison Presmanes"
+                },
+                {
+                    "family": "Thomas",
+                    "given": "Amber"
+                }
+            ],
+            "id": "blogdown2017",
+            "issued": {
+                "date-parts": [
+                    [
+                        2017
+                    ]
+                ]
+            },
+            "publisher": "Chapman; Hall/CRC",
+            "publisher-place": "Boca Raton, Florida",
+            "title": "Blogdown: Creating websites with R markdown",
+            "title-short": "Blogdown",
             "type": "book"
         },
         {
