@@ -1,5 +1,6 @@
 # Lecture 1, January 08, 2024
 
 In this lecture, we went over
+
 1. Course syllabus and rules
 2. Chapter 1 -- Basic definition of probability. We also saw the potential ambiguities when defining probabilities.

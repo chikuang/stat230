@@ -1,0 +1,26 @@
+# Lecture 3, January 12, 2024
+
+::: {.definition name="Odds"}
+Odds **in favour** of an event $A$ occuring is 
+\[
+  \frac{P(A)}{1-P(A)}.
+\]
+Odds again an event $A$ is 
+\[
+  \frac{1-P(A)}{P(A)}.
+\]
+:::
+
+Note: In finite, equally likely sample spaces, computing probabilities amounts to *counting the number of elements in a set*. It will often be difficult to do this manually, so we are looking for clever *counting techniques* in the next chapter. 
+
+Chapter 3 Counting Techniques
+
+
+::: {.definition name="Permutation"}
+Given $n$ distinct objects, a \textbf{permutation} of size $k$ is an $ordered$ subset of $k$ of the individuals. The number of permutations of size $k$ taken from $n$ objects is denoted $n^{(k)}$ and
+$$
+n^{(k)}=n(n-1)\dots (n-k+1) =\frac{n!}{(n-k)!}.
+$$
+:::
+
+The tricky part of this definition is the word "ordered". An ordering need not be numerical, for example assigning labels like "President" and "Vice-President" has the effect of ordering the individuals.

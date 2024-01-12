@@ -1,6 +1,9 @@
 --- 
-title: "Stat 230 Winter 2024"
-author: "Chi-Kuang Yeh"
+title: "Stat 230 Introduction to Probability"
+subtitle: "Winter 2024" 
+author: |
+  | Chi-Kuang Yeh
+  | University of Waterloo
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
@@ -12,8 +15,6 @@ description: |
 link-citations: yes
 github-repo: rstudio/bookdown-demo
 ---
-
-The course information is given below
 
 # Information of the course
 The purpose of this page is to hold some of the additional materials provided by myself. Students should consult UW [Learn](https://api-4ccc589b.duosecurity.com/frame/v4/preauth/healthcheck?sid=frameless-c0657e9d-cb86-4ac9-a6a7-fd054ae21fd5) system.
@@ -37,12 +38,6 @@ Dr. [Erik Hintz](https://uwaterloo.ca/scholar/ehintz).
 Contact Divya Lala
 
 + Email: [divya.lala@uwaterloo.ca](mailto:divya.lala@uwaterloo.ca) or the undergrad advising email [sasugradadv@uwaterloo.ca](mailto:sasugradadv@uwaterloo.ca).
-
-
-```{r eval=FALSE}
-bookdown::serve_book()
-```
-
 
 ```{r include=FALSE}
 # automatically create a bib database for R packages
