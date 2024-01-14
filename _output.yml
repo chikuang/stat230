@@ -5,7 +5,7 @@ bookdown::gitbook:
       before: |
         <li><a href="./">Statistics 230 Introduction to Probability</a></li>
       after: |
-        <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+        <li><a href="https://chikuang.github.io/course/stat230" target="blank">Published by Chi-Kuang Yeh</a></li>
     edit: https://github.com/chikuang/REPO/edit/BRANCH/%s
     download: ["pdf", "epub"]
 bookdown::pdf_book:
