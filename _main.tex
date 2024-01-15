@@ -162,6 +162,25 @@ Contact Divya Lala
   Email: \href{mailto:divya.lala@uwaterloo.ca}{\nolinkurl{divya.lala@uwaterloo.ca}} or the undergrad advising email \href{mailto:sasugradadv@uwaterloo.ca}{\nolinkurl{sasugradadv@uwaterloo.ca}}.
 \end{itemize}
 
+\hypertarget{chapters-and-associated-lectures}{%
+\section{Chapters and associated Lectures}\label{chapters-and-associated-lectures}}
+
+Those chapters are based on the lecture notes. The lecture covered is based on \emph{Section 002}. This part will be updated frequently.
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+Chapter & Title & Lecture Covered \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & Introduction to Probability & 1 \\
+2 & Mathematical Probability Models & 2--3 \\
+3 & Probability and Counting Techniques & 3-- \\
+4 & Probability rules and Conditional Probability & TBA \\
+5 & TBA & TBA \\
+\end{longtable}
+
 \hypertarget{lecture-1-january-08-2024}{%
 \chapter{Lecture 1, January 08, 2024}\label{lecture-1-january-08-2024}}
 
@@ -175,6 +194,45 @@ In this lecture, we went over
 \item
   Chapter 1 -- Basic definition of probability. We also saw the potential ambiguities when defining probabilities.
 \end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{definition}[Classical Definition of probability]
+The \textbf{classical} definition: The probability of some event is
+\[
+\frac{\mathrm{number~of~ways~the~event~can~occur~}}
+{\mathrm{{the~total~number~of~possible~outcomes}}},
+\]
+provided all outcomes are \emph{equally likely}.
+\end{definition}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{definition}[Relative Frequency Definition of of probability]
+The \textbf{relative frequency} definition: The probability of an event
+is the (limiting) proportion (or fraction) of times the event occurs in a very
+long series of repetitions of an experiment.
+\end{definition}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{definition}[Subjective Definition of Probability]
+The \textbf{subjective} definition: The probability of an event is a measure of how sure the person making the statement is that the event will happen.
+\end{definition}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Problem}: Each of the above definitions has pitfall:
+
+\begin{itemize}
+\tightlist
+\item
+  Classical: We may not be able to know the total number of possible outcomes, or it may be uncountable
+\item
+  Relative frequency: We need ``repetition'', which is often expensive and may not be possible.
+\item
+  Subjective: We want the probability to be consistent across different people, and and be rigorously defined.
+\end{itemize}
 
 \hypertarget{lecture-2-january-10-2024}{%
 \chapter{Lecture 2, January 10, 2024}\label{lecture-2-january-10-2024}}
@@ -195,7 +253,7 @@ A sample space \(S\) is said to be \textbf{discrete} if it is finite, or ``count
 An \textbf{event} is a subset of the sample space that can be assigned probability.
 \end{definition}
 
-\begin{definition}[Simple/Compound event]
+\begin{definition}[Simple and Compound event]
 Let \(S\) be discrete and \(A\subset S\) an event. If \(A\) is indivisible so it contains only one point, we call it a \textbf{simple event}, otherwise \textbf{compound event}.
 \end{definition}
 

@@ -15,7 +15,7 @@ A sample space $S$ is said to be **discrete** if it is finite, or ``countably in
 ::: {.definition name="Event"}
 An **event** is a subset of the sample space that can be assigned probability. 
 :::
-::: {.definition name="Simple/Compound event"}
+::: {.definition name="Simple and Compound event"}
 Let $S$ be discrete and $A\subset S$ an event. If $A$ is indivisible so it contains only one point, we call it a **simple event**, otherwise **compound event**. 
 :::
 

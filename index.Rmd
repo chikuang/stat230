@@ -39,9 +39,46 @@ Contact Divya Lala
 
 + Email: [divya.lala@uwaterloo.ca](mailto:divya.lala@uwaterloo.ca) or the undergrad advising email [sasugradadv@uwaterloo.ca](mailto:sasugradadv@uwaterloo.ca).
 
+### EXAM and Tutorial assessment Date
+
+Midterm
+
+* Midterm 1: February 08,  16:30--17:50
+* Midterm 2: March 14,  16:30--17:50
+
+Final
+
+* To be announced by the university
+
+Tutorial assessment 
+
+* Tutorial quiz 1: January 26
+* Tutorial test 1: February 02
+* Tutorial quiz 2: March 01
+* Tutorial test 2: March 08
+* Tutorial quiz 3: March 22
+* Tutorial test 3: April 05
+
 ```{r include=FALSE}
 # automatically create a bib database for R packages
 knitr::write_bib(c(
   .packages(), 'bookdown', 'knitr', 'rmarkdown'
 ), 'packages.bib')
 ```
+
+## Chapters and associated Lectures
+
+Those chapters are based on the lecture notes. The lecture covered is based on *Section 002*. This part will be updated frequently.
+
+|  Chapter  |  Title |  Lecture Covered | 
+|---|---|---|
+| 1  |  Introduction to Probability | 1 | 
+| 2  |  Mathematical Probability Models | 2--3 | 
+| 3  |  Probability and Counting Techniques | 3-- | 
+| 4 | Probability rules and Conditional Probability | TBA| 
+| 5 | TBA |  TBA|
+| 6 | TBA |  TBA|
+| 7 | TBA |  TBA|
+| 8 | TBA |  TBA|
+| 9 | TBA |  TBA|
+| 10 | TBA |  TBA|

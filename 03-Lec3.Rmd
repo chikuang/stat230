@@ -69,7 +69,7 @@ $$ \frac{9!}{7!} = \frac{9\cdot 8 \cdot 7\cdot 6 \cdot \dots \cdot 2 \cdot 1}{7\
 
 ---
 ::: {.definition name="Permutation"}
-Given $n$ distinct objects, a \textbf{permutation} of size $k$ is an $ordered$ subset of $k$ of the individuals. The number of permutations of size $k$ taken from $n$ objects is denoted $n^{(k)}$ and
+Given $n$ distinct objects, a **permutation** of size $k$ is an $ordered$ subset of $k$ of the individuals. The number of permutations of size $k$ taken from $n$ objects is denoted $n^{(k)}$ and
 $$
 n^{(k)}=n(n-1)\dots (n-k+1) =\frac{n!}{(n-k)!}.
 $$
