@@ -1,0 +1,44 @@
+# Lecture 5, January 17, 2024
+
+Properties of the Binomial coefficients
+
+
+There are some useful/important results about permutation and combination.
+
+1. $n^{(k)} = n (n - 1)^{(k-1)}$ for $k \geq 1$
+2. ${n \choose k} = \frac{n^{(k)}}{k!}$
+3. ${n \choose k} = {n \choose n-k}$ for $k \geq 0$
+4. ${n \choose k} = {n-1 \choose k-1} + {n-1 \choose k}$
+5. Binomial theorem: $(1 + x)^n = \sum_{k=0}^n {n \choose k} x^k$
+6. ${n \choose k}$ is equal to the $k$th entry in the $n$th row of **Pascal's triangle**.
+
+---
+
+Aside: Stirling's formula
+
+$n!$ grows really fast as $n$ increases, so sometimes we need to approximate its value for computational reasons.
+
+**Stirling's formula** provides one such method, and it is given by
+    
+$$
+n! \sim \sqrt{2 \pi n} \left( \frac{n}{e} \right)^n,
+$$
+where $\sim$ means their ratio approaches 1 as $n$ goes to infinity.
+
+We won't need this approximation, but it's useful to know it exists. 
+
+Example of use:
+    Show that  $2^{-2n}\binom{2n}{n} \approx \sqrt{\frac{2}{\pi n}}$
+    
+---
+
+::: {.definition name="Multinomial Coefficient"}
+Consider $n$ objects which consist of $k$ types. Suppose that there are $n_1$ objects which are of type 1, $n_2$ which are of type 2, and in general $n_i$ objects of type $i$. Then there are
+$$
+\frac{n!}{n_1 ! n_2! \dots n_k !}
+$$
+distinguishable arrangements of the $n$ objects. This quantity is known as a **multinomial coefficient** and denoted by 
+$$
+\binom{n}{n_1,n_2,\dots,n_k}= \frac{n !}{n_1 ! n_2! \dots n_k !}.
+$$
+:::
