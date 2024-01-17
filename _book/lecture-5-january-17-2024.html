@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | Stat 230 Introduction to Probability</title>
+  <title>6 Lecture 5, January 17, 2024 | Stat 230 Introduction to Probability</title>
   <meta name="description" content="This is an example site for UW Stat 230, 2024 Winter" />
   <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Page not found | Stat 230 Introduction to Probability" />
+  <meta property="og:title" content="6 Lecture 5, January 17, 2024 | Stat 230 Introduction to Probability" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is an example site for UW Stat 230, 2024 Winter" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | Stat 230 Introduction to Probability" />
+  <meta name="twitter:title" content="6 Lecture 5, January 17, 2024 | Stat 230 Introduction to Probability" />
   
   <meta name="twitter:description" content="This is an example site for UW Stat 230, 2024 Winter" />
   
@@ -29,7 +29,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
+<link rel="prev" href="lecture-4-january-15-2024.html"/>
 
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -120,18 +120,48 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<div id="lecture-5-january-17-2024" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">6</span> Lecture 5, January 17, 2024<a href="lecture-5-january-17-2024.html#lecture-5-january-17-2024" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Properties of the Binomial coefficients</p>
+<p>There are some useful/important results about permutation and combination.</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(n^{(k)} = n (n - 1)^{(k-1)}\)</span> for <span class="math inline">\(k \geq 1\)</span></li>
+<li><span class="math inline">\({n \choose k} = \frac{n^{(k)}}{k!}\)</span></li>
+<li><span class="math inline">\({n \choose k} = {n \choose n-k}\)</span> for <span class="math inline">\(k \geq 0\)</span></li>
+<li><span class="math inline">\({n \choose k} = {n-1 \choose k-1} + {n-1 \choose k}\)</span></li>
+<li>Binomial theorem: <span class="math inline">\((1 + x)^n = \sum_{k=0}^n {n \choose k} x^k\)</span></li>
+<li><span class="math inline">\({n \choose k}\)</span> is equal to the <span class="math inline">\(k\)</span>th entry in the <span class="math inline">\(n\)</span>th row of <strong>Pascal’s triangle</strong>.</li>
+</ol>
+<hr />
+<p>Aside: Stirling’s formula</p>
+<p><span class="math inline">\(n!\)</span> grows really fast as <span class="math inline">\(n\)</span> increases, so sometimes we need to approximate its value for computational reasons.</p>
+<p><strong>Stirling’s formula</strong> provides one such method, and it is given by</p>
+<p><span class="math display">\[
+n! \sim \sqrt{2 \pi n} \left( \frac{n}{e} \right)^n,
+\]</span>
+where <span class="math inline">\(\sim\)</span> means their ratio approaches 1 as <span class="math inline">\(n\)</span> goes to infinity.</p>
+<p>We won’t need this approximation, but it’s useful to know it exists.</p>
+<p>Example of use:
+Show that <span class="math inline">\(2^{-2n}\binom{2n}{n} \approx \sqrt{\frac{2}{\pi n}}\)</span></p>
+<hr />
+<div class="definition">
+<p><span id="def:unlabeled-div-2" class="definition"><strong>Definition 6.1  (Multinomial Coefficient) </strong></span>Consider <span class="math inline">\(n\)</span> objects which consist of <span class="math inline">\(k\)</span> types. Suppose that there are <span class="math inline">\(n_1\)</span> objects which are of type 1, <span class="math inline">\(n_2\)</span> which are of type 2, and in general <span class="math inline">\(n_i\)</span> objects of type <span class="math inline">\(i\)</span>. Then there are
+<span class="math display">\[
+\frac{n!}{n_1 ! n_2! \dots n_k !}
+\]</span>
+distinguishable arrangements of the <span class="math inline">\(n\)</span> objects. This quantity is known as a <strong>multinomial coefficient</strong> and denoted by
+<span class="math display">\[
+\binom{n}{n_1,n_2,\dots,n_k}= \frac{n !}{n_1 ! n_2! \dots n_k !}.
+\]</span></p>
+</div>
+
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
+<a href="lecture-4-january-15-2024.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
     </div>
   </div>
@@ -163,7 +193,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/chikuang/REPO/edit/BRANCH/%s",
+"link": "https://github.com/chikuang/REPO/edit/BRANCH/05-Lec5.Rmd",
 "text": "Edit"
 },
 "history": {

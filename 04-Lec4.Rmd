@@ -1,8 +1,23 @@
 # Lecture 4, January 15, 2024
 
+
+## Combination
+
 ::: {.definition name="Combination"}
 Given $n$ distinct objects, a *combination* of size $k$ is an *unordered* subset of $k$ of the individuals. The number of combinations of size $k$ taken from $n$ objects is denoted ${n \choose k}$ or ${}_n C_k$ and can be computed as
 $$
 {n \choose k}=\frac{n^{(k)}}{k!}=\frac{n!}{(n-k)!\ k!}.
 $$
 :::
+
+* The number ${n \choose k}$ is called **Binomial coefficient**. 
+* Please do find out how to access this on your calculator!
+
+- - -
+
+Set v.s. Tuples
+
+Suppose you have an urn with $10$ distinct numbers, say $\{1,2,\dots,n\}$, and you select $3$ numbers of them without replacement ...
+
+* If you **do not care about the order**, the sample space $S$ consists of sets $\{1,2,3\}$, $\{1,2,4\}$,\dots and note that we are counting $\{1,2,3\}$ and $\{2,1,3\}$ as the same outcome.
+* If you **do consider the order**, the sample space $S$ consists of tuples of the form $(1,2,3), (2,1,3), (1,3,2), (1,2,4),\dots$ and note that $(1,2,3)$ and $(2,1,3)$ are counted as two different outcomes.

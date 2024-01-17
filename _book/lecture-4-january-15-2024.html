@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2024-01-14" />
+<meta name="date" content="2024-01-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -30,7 +30,7 @@
   
   
 <link rel="prev" href="lecture-3-january-12-2024.html"/>
-
+<link rel="next" href="lecture-5-january-17-2024.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -75,7 +75,7 @@
 <li><a href="./">Statistics 230 Introduction to Probability</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Information of the course</a>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> url: your book url like https://bookdown.org/yihui/bookdown</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#course-description"><i class="fa fa-check"></i><b>1.1</b> Course description</a>
 <ul>
@@ -95,7 +95,11 @@
 <ul>
 <li class="chapter" data-level="4.1" data-path="lecture-3-january-12-2024.html"><a href="lecture-3-january-12-2024.html#questions-from-the-class-1"><i class="fa fa-check"></i><b>4.1</b> Questions from the class</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="lecture-4-january-15-2024.html"><a href="lecture-4-january-15-2024.html"><i class="fa fa-check"></i><b>5</b> Lecture 4, January 15, 2024</a></li>
+<li class="chapter" data-level="5" data-path="lecture-4-january-15-2024.html"><a href="lecture-4-january-15-2024.html"><i class="fa fa-check"></i><b>5</b> Lecture 4, January 15, 2024</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="lecture-4-january-15-2024.html"><a href="lecture-4-january-15-2024.html#combination"><i class="fa fa-check"></i><b>5.1</b> Combination</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="lecture-5-january-17-2024.html"><a href="lecture-5-january-17-2024.html"><i class="fa fa-check"></i><b>6</b> Lecture 5, January 17, 2024</a></li>
 <li class="divider"></li>
 <li><a href="https://chikuang.github.io/course/stat230" target="blank">Published by Chi-Kuang Yeh</a></li>
 
@@ -118,21 +122,35 @@
             <section class="normal" id="section-">
 <div id="lecture-4-january-15-2024" class="section level1 hasAnchor" number="5">
 <h1><span class="header-section-number">5</span> Lecture 4, January 15, 2024<a href="lecture-4-january-15-2024.html#lecture-4-january-15-2024" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="combination" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Combination<a href="lecture-4-january-15-2024.html#combination" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="definition">
-<p><span id="def:unlabeled-div-14" class="definition"><strong>Definition 5.1  (Combination) </strong></span>Given <span class="math inline">\(n\)</span> distinct objects, a <em>combination</em> of size <span class="math inline">\(k\)</span> is an <em>unordered</em> subset of <span class="math inline">\(k\)</span> of the individuals. The number of combinations of size <span class="math inline">\(k\)</span> taken from <span class="math inline">\(n\)</span> objects is denoted <span class="math inline">\({n \choose k}\)</span> or <span class="math inline">\({}_n C_k\)</span> and can be computed as
+<p><span id="def:unlabeled-div-1" class="definition"><strong>Definition 5.1  (Combination) </strong></span>Given <span class="math inline">\(n\)</span> distinct objects, a <em>combination</em> of size <span class="math inline">\(k\)</span> is an <em>unordered</em> subset of <span class="math inline">\(k\)</span> of the individuals. The number of combinations of size <span class="math inline">\(k\)</span> taken from <span class="math inline">\(n\)</span> objects is denoted <span class="math inline">\({n \choose k}\)</span> or <span class="math inline">\({}_n C_k\)</span> and can be computed as
 <span class="math display">\[
 {n \choose k}=\frac{n^{(k)}}{k!}=\frac{n!}{(n-k)!\ k!}.
 \]</span></p>
 </div>
+<ul>
+<li>The number <span class="math inline">\({n \choose k}\)</span> is called <strong>Binomial coefficient</strong>.</li>
+<li>Please do find out how to access this on your calculator!</li>
+</ul>
+<hr />
+<p>Set v.s. Tuples</p>
+<p>Suppose you have an urn with <span class="math inline">\(10\)</span> distinct numbers, say <span class="math inline">\(\{1,2,\dots,n\}\)</span>, and you select <span class="math inline">\(3\)</span> numbers of them without replacement …</p>
+<ul>
+<li>If you <strong>do not care about the order</strong>, the sample space <span class="math inline">\(S\)</span> consists of sets <span class="math inline">\(\{1,2,3\}\)</span>, <span class="math inline">\(\{1,2,4\}\)</span>,and note that we are counting <span class="math inline">\(\{1,2,3\}\)</span> and <span class="math inline">\(\{2,1,3\}\)</span> as the same outcome.</li>
+<li>If you <strong>do consider the order</strong>, the sample space <span class="math inline">\(S\)</span> consists of tuples of the form <span class="math inline">\((1,2,3), (2,1,3), (1,3,2), (1,2,4),\dots\)</span> and note that <span class="math inline">\((1,2,3)\)</span> and <span class="math inline">\((2,1,3)\)</span> are counted as two different outcomes.</li>
+</ul>
 
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="lecture-3-january-12-2024.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="lecture-3-january-12-2024.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="lecture-5-january-17-2024.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
