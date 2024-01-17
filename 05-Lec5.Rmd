@@ -13,6 +13,21 @@ There are some useful/important results about permutation and combination.
 6. ${n \choose k}$ is equal to the $k$th entry in the $n$th row of **Pascal's triangle**.
 
 
+Note: Many of these idenetity may be proven using something called *combinatorial proof*. See [Wiki](https://en.wikipedia.org/wiki/Combinatorial_proof) for an (easy) example.
+
+::: {.proof name="4"}
+
+\begin{align*}
+{n-1 \choose k-1} + {n-1 \choose k} &= \frac{(n-1)!}{(k-1)! (n-k)!} + \frac{(n-1)!}{k! (n-k-1)!}\\
+&= \frac{(n-1)!k }{(k-1)! (n-k)!k} + \frac{(n-1)!(n-k)}{k! (n-k-1)!(n-1)} \\
+&= \frac{(n-1)!k + (n-1)! (n-k)}{k! (n-k)!} \\
+&- \frac{(n-1)!( k + (n-k))}{k! (n-k)!} \\
+&= \frac{(n-1)! n}{k! (n-k)!} \\
+&= {n \choose k}
+\end{align*}
+
+:::
+
 *** 
 
 Aside: Stirling's formula
@@ -33,13 +48,17 @@ Example of use:
     
 *** 
 
-::: {.definition name="Multinomial Coefficient"}
-Consider $n$ objects which consist of $k$ types. Suppose that there are $n_1$ objects which are of type 1, $n_2$ which are of type 2, and in general $n_i$ objects of type $i$. Then there are
-$$
-\frac{n!}{n_1 ! n_2! \dots n_k !}
-$$
-distinguishable arrangements of the $n$ objects. This quantity is known as a **multinomial coefficient** and denoted by 
-$$
-\binom{n}{n_1,n_2,\dots,n_k}= \frac{n !}{n_1 ! n_2! \dots n_k !}.
-$$
+
+## Example in class
+
+::: {.example name="Application of Stirling's Formula/Approximation for factorial"}
+Show that $2^{-2n}{2n \choose n} \approx \sqrt{\frac{1}{\pi n}}$
+
+\begin{align*}
+  2^{-2n}{2n \choose n} &= 2^{-2n}\frac{2n!}{n!n!} \\
+  &\approx 2^{-2n} \frac{\sqrt{2\pi (2n)} (2n/e)^{2n}}{\sqrt{2\pi n} (n/e)^{n}\sqrt{2\pi n} (n/e)^{n}}\\
+  &= 2^{-2n} \frac{\sqrt{4}}{\sqrt{2}\sqrt{2}} \frac{\sqrt{\pi n}}{\sqrt{\pi n}\sqrt{\pi n}} \frac{(2n)^{2n}}{n^n n^n} \frac{e^{-2n}}{e^{-2n}}\\
+  &=  2^{-2n} \frac{1}{\sqrt{\pi n}} 2^{2n}\\
+  &= \frac{1}{\sqrt{\pi n}} = \sqrt{\frac{1}{\pi n}}
+\end{align*}
 :::
