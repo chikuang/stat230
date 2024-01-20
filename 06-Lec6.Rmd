@@ -1,5 +1,7 @@
 # Lecture 6, January 19, 2024
 
+### Multinomial Coefficient
+
 ::: {.definition name="Multinomial Coefficient"}
 Consider $n$ objects which consist of $k$ types. Suppose that there are $n_1$ objects which are of type 1, $n_2$ which are of type 2, and in general $n_i$ objects of type $i$. Then there are
 $$
@@ -10,3 +12,39 @@ $$
 \binom{n}{n_1,n_2,\dots,n_k}= \frac{n !}{n_1 ! n_2! \dots n_k !}.
 $$
 :::
+
+**Note**: Multinomial coefficient is an extension of the *binomial coefficient*. In binomial coefficient, there are only **two groups/objects**, and the first type has size $n_1$ and the size of the second type is consequently $n-n_1$, where $n$ is the total number of objects. Hence we have ${n \choose n_1} = \frac{n!}{n_1! (n-n_1)!}$. Try to compare this with the multinomial coefficient.
+
+*** 
+
+### The Birthday Problem
+
+Suppose a room contains $n$ people. What is the probability at least two people in the room share a birthday? 
+
+
+**Assumption**: Suppose that each of the $n$ people is equally likely to have any of the 365 days of the year as their birthday, so that all possible combinations of birthdays are equally likely.
+
+Let $A$ be the event that at least two people share a birthday. Then
+$$ P(A) = 1 - P(A^c),$$
+where $A^c$ is the event that nobody shares birthday with each other.
+
+For $n$ people to have unique birthdays, we need to arrange them among 365 days w/o replacement. Thus, 
+$$|A^c| = 365^{(n)}.$$
+
+For the size of the sample space, we see that each person has 365 possibilities for their birthday. Thus,
+$$|S| = 365^n.$$
+
+Since we are assuming that all possible combinations of birthdays are equally likely, our desired probability becomes
+$$
+P(A) = 1 - P(A^c) = 1 - \frac{365^{(n)}}{365^n} = 1 - \frac{n! {365 \choose n}}{365^n}.
+$$
+    
+For $n\in\{100, 30, 23\}$ we find 
+$$P(A_{100})= .9999997,\;\;\; P(A_{30})=.7063 \;\;\;\; P(A_{23})=.5073.$$
+
+***
+
+### Chapter 4 Probbility Rules and Conditional Probability
+
+Review the Venn Diagram
+

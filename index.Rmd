@@ -74,8 +74,8 @@ Those chapters are based on the lecture notes. The lecture covered is based on *
 |---|---|---|
 | 1  |  Introduction to Probability | 1 | 
 | 2  |  Mathematical Probability Models | 2--3 | 
-| 3  |  Probability and Counting Techniques | 3-- | 
-| 4 | Probability rules and Conditional Probability | TBA| 
+| 3  |  Probability and Counting Techniques | 3--6 | 
+| 4 | Probability rules and Conditional Probability | 6--| 
 | 5 | TBA |  TBA|
 | 6 | TBA |  TBA|
 | 7 | TBA |  TBA|

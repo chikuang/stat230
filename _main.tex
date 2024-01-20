@@ -89,7 +89,7 @@
 \subtitle{Winter 2024}
 \author{Chi-Kuang Yeh\\
 University of Waterloo}
-\date{2024-01-14}
+\date{2024-01-19}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -162,6 +162,45 @@ Contact Divya Lala
   Email: \href{mailto:divya.lala@uwaterloo.ca}{\nolinkurl{divya.lala@uwaterloo.ca}} or the undergrad advising email \href{mailto:sasugradadv@uwaterloo.ca}{\nolinkurl{sasugradadv@uwaterloo.ca}}.
 \end{itemize}
 
+\hypertarget{exam-and-tutorial-assessment-date}{%
+\subsection{EXAM and Tutorial assessment Date}\label{exam-and-tutorial-assessment-date}}
+
+Midterm
+
+\begin{itemize}
+\tightlist
+\item
+  Midterm 1: February 08, 16:30--17:50
+\item
+  Midterm 2: March 14, 16:30--17:50
+\end{itemize}
+
+Final
+
+\begin{itemize}
+\tightlist
+\item
+  To be announced by the university
+\end{itemize}
+
+Tutorial assessment
+
+\begin{itemize}
+\tightlist
+\item
+  Tutorial quiz 1: January 26
+\item
+  Tutorial test 1: February 02
+\item
+  Tutorial quiz 2: March 01
+\item
+  Tutorial test 2: March 08
+\item
+  Tutorial quiz 3: March 22
+\item
+  Tutorial test 3: April 05
+\end{itemize}
+
 \hypertarget{chapters-and-associated-lectures}{%
 \section{Chapters and associated Lectures}\label{chapters-and-associated-lectures}}
 
@@ -176,9 +215,14 @@ Chapter & Title & Lecture Covered \\
 \endlastfoot
 1 & Introduction to Probability & 1 \\
 2 & Mathematical Probability Models & 2--3 \\
-3 & Probability and Counting Techniques & 3-- \\
-4 & Probability rules and Conditional Probability & TBA \\
+3 & Probability and Counting Techniques & 3--6 \\
+4 & Probability rules and Conditional Probability & 6-- \\
 5 & TBA & TBA \\
+6 & TBA & TBA \\
+7 & TBA & TBA \\
+8 & TBA & TBA \\
+9 & TBA & TBA \\
+10 & TBA & TBA \\
 \end{longtable}
 
 \hypertarget{lecture-1-january-08-2024}{%
@@ -454,6 +498,131 @@ Given \(n\) distinct objects, a \emph{combination} of size \(k\) is an \emph{uno
 {n \choose k}=\frac{n^{(k)}}{k!}=\frac{n!}{(n-k)!\ k!}.
 \]
 \end{definition}
+
+\hypertarget{lecture-5-january-17-2024}{%
+\chapter{Lecture 5, January 17, 2024}\label{lecture-5-january-17-2024}}
+
+Properties of the Binomial coefficients
+
+There are some useful/important results about permutation and combination.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(n^{(k)} = n (n - 1)^{(k-1)}\) for \(k \geq 1\)
+\item
+  \({n \choose k} = \frac{n^{(k)}}{k!}\)
+\item
+  \({n \choose k} = {n \choose n-k}\) for \(k \geq 0\)
+\item
+  \({n \choose k} = {n-1 \choose k-1} + {n-1 \choose k}\)
+\item
+  Binomial theorem: \((1 + x)^n = \sum_{k=0}^n {n \choose k} x^k\)
+\item
+  \({n \choose k}\) is equal to the \(k\)th entry in the \(n\)th row of \textbf{Pascal's triangle}.
+\end{enumerate}
+
+Note: Many of these idenetity may be proven using something called \emph{combinatorial proof}. See \href{https://en.wikipedia.org/wiki/Combinatorial_proof}{Wiki} for an (easy) example.
+
+\begin{proof}[4]
+\begin{align*}
+{n-1 \choose k-1} + {n-1 \choose k} &= \frac{(n-1)!}{(k-1)! (n-k)!} + \frac{(n-1)!}{k! (n-k-1)!}\\
+&= \frac{(n-1)!k }{(k-1)! (n-k)!k} + \frac{(n-1)!(n-k)}{k! (n-k-1)!(n-1)} \\
+&= \frac{(n-1)!k + (n-1)! (n-k)}{k! (n-k)!} \\
+&- \frac{(n-1)!( k + (n-k))}{k! (n-k)!} \\
+&= \frac{(n-1)! n}{k! (n-k)!} \\
+&= {n \choose k}
+\end{align*}
+\end{proof}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+Aside: Stirling's formula
+
+\(n!\) grows really fast as \(n\) increases, so sometimes we need to approximate its value for computational reasons.
+
+\textbf{Stirling's formula} provides one such method, and it is given by
+
+\[
+n! \sim \sqrt{2 \pi n} \left( \frac{n}{e} \right)^n,
+\]
+where \(\sim\) means their ratio approaches 1 as \(n\) goes to infinity.
+
+We won't need this approximation, but it's useful to know it exists.
+
+Example of use:
+Show that \(2^{-2n}\binom{2n}{n} \approx \sqrt{\frac{2}{\pi n}}\)
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{example-in-class}{%
+\section{Example in class}\label{example-in-class}}
+
+\begin{example}[Application of Stirling's Formula/Approximation for factorial]
+Show that \(2^{-2n}{2n \choose n} \approx \sqrt{\frac{1}{\pi n}}\)
+
+\begin{align*}
+  2^{-2n}{2n \choose n} &= 2^{-2n}\frac{2n!}{n!n!} \\
+  &\approx 2^{-2n} \frac{\sqrt{2\pi (2n)} (2n/e)^{2n}}{\sqrt{2\pi n} (n/e)^{n}\sqrt{2\pi n} (n/e)^{n}}\\
+  &= 2^{-2n} \frac{\sqrt{4}}{\sqrt{2}\sqrt{2}} \frac{\sqrt{\pi n}}{\sqrt{\pi n}\sqrt{\pi n}} \frac{(2n)^{2n}}{n^n n^n} \frac{e^{-2n}}{e^{-2n}}\\
+  &=  2^{-2n} \frac{1}{\sqrt{\pi n}} 2^{2n}\\
+  &= \frac{1}{\sqrt{\pi n}} = \sqrt{\frac{1}{\pi n}}
+\end{align*}
+\end{example}
+
+\hypertarget{lecture-6-january-19-2024}{%
+\chapter{Lecture 6, January 19, 2024}\label{lecture-6-january-19-2024}}
+
+\hypertarget{multinomial-coefficient}{%
+\subsection{Multinomial Coefficient}\label{multinomial-coefficient}}
+
+\begin{definition}[Multinomial Coefficient]
+Consider \(n\) objects which consist of \(k\) types. Suppose that there are \(n_1\) objects which are of type 1, \(n_2\) which are of type 2, and in general \(n_i\) objects of type \(i\). Then there are
+\[
+\frac{n!}{n_1 ! n_2! \dots n_k !}
+\]
+distinguishable arrangements of the \(n\) objects. This quantity is known as a \textbf{multinomial coefficient} and denoted by
+\[
+\binom{n}{n_1,n_2,\dots,n_k}= \frac{n !}{n_1 ! n_2! \dots n_k !}.
+\]
+\end{definition}
+
+\textbf{Note}: Multinomial coefficient is an extension of the \emph{binomial coefficient}. In binomial coefficient, there are only \textbf{two groups/objects}, and the first type has size \(n_1\) and the size of the second type is consequently \(n-n_1\), where \(n\) is the total number of objects. Hence we have \({n \choose n_1} = \frac{n!}{n_1! (n-n_1)!}\). Try to compare this with the multinomial coefficient.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{the-birthday-problem}{%
+\subsection{The Birthday Problem}\label{the-birthday-problem}}
+
+Suppose a room contains \(n\) people. What is the probability at least two people in the room share a birthday?
+
+\textbf{Assumption}: Suppose that each of the \(n\) people is equally likely to have any of the 365 days of the year as their birthday, so that all possible combinations of birthdays are equally likely.
+
+Let \(A\) be the event that at least two people share a birthday. Then
+\[ P(A) = 1 - P(A^c),\]
+where \(A^c\) is the event that nobody shares birthday with each other.
+
+For \(n\) people to have unique birthdays, we need to arrange them among 365 days w/o replacement. Thus,
+\[|A^c| = 365^{(n)}.\]
+
+For the size of the sample space, we see that each person has 365 possibilities for their birthday. Thus,
+\[|S| = 365^n.\]
+
+Since we are assuming that all possible combinations of birthdays are equally likely, our desired probability becomes
+\[
+P(A) = 1 - P(A^c) = 1 - \frac{365^{(n)}}{365^n} = 1 - \frac{n! {365 \choose n}}{365^n}.
+\]
+
+For \(n\in\{100, 30, 23\}\) we find
+\[P(A_{100})= .9999997,\;\;\; P(A_{30})=.7063 \;\;\;\; P(A_{23})=.5073.\]
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{chapter-4-probbility-rules-and-conditional-probability}{%
+\subsection{Chapter 4 Probbility Rules and Conditional Probability}\label{chapter-4-probbility-rules-and-conditional-probability}}
+
+Review the Venn Diagram
 
   \bibliography{book.bib,packages.bib}
 
