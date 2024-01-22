@@ -89,7 +89,7 @@
 \subtitle{Winter 2024}
 \author{Chi-Kuang Yeh\\
 University of Waterloo}
-\date{2024-01-19}
+\date{2024-01-22}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -623,6 +623,119 @@ For \(n\in\{100, 30, 23\}\) we find
 \subsection{Chapter 4 Probbility Rules and Conditional Probability}\label{chapter-4-probbility-rules-and-conditional-probability}}
 
 Review the Venn Diagram
+
+\hypertarget{lecture-7-january-22-2024}{%
+\chapter{Lecture 7, January 22, 2024}\label{lecture-7-january-22-2024}}
+
+\hypertarget{some-terminology-about-the-set-thoery.}{%
+\subsection{Some terminology about the set thoery.}\label{some-terminology-about-the-set-thoery.}}
+
+\hypertarget{fundamental-law-of-set-algebra}{%
+\subsubsection{Fundamental law of set algebra}\label{fundamental-law-of-set-algebra}}
+
+Let \(A\) and \(B\) be any arbitrary sets/events.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Commutative
+\end{enumerate}
+
+\[
+  A\cup B = B\cup A \quad \text{ and } A\cap B = B\cap A.
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Associativity
+\end{enumerate}
+
+\[
+  (A\cup B)\cup C = A \cup (B\cup C), \quad \text{and } (A\cap B)\cap C =  A \cap (B \cap C).
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Distributive Law
+\end{enumerate}
+
+\[
+  A\cup (B\cap C) = (A \cup B) \cap (A \cap  C) , \quad \text{ and } A \cap (B\cup C) =  (A\cap B) \cup (A\cap C)
+\]
+
+\hypertarget{demorgans-laws}{%
+\subsubsection{DeMorgan's Laws}\label{demorgans-laws}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \((A\cup B)^c = A^c \cap B^c\) (Complement of an union is the intersection of the complements)
+\item
+  \(A\cap B)^c = A^c \cup B^c\) (Complement of an intersection is the union of the complements)
+\end{enumerate}
+
+\hypertarget{inclusion-exclusion-principle}{%
+\subsubsection{Inclusion Exclusion Principle}\label{inclusion-exclusion-principle}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(P(A\cup B ) = P(A) + P(B) - P(A\cap B)\)
+\item
+  \(P(A\cup B \cup C) = P(A) + P(B) + P(C) - P(A\cap B) - P(A \cap C) - P(B \cap C) + P(A\cap B \ cap C)\)
+\item
+  Note that we can generalized the (2), and obtain the following by \emph{inducation.} For arbitrary events \(A_1,A_2,\cdots,A_n,\quad n\ge 2\),
+  \begin{align*}
+  P(\bigcup_{i=1}^n A_i)  &  =\sum_{i}P(A_{i}%
+  )-\sum_{i<j}P(A_{i}A_{j})+\sum_{i<j<k}P(A_{i}A_{j}A_{k})\\
+  &  -\sum_{i<j<k<l}P(A_{i}A_{j}A_{k}A_{l})+\cdots
+  \end{align*}
+\end{enumerate}
+
+\hypertarget{independence}{%
+\subsection{Independence}\label{independence}}
+
+\begin{definition}[independence]
+Any two events \(A\) and \(B\) are said to be \textbf{independent} if
+\[
+  P(A \cap B) = P(A)\times P(B).
+\]
+\end{definition}
+
+Note: Intuitively, it means that two events do not have any influence of each other. You will see that how this concept plays an important role in statistics, in particular through something called the \emph{covariance}, which is beyond this course so do not worry about this for now.
+
+\hypertarget{independence-v.s.-multually-exclusivedisjoint}{%
+\subsection{Independence v.s. Multually Exclusive/Disjoint}\label{independence-v.s.-multually-exclusivedisjoint}}
+
+Recall the definition of mutually exclusive
+
+\begin{definition}[Mutually Exclusive]
+Any two events \(A\) and \(B\) are said to be \textbf{mutually exclusive} or \textbf{disjoint} if
+\[
+  P(A \cap B) = 0.
+\]
+\end{definition}
+
+Note:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  If \(A\) and \(B\) are mutually exclusive, \(A\) and \(B\) may NOT be independent!
+\item
+  \(A\) and \(B\) CAN only be mutually exclusive and independent when either \(A\), \(A\), or both are the empty set \(\emptyset\).
+\end{enumerate}
+
+\begin{lemma}[]
+Let two events \(A\) and \(B\) such that NOT both events are trivial events (empty set). If \(A\) and \(B\) are independent and mutually exclusive/disjoint, then either \(P(A) = 0\) or \(P(B) = 0\).
+\end{lemma}
 
   \bibliography{book.bib,packages.bib}
 

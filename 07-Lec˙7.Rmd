@@ -1,0 +1,78 @@
+# Lecture 7, January 22, 2024
+
+### Some terminology about the set thoery.
+
+#### Fundamental law of set algebra
+
+Let $A$ and $B$ be any arbitrary sets/events.
+
+1. Commutative
+
+\[
+  A\cup B = B\cup A \quad \text{ and } A\cap B = B\cap A.
+\]
+
+
+2. Associativity
+
+\[
+  (A\cup B)\cup C = A \cup (B\cup C), \quad \text{and } (A\cap B)\cap C =  A \cap (B \cap C).
+\]
+
+3. Distributive Law 
+
+\[
+  A\cup (B\cap C) = (A \cup B) \cap (A \cap  C) , \quad \text{ and } A \cap (B\cup C) =  (A\cap B) \cup (A\cap C)
+\]
+
+#### DeMorgan's Laws
+
+1. $(A\cup B)^c = A^c \cap B^c$ (Complement of an union is the intersection of the complements)
+
+2. $A\cap B)^c = A^c \cup B^c$ (Complement of an intersection is the union of the complements)
+
+
+#### Inclusion Exclusion Principle
+
+1. $P(A\cup B ) = P(A) + P(B) - P(A\cap B)$
+
+2. $P(A\cup B \cup C)  = P(A) + P(B) + P(C) - P(A\cap B) - P(A \cap C) - P(B \cap C) + P(A\cap B \ cap C)$
+
+3. Note that we can generalized the (2), and obtain the following by *inducation.* For arbitrary events $A_1,A_2,\cdots,A_n,\quad n\ge 2$, 
+ \begin{align*}
+P(\bigcup_{i=1}^n A_i)  &  =\sum_{i}P(A_{i}%
+)-\sum_{i<j}P(A_{i}A_{j})+\sum_{i<j<k}P(A_{i}A_{j}A_{k})\\
+&  -\sum_{i<j<k<l}P(A_{i}A_{j}A_{k}A_{l})+\cdots
+\end{align*}
+
+### Independence
+
+::: {.definition name="independence"}
+Any two events $A$ and $B$ are said to be **independent** if 
+\[
+  P(A \cap B) = P(A)\times P(B).
+\]
+:::
+
+Note: Intuitively, it means that two events do not have any influence of each other. You will see that how this concept plays an important role in statistics, in particular through something called the *covariance*, which is beyond this course so do not worry about this for now.
+
+### Independence v.s. Multually Exclusive/Disjoint
+
+Recall the definition of mutually exclusive
+
+::: {.definition name="Mutually Exclusive"}
+Any two events $A$ and $B$ are said to be **mutually exclusive** or **disjoint** if 
+\[
+  P(A \cap B) = 0.
+\]
+:::
+
+Note: 
+
+1. If $A$ and $B$ are mutually exclusive, $A$ and $B$ may NOT be independent!
+
+2. $A$ and $B$ CAN only be mutually exclusive and independent when either $A$, $A$, or both are the empty set $\emptyset$.
+
+::: {.lemma}
+Let two events $A$ and $B$ such that NOT both events are trivial events (empty set). If $A$ and $B$ are independent and mutually exclusive/disjoint, then either $P(A) = 0$ or $P(B) = 0$.
+:::
