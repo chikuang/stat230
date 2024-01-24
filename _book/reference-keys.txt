@@ -17,6 +17,9 @@ def:unlabeled-div-17
 def:unlabeled-div-18
 def:unlabeled-div-19
 lem:unlabeled-div-20
+def:unlabeled-div-21
+def:unlabeled-div-22
+def:unlabeled-div-23
 information-of-the-course
 course-description
 instructor
@@ -43,3 +46,5 @@ demorgans-laws
 inclusion-exclusion-principle
 independence
 independence-v.s.-multually-exclusivedisjoint
+lecture-8-january-24-2024
+properties-of-conditional-probability

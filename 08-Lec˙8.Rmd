@@ -1,0 +1,38 @@
+# Lecture 8, January 24, 2024
+
+::: {.definition name="Conditional Probability"}
+The conditional probability of an event $A$ given an event $B$, assuming $P(B)>0$, is 
+
+\[
+  P(A \mid B) = \frac{P(A\cap B)}{P(B)}.
+\]
+:::
+
+::: {.definition name="Equivalent definition of independence"}
+Two events $A$ and $B$ are independent, if
+$$
+P(A|B)=P(A),
+$$
+provided $P(B)>0$. 
+:::
+
+### Properties of Conditional Probability
+
+
+1. $0 \le P(A \mid B) \le 1$.
+
+This follows from the fact that if $A \subset B$ then $P(A) \le P(B)$
+
+2.  $P(A^c \mid B) = 1-P(A \mid B)$.
+
+3. If $A_1$ and $A_2$ are disjoint (i.e. $P(A_1\cap A_2)=\emptyset$: $P(A_1 \cup A_2  \mid B) = P(A_1 \mid B) + P(A_2 \mid B)$.
+
+4. $P(S \mid B)= 1 = P(B \mid B)$.
+
+
+::: {.definition name="Product rule"}
+For any events $A$ and $B$, we have
+$$
+P(A\cap B) = P(A\mid B) P(B)  = P(B \mid A) P(A).
+$$
+:::
