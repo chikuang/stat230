@@ -43,8 +43,8 @@ Contact Divya Lala
 
 Midterm
 
-* Midterm 1: February 08,  16:30--17:50
-* Midterm 2: March 14,  16:30--17:50
+* [ ] Midterm 1: February 08,  16:30--17:50
+* [ ] Midterm 2: March 14,  16:30--17:50
 
 Final
 
@@ -52,12 +52,12 @@ Final
 
 Tutorial assessment 
 
-* Tutorial quiz 1: January 26
-* Tutorial test 1: February 02
-* Tutorial quiz 2: March 01
-* Tutorial test 2: March 08
-* Tutorial quiz 3: March 22
-* Tutorial test 3: April 05
+* [x] Tutorial quiz 1: January 26
+* [ ] Tutorial test 1: February 02
+* [ ] Tutorial quiz 2: March 01
+* [ ] Tutorial test 2: March 08
+* [ ] Tutorial quiz 3: March 22
+* [ ] Tutorial test 3: April 05
 
 ```{r include=FALSE}
 # automatically create a bib database for R packages

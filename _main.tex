@@ -89,7 +89,7 @@
 \subtitle{Winter 2024}
 \author{Chi-Kuang Yeh\\
 University of Waterloo}
-\date{2024-01-27}
+\date{2024-01-28}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -216,8 +216,8 @@ Chapter & Title & Lecture Covered \\
 1 & Introduction to Probability & 1 \\
 2 & Mathematical Probability Models & 2--3 \\
 3 & Probability and Counting Techniques & 3--6 \\
-4 & Probability rules and Conditional Probability & 6-- \\
-5 & TBA & TBA \\
+4 & Probability rules and Conditional Probability & 6--9 \\
+5 & Discrete Random Variable & 10 -- \\
 6 & TBA & TBA \\
 7 & TBA & TBA \\
 8 & TBA & TBA \\
@@ -789,6 +789,9 @@ P(A\cap B) = P(A\mid B) P(B)  = P(B \mid A) P(A).
 \hypertarget{lecture-9-january-26-2024}{%
 \chapter{Lecture 9, January 26, 2024}\label{lecture-9-january-26-2024}}
 
+\hypertarget{law-of-total-probability}{%
+\subsection{Law of Total Probability}\label{law-of-total-probability}}
+
 \begin{definition}[Partition]
 A sequence of sets \(B_1,B_2,...,B_k\) are said to \textbf{partition} the sample space \(S\) if \(B_i \cap B_j = \emptyset\) for all \(i \ne j\), and \(\cup_{j=1}^k B_j = S\).
 \end{definition}
@@ -809,7 +812,7 @@ since \(B\) and \(B^c\) partition \(S\) (i.e.~\(B\cup B^c = S\) and \(B\cap B^c 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \hypertarget{bayes-rule}{%
-\subsubsection{Bayes Rule}\label{bayes-rule}}
+\subsection{Bayes Rule}\label{bayes-rule}}
 
 If we can calculate the conditional profitability, then we may calculate the desire probability by using 1) LTP, 2) definition of conditional probability, and 3) property of the sets (through the Venn diagrams). However, sometimes we have to \emph{FLIP} the event and the conditioning event. This brings us to the \textbf{Bayes Theorem}.
 
@@ -821,6 +824,27 @@ P(A) = P(A | B_1) P(B_1) + P(A | B_2) P(B_2) + \cdots +P(A | B_k) P(B_k).
 \end{theorem}
 
 This concludes Chapter 4!.
+
+\hypertarget{lecture-10-january-29-2024}{%
+\chapter{Lecture 10, January 29, 2024}\label{lecture-10-january-29-2024}}
+
+We begin \textbf{Chapter 5} in this lecture!
+
+\hypertarget{chapter-5.-discrete-random-variable}{%
+\subsection{Chapter 5. Discrete Random Variable}\label{chapter-5.-discrete-random-variable}}
+
+\begin{theorem}[Random Variable]
+A \emph{random variable} is a function that maps assigns a real number \(\mathbb{R}\) to each point in a sample space \(S\). That is, \(X\) is a random variable if
+\[X:S\to \mathbb{R}\].
+\end{theorem}
+
+\begin{theorem}[Range]
+The values that a random variables takes is called the \emph{range} of the random variable. We often denote the range of a random variable \(X\) by \(X(S)\).
+\end{theorem}
+
+\begin{theorem}[Discrete random variable]
+The *discrete random variables take integer values, or more generally, values in a countable set (i.e.~finite or countably infinite set). That is, its range is a discrete/countable subset of \(\mathbb{R}\).
+\end{theorem}
 
   \bibliography{book.bib,packages.bib}
 
