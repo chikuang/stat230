@@ -1,0 +1,36 @@
+# Lecture 9, January 26, 2024
+
+
+### Law of Total Probability
+
+::: {.definition name="Partition"}
+A sequence of sets $B_1,B_2,...,B_k$ are said to **partition** the sample space $S$ if $B_i \cap B_j = \emptyset$ for all $i \ne j$, and $\cup_{j=1}^k B_j = S$.
+:::
+
+::: {.theorem name="Law of Total Probability"}
+Suppose that $B_1,B_2,...,B_k$ partition $S$. Then for any event $A$,
+$$
+P(A) = P(A | B_1) P(B_1) + P(A | B_2) P(B_2) + \cdots +P(A | B_k) P(B_k).
+$$
+:::
+
+Note: It is a simple usage of LTP such that 
+\[
+  P(A) = P(A\cap B) + P(A \cap B^c),
+\]
+since $B$ and $B^c$ partition $S$ (i.e. $B\cup B^c = S$ and $B\cap B^c = \emptyset$)
+
+***
+
+### Bayes Rule
+
+If we can calculate the conditional profitability, then we may calculate the desire probability by using 1) LTP, 2) definition of conditional probability, and 3) property of the sets (through the Venn diagrams). However, sometimes we have to *FLIP* the event and the conditioning event. This brings us to the **Bayes Theorem**.
+
+::: {.theorem name="Bayes Theorem"}
+Suppose that $B_1,B_2,...,B_k$ partition $S$. Then for any event $A$,
+$$
+P(A) = P(A | B_1) P(B_1) + P(A | B_2) P(B_2) + \cdots +P(A | B_k) P(B_k).
+$$
+:::
+
+This concludes Chapter 4!.

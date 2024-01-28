@@ -89,7 +89,7 @@
 \subtitle{Winter 2024}
 \author{Chi-Kuang Yeh\\
 University of Waterloo}
-\date{2024-01-22}
+\date{2024-01-27}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -733,9 +733,94 @@ Note:
   \(A\) and \(B\) CAN only be mutually exclusive and independent when either \(A\), \(A\), or both are the empty set \(\emptyset\).
 \end{enumerate}
 
-\begin{lemma}[]
+\begin{lemma}
 Let two events \(A\) and \(B\) such that NOT both events are trivial events (empty set). If \(A\) and \(B\) are independent and mutually exclusive/disjoint, then either \(P(A) = 0\) or \(P(B) = 0\).
 \end{lemma}
+
+\hypertarget{lecture-8-january-24-2024}{%
+\chapter{Lecture 8, January 24, 2024}\label{lecture-8-january-24-2024}}
+
+\begin{definition}[Conditional Probability]
+The conditional probability of an event \(A\) given an event \(B\), assuming \(P(B)>0\), is
+
+\[
+  P(A \mid B) = \frac{P(A\cap B)}{P(B)}.
+\]
+\end{definition}
+
+\begin{definition}[Equivalent definition of independence]
+Two events \(A\) and \(B\) are independent, if
+\[
+P(A|B)=P(A),
+\]
+provided \(P(B)>0\).
+\end{definition}
+
+\hypertarget{properties-of-conditional-probability}{%
+\subsection{Properties of Conditional Probability}\label{properties-of-conditional-probability}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(0 \le P(A \mid B) \le 1\).
+\end{enumerate}
+
+This follows from the fact that if \(A \subset B\) then \(P(A) \le P(B)\)
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\item
+  \(P(A^c \mid B) = 1-P(A \mid B)\).
+\item
+  If \(A_1\) and \(A_2\) are disjoint (i.e.~\(P(A_1\cap A_2)=\emptyset\): \(P(A_1 \cup A_2 \mid B) = P(A_1 \mid B) + P(A_2 \mid B)\).
+\item
+  \(P(S \mid B)= 1 = P(B \mid B)\).
+\end{enumerate}
+
+\begin{definition}[Product rule]
+For any events \(A\) and \(B\), we have
+\[
+P(A\cap B) = P(A\mid B) P(B)  = P(B \mid A) P(A).
+\]
+\end{definition}
+
+\hypertarget{lecture-9-january-26-2024}{%
+\chapter{Lecture 9, January 26, 2024}\label{lecture-9-january-26-2024}}
+
+\begin{definition}[Partition]
+A sequence of sets \(B_1,B_2,...,B_k\) are said to \textbf{partition} the sample space \(S\) if \(B_i \cap B_j = \emptyset\) for all \(i \ne j\), and \(\cup_{j=1}^k B_j = S\).
+\end{definition}
+
+\begin{theorem}[Law of Total Probability]
+Suppose that \(B_1,B_2,...,B_k\) partition \(S\). Then for any event \(A\),
+\[
+P(A) = P(A | B_1) P(B_1) + P(A | B_2) P(B_2) + \cdots +P(A | B_k) P(B_k).
+\]
+\end{theorem}
+
+Note: It is a simple usage of LTP such that
+\[
+  P(A) = P(A\cap B) + P(A \cap B^c),
+\]
+since \(B\) and \(B^c\) partition \(S\) (i.e.~\(B\cup B^c = S\) and \(B\cap B^c = \emptyset\))
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{bayes-rule}{%
+\subsubsection{Bayes Rule}\label{bayes-rule}}
+
+If we can calculate the conditional profitability, then we may calculate the desire probability by using 1) LTP, 2) definition of conditional probability, and 3) property of the sets (through the Venn diagrams). However, sometimes we have to \emph{FLIP} the event and the conditioning event. This brings us to the \textbf{Bayes Theorem}.
+
+\begin{theorem}[Bayes Theorem]
+Suppose that \(B_1,B_2,...,B_k\) partition \(S\). Then for any event \(A\),
+\[
+P(A) = P(A | B_1) P(B_1) + P(A | B_2) P(B_2) + \cdots +P(A | B_k) P(B_k).
+\]
+\end{theorem}
+
+This concludes Chapter 4!.
 
   \bibliography{book.bib,packages.bib}
 
