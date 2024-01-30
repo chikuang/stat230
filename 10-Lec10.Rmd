@@ -14,5 +14,31 @@ The values that a random variables takes is called the *range* of the random var
 :::
 
 ::: {.theorem name="Discrete random variable"}
-The *discrete random variables take integer values, or more generally, values in a countable set (i.e. finite or countably infinite set). That is, its range is a discrete/countable subset of $\mathbb{R}$.
+The *discrete* random variables take integer values, or more generally, values in a countable set (i.e. finite or countably infinite set). That is, its range is a discrete/countable subset of $\mathbb{R}$.
 :::
+::: {.theorem name="Continuous random variable"}
+A random variable is *continuous* if its range is an interval that is a subset of ${\mathbb R}$ (e.g. $[0,1], (0,\infty), {\mathbb R} $).
+:::
+::: {.theorem name="Probability (mass) function"}
+The *probability (mass) function* of a *discrete* random variable $X$ is the function
+$$
+f_X(x) = P(X=x),\quad \text{ for } x\in \mathbb{R},
+$$
+which is non-zero at at most countably many values.
+:::
+
+Notation: We write $P(X=x)$ as the shorthanded notation for $P(\{\omega \in S : X(\omega)=x\})$.
+
+Notation: We can write $f_X(x)=P(X^{-1}(x))=(P\circ X^{-1})(x)$. We call this as *push-forward probability measure*.
+
+Note: The definition $f_X$ is valid for all $x$, but the value is zero when $x$ is outside the range of the random variable $X$. (This is called the null set).
+
+***
+
+Properties of probability mass function $f$:
+
+1. $f_X(x)\in[0,1]$ for all $x$, and 
+
+2. $\sum_{x\in X(\omega)}f_X(x) =1$. i.e. sum of the probability on ALL the events equal to $1$.
+
+

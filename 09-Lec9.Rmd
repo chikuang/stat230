@@ -29,7 +29,7 @@ If we can calculate the conditional profitability, then we may calculate the des
 ::: {.theorem name="Bayes Theorem"}
 Suppose that $B_1,B_2,...,B_k$ partition $S$. Then for any event $A$,
 $$
-P(A) = P(A | B_1) P(B_1) + P(A | B_2) P(B_2) + \cdots +P(A | B_k) P(B_k).
+P(B_i \mid A ) =  \frac{P(A \mid B_i)P(B_i)}{\sum_{j=1}^k P(A \mid B_j) P(B_j) }.
 $$
 :::
 

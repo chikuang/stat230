@@ -52,8 +52,8 @@ Final
 
 Tutorial assessment 
 
-* [x] Tutorial quiz 1: January 26
-* [ ] Tutorial test 1: February 02
+* [x] Tutorial quiz 1: January 26 (Coverage Ch. 1--3)
+* [ ] Tutorial test 1: February 02 (Coverage Ch. 1--4)
 * [ ] Tutorial quiz 2: March 01
 * [ ] Tutorial test 2: March 08
 * [ ] Tutorial quiz 3: March 22
