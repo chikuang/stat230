@@ -1,0 +1,66 @@
+# Lecture 11, January 31, 2024
+
+## Distinction of the definition "discrete" of the sample space and the random variable
+
+Recall the definition of the *Range of a random variable* from last lecture:
+::: {.definition name="Range"}
+The values that a random variables takes is called the *range* of the random variable. We often denote the range of a random variable $X$ by $X(S)$.
+:::
+
+* We say that, a **random variable** is discrete if its range $X(\omega)$ is discrete (finite or countable, in another word, we can say it is *at most countable*).
+
+* We say, a sample space $S$ is discrete if $S$ is finite or countable.
+
+The sample space $S$ and the range of the random variable are two different things, so do not get confused! We can have a discrete random variable while the sample space $S$ is continuous!
+
+## Cumulative distribution function
+
+::: {.definition name="Range"}
+The **cumulative distribution function** (cdf) of a random variable $X$ is
+$$
+F_X(x) = P(X \le x),\;\; x \in {\mathbb{R}}.
+$$
+:::
+
+Note: The cumulative distribution function $F_X$ is **always defined** over the entire real line $\mathbb{R}$, while the probability function may not always be defined! Hence, the cumulative distribution function is an useful tool! (but do not worry about it now.)
+
+Notation: $F_X(x) = P(X\le x) = P(\{\omega \in S : X(\omega)\in x\}).$
+
+If $X$ is *discrete with probability function $f_X$ (i.e. if $f_X$ exists)*, then we can calculate the cdf from summing up the pdf as 
+$$
+F_X(x)=P( X \le x ) = \sum_{y:\; y\le x}f_X(y).
+$$
+
+### Properties of the cumulative distribution function
+
+Let $F_X(\cdot)$ be a cdf. Then the following holds
+
+1. $F_X(x)\in [0,1]$
+
+2. $F_X(x) \le F_x(y)$ whenever $x<y$ (i.e. $F_X(\cdot)$ is a non-increasing function.)
+
+3. $\lim\limits_{x \to - \infty } F_X(x)=0$, and $\lim\limits_{x \to \infty } F_X(x)  = 1$.
+
+4. $F_X$ is *right continuous*, i.e., $F(x_0)=\lim_{x\downarrow x_0} F(x)$ for all $x_0\in\mathbb{R}$. 
+
+## Special distributions with names
+
+### Discrete uniform distribution
+
+The first named distribution we look at is the *discrete uniform distribution*
+
+::: {.definition name="Discrete uniform distribution"}
+uppose the range of the random variable $X$ is $\{a,a+1,\dots, b\}$, where $a,b\in\mathbb{Z}$, and suppose all values are equally likely. Then we say that $X$ has a **discrete uniform distribution** on $\{a,a+1,\dots,b\}$, shorthand: $X \sim U[a,b]$.
+:::
+
+#### Probability function and distribution function
+
+If $X \sim U[a,b]$, then its probability function is given by
+$$
+   f_X(x)= P(X = x) = \begin{cases} \frac{1}{b - a + 1}, &\quad\text{ if }x \in\{a,a+1,\dots,b\}, \\ 0, &\quad\text{ otherwise} \end{cases}   $$
+and corresponding (cumulative) distribution function is
+$$
+   F_X(x)= P(X \leq x) = \begin{cases} 0, &\quad\text{ if } x<a\\
+   \frac{\lfloor x\rfloor - a + 1}{b - a + 1}, &\quad\text{ if }x \in\{a,a+1,\dots,b\}, \\ 
+   1, &\quad\text{ if } x\geq b,\end{cases}   $$
+   where $\lfloor x\rfloor=\max\{z\in\mathbb{Z}: z\leq x\}$ is the *floor function*. 

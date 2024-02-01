@@ -4,22 +4,22 @@ We begin **Chapter 5** in this lecture!
 
 ### Chapter 5. Discrete Random Variable
 
-::: {.theorem name="Random Variable"}
+::: {.definition name="Random Variable"}
 A *random variable* is a function that maps assigns a real number $\mathbb{R}$ to each point in a sample space $S$. That is, $X$ is a random variable if 
 $$X:S\to \mathbb{R}$$.
 :::
 
-::: {.theorem name="Range"}
+::: {.definition name="Range"}
 The values that a random variables takes is called the *range* of the random variable. We often denote the range of a random variable $X$ by $X(S)$.
 :::
 
-::: {.theorem name="Discrete random variable"}
+::: {.definition name="Discrete random variable"}
 The *discrete* random variables take integer values, or more generally, values in a countable set (i.e. finite or countably infinite set). That is, its range is a discrete/countable subset of $\mathbb{R}$.
 :::
-::: {.theorem name="Continuous random variable"}
+::: {.definition name="Continuous random variable"}
 A random variable is *continuous* if its range is an interval that is a subset of ${\mathbb R}$ (e.g. $[0,1], (0,\infty), {\mathbb R} $).
 :::
-::: {.theorem name="Probability (mass) function"}
+::: {.definition name="Probability (mass) function"}
 The *probability (mass) function* of a *discrete* random variable $X$ is the function
 $$
 f_X(x) = P(X=x),\quad \text{ for } x\in \mathbb{R},
