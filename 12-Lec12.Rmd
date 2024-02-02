@@ -1,0 +1,68 @@
+# Lecture 12, Feburary 02, 2024
+
+## Hypergeometric distribution
+
+::: {.definition name="Hypergeometric distribution"}
+Consider a population that consists of $N$ objects, of which $r$ are considered *successes* and the remaining $N-r$ are considered *failures*. Suppose that a subset of size $n$ (with $n\leq N$) is drawn from the population WITHOUT REPLACEMENT. Let $X$=Number of successes obtained, then we say $X$ follows a **hypergeometric distribution** with parameters $(N,r,n)$. We sometimes write $X \sim hyp(N,r,n)$ or $X\sim HG(N,r,n)$. 
+:::
+
+### Range of the Hypergeomnetric distribution
+
+* We cannot have more successes than there are ($r$) $\Rightarrow$ $x\leq r$
+* We cannot have more successes than trials ($n$) $\Rightarrow$ $x\leq n$
+* When there are more trials than failures ($n>(N-r)$) we will for sure have at least $n-(N-r)$ successes $\Rightarrow$ $x\geq \max\{0, n-(N-r)\}$.
+* Overall, we have **$\max\{0, n-(N-r)\} \leq x \leq \min\{r,n\}$**.
+
+### Probability function of hypergeometric distribution
+
+* Total number of of subsets of size $n$: $\binom{N}{n}$. 
+* Number of ways to select $x$ successes out of $r$ successes: $\binom{r}{x}$.
+* Number of ways to choose remaining $n-x$ failures from $N-r$ failures: $\binom{N-r}{n-x}$. 
+* Thus,
+$$f(x) = \frac{\binom{r}{x}\binom{N-r}{n-x}}{\binom{N}{n}},$$
+where $\max\{0, n-(N-r)\} \leq x \leq \min\{r,n\}$ and 0 otherwise. 
+
+## Bernoulli and Binimial distributions
+
+::: {.definition name="Bernoulli trail"}
+A **Bernoulli trial** with probability of success $p$ is an experiment that results in either a success or failure, and the probability of success is $p$.
+:::
+::: {.definition name="Bernoulli distribution"}
+If a random variable $X$ represents the number of successes in a Bernoulli trial with probability of success $p$, it follows the *Bernoulli distribution*, and we denote it as
+$$
+X \sim Bernoulli(p).
+$$
+:::
+
+### Probability function and cumulative distribution function
+
+
+### Bernoulli
+
+If $X\sim Bern(p)$, the pf of $X$ is
+$$ f_X(0)=1-p,\quad f_X(1)=p,\quad f_X(x)=0\,\,\text{ for }x\not\in\{0,1\}$$
+and the cdf is 
+$$ F_X(x)=\begin{cases} 0, &\text{ if }x<0, \\ 1-p, &\text{ if } 0\leq x < 1,\\ 1, &\text{ if }x\geq 1\end{cases}$$
+
+
+### Binomial
+::: {.definition name="Bernoulli distribution"}
+If we have $N$ independent runs and record the numbers of successes obtained in these $n$ runs, then $X$ is said to have a binomial distribution, denoted by $X\sim Bin(n,p)$.
+:::
+
+
+Note: The probability function of $X\sim Bin(n, p)$ is
+$$ f(x) = \binom{n}{x} p^x(1-p)^{n-x},\quad x=0,1,2,\dots,n$$
+and 0 otherwise.
+
+## Relationship and difference between binomial and hypergeometric
+
+
+* Binomial and hypergeometric distributions are fundamentally different! 
+* In Binomial models, we pick **WITH** replacement, in the hypergeometric model **WITHOUT** replacement. 
+* If $N$ is large and $n$ is small, the chance we pick the same object twice is small. 
+* Thus, letting $r/N=p$, $X\sim Hyp(N,r,n)$ and $Y\sim Bin(n,p)$, then we can **APPROXIMATE**
+$$ P(X \leq k) \approx P(Y\leq k).$$
+(more precisely, in the limit as $N\rightarrow\infty$ with $r/N\rightarrow p$ (the ratio of successes converges to the success probability). 
+* See pages 86/87 and later in the course for more.
+* We'll see an example next time. 
