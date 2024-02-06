@@ -1,0 +1,88 @@
+# Lecture 13, Feburary 05, 2024
+
+## Binomial v.s. hypergeometric
+
+* $Bin(n,\frac{r}{N})$ and $hyp(N,r,n)$ are fundamentally different!
+* If you have an urn with $r$ successes and $N-r$ failures... 
+    + ... and you draw $n$ items, then the number of successes is... 
+      + ... Binomial: drawn \blue{with} replacement, ...
+      + ... Hypergeometric: drawn \blue{without} replacement. 
+* $N\gg n \Rightarrow$ chance we pick same object twice w/ replacement small.
+*  \alert{Approximation:} For $p=\frac{r}{N}$, $X\sim Hyp(N,r,n)$ and $Y\sim Bin(n,p)$
+$$ P(X \leq k) \approx P(Y\leq k).$$
+(more precisely, in the limit as $N\rightarrow\infty$ with $r/N\rightarrow p$).
+
+## Negative binomial distribution
+
+::: {.definition name="Negative Binomial"}
+Consider an experiment with two possible outcomes *success* (Su) or *failure* (F). Without loss of generality, assume that the $P(Su)=p$ (so $P(F)=1-P(Su)= 1-p$). Repeat the experiment **independently** until a specified number of $k$ successes have been observed. Denote $X$ the number of failures before the $k$-th suceess, then $X\sim NegBin(k,p)$.
+:::
+
+### Probability function
+
+The probability function of $X\sim NegBin(k,p)$ is 
+$$ f(x)=P(X=x)=\binom{x+k-1}{x}p^k(1-p)^x,\quad x=0,1,2,\dots$$
+since there are $\binom{x+k-1}{x}$ to choose $x$ positions among the first $x+k-1$ positions to be a failure (and the remaining ones are automatically success), and each of these sequence of outcomes has probability $p^k(1-p)^x$.
+
+## Binomial v.s. Negative Binomial
+
+* Binomial distribution: We know number of trials $n$, but we do not know how many successes.
+
+* Negative Binomial distribution: We know the number of successes $k$,  but we do not know how many trials will be needed.
+
+
+## Geometric distribution
+
+::: {.definition name="Geometric"}
+Consider an experiment with two possible outcomes *success* (Su) or *failure* (F). Without loss of generality, assume that the $P(Su)=p$ (so $P(F)=1-P(Su)= 1-p$). Repeat the experiment **independently** **before the 1st success** has been observed. Denote $X$ the number of failures before 1st success, then $X\sim Geo(p)$.  
+:::
+
+Note: The Geometric distribution is a special case of the negative binomial distribution: $Geo(P) \sim Neg(k=1,p)$.
+
+### Probability function and distribution function
+
+
+* If $X\sim Geo(p)$, then $X$ has probability function 
+$$ f(x) = P(X=x)= (1-p)^x p,\quad x\in\{0,1,2,\dots\}.$$
+
+$$ F(x)=P(X\leq x) 
+= P(X\leq \floor{x}) = 
+\sum_{k=0}^{\floor{x}} (1-p)^k p =
+1-(1-p)^{\floor{x}+1}$$
+if $x\geq 0$ and $0$ otherwise. 
+
+* Note that $P(X>x)=1-F(x)=(1-p)^{\floor{x}+1}$ which is nice for computations!
+
+### Memoryless property
+
+
+::: {.theroem name="Memoryless property of $Geo(p)$"}
+Let $X \sim Geo(p)$ and $s,t$ be non-negative integers. Then, the following equation holds.
+$$
+P(X \geq s+t | X \geq s) = P(X \geq t).
+$$
+:::
+
+
+### Aside, Reason to call the Negative binomial distribution
+
+(This is contributed by Jeffery!)
+
+Can extend binomial coefficients to **negative or fractional** ``top'' part.
+
+$$\binom{\theta}{x} := \frac{\theta^{(X)}}{x!} = \frac{\theta(\theta-1)(\theta-1)...(\theta-x+1)}{X!}$$
+
+Note: ``bottom'' part of coefficient still a non-negative integer.
+
+
+Then 
+\begin{align*}
+    \binom{-k}{x} 
+        & = \frac{-k(-k-1)...(-k-x+1)}{x!} \\
+        & = (-1)^x \frac{(x+k-1)(x+k-2)...((x+k-1)-x+1)}{x!}\\
+        & = (-1)^x \binom{x+k-1}{x}
+\end{align*}
+So
+\[
+    f_X(x) = \binom{x+k-1}{x}p^k(1-p)^x = (-1)^x \binom{-k}{x} p^k(1-p)^x 
+\]
