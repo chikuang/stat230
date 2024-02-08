@@ -1,0 +1,70 @@
+# Lecture 14, Feburary 05, 2024
+
+## Poisson distribution
+
+::: {.definition name="Poisson distribution"}
+We say the random variable $X$ has a {\bf Poisson}  distribution with parameter $\mu > 0$ if
+$$
+f(x) = e^{-\mu} \frac{ \mu^x}{x!},\;\;x=0,1,2,\dots$$
+:::
+
+### Notation
+
+We write $X\sim Poisson(\mu)$ or $Poi(\mu)$, where $\mu$ is called the *rate* parameter.
+
+### Interpreation of the Poisson distribution
+
+1. *Limiting case of binomial distribution*, where you fix $\lambda = np$ , and let $n \rightarrow \infty$ and $p \rightarrow 0$ (This can be a consequence of b))
+
+2. *Poisson Process*
+
+## Poisson as the limiting distribution of the binomial distribution
+
+One way to view the Poisson distribution is to consider the limiting case of binomial distribution, where you fix $\mu = np$ , and let $n \rightarrow \infty$ and $p \rightarrow 0$.
+
+One can show that if $n\to \infty$ and $p=p_n \to 0$ as $n\to \infty$ in such a way that $n p_n \to \mu$, then
+$$
+{n \choose x} p^x (1-p)^{n-x} \to e^{-\mu} \frac{ \mu^x}{x!},\;\;\;as\;\;\; n\to \infty.
+$$ 
+Actually here, it is something called the *convergence in distribution**. 
+
+
+## Poisson process
+Consider counting the number of occurrences of an event that happens at random points in time (or space). Poisson process is the *counting process* that satisfies the following
+
+1. **Independence**: the number of occurrences in non-overlapping
+intervals are independent.
+
+2. **Individuality**: for sufficiently short time periods of length
+$\Delta t,$ the probability of 2 or more events occurring in the interval is
+close to zero
+$$
+\frac{P\left(  \text{2 or more events in }(t,t+\Delta_t)\right)}{\Delta_t}  \rightarrow 0,\;\; \Delta_t \to 0
+$$
+
+3. **Homogeneity or Uniformity**: events occur at a uniform or
+homogeneous rate $\lambda$ and proportional to time interval $\Delta_t$, i.e.
+$$
+\frac{P\left(  \text{one event in }(t,t+\Delta_t)\right) - \lambda\Delta_t }{\Delta_t}  \to 0.
+$$
+
+If $X=$ occurrences in a time period of length $t$, then 
+$$X\sim Poi(\lambda t).$$
+
+::: {.definition name="Poisson process"}
+A process that satisfies the prior conditions on the occurrence of events is often called a **Poisson process**. More precisely, if $X_t, \; \text{for } t\ge0,$ (a random variable for each $t$) denotes the number of events that have occurred up to time $t$, then $X_t$ is called a Poisson process. 
+:::
+
+## Side notes -- Rigorous definition of convergence in distribution
+
+This section is just served as a reference for those of you who are interested in the rigorous definition of *convergence in distribution*. Do not worry too much if you are not interested in knowing those.
+
+::: {.definition name="Convergence in distribution"}
+Let $(F_n)_{n\in\mathbb{N}}$ and $G$ be CDFs. Let $c(G) = \{x\in\mathbb{R} : G \text{ is cts. at }x\}$ be the set of continuity points of $G$. $F_n$ *converges in distribution* to $G$ if
+\begin{align}
+    \forall x\in c(G) \quad F_n(x)\to G(x)  (\#eq:convdist)
+\end{align}
+If $X_n$ has CDF $F_n$ for each $n$ and $Y$ has CDF $G$ and \@ref(eq:convdist) holds then $X_n$ converges in distribution to $Y$. Denoted $X_n \stackrel{d}{\to} Y$, or $F_n \stackrel{d}{\to} G$
+:::
+
+ 
