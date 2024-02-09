@@ -1,4 +1,4 @@
-# Lecture 14, Feburary 05, 2024
+# Lecture 14, Feburary 07, 2024
 
 ## Poisson distribution
 

@@ -1,0 +1,12 @@
+# Lecture 15, Feburary 09, 2024
+
+## Review of the distributions we covered before
+
+|  Distribution |                                           $f(x)=P(X=x)$                                           |                                      Interpretation                                     |
+|:-------------:|:-------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------:|
+| $U[a,b]$      | $\frac{1}{b-a+1},\, x=a,a+1,\dots,b$                                                              | Sample from $\{a,a+1,\dots,b\}$ once uniformly at random\                               |
+| $Bin (n,p)$   | $\binom{n}{x}p^x(1-p)^{n-x},\,x=0,1,\dots,n$                                                      | $\#$ of successes in $n$ indep. trials with success prob. $p$.  |
+| $Hyp(N,r,n)$  | $\frac{\binom{r}{x}\binom{N-r}{n-x}}{\binom{N}{n}},$ $\max\{0, n-(N-r)\} \leq x \leq \min\{r,n\}$ | $\#$ of successes in $n$ draws without replacement from $N$ objects with $r$ successes. |
+| $NegBin(k,p)$ | $\binom{x+k-1}{x}p^k(1-p)^x,\, x=0,1,\dots,$                                                      | $\#$ of failures until $k$ successes in indep. trials with success prob. $p$            |
+| $Geo(p)$      | $$p(1-p)^x,~ x=0,1,\dots $$      | $\#$ of failures until first success in indep. trials with success prob. $p$            |
+| $Poi(\mu)$    | $$\exp(-\mu) \mu^x/x!,~ x=0,1,\dots $$                                                       | $\#$ of occurrences in Poi process.                                                     |
