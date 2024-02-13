@@ -76,9 +76,9 @@ Those chapters are based on the lecture notes. The lecture covered is based on *
 | 2  |  Mathematical Probability Models | 2--3 | 
 | 3  |  Probability and Counting Techniques | 3--6 | 
 | 4 | Probability rules and Conditional Probability | 6--9| 
-| 5 | Discrete Random Variable |  10 -- |
+| 5 | Discrete Random Variable |  10 --16 |
 | 6 | TBA |  TBA|
-| 7 | TBA |  TBA|
+| 7 | Expected Value and Variance |  16 --|
 | 8 | TBA |  TBA|
 | 9 | TBA |  TBA|
 | 10 | TBA |  TBA|

@@ -1,0 +1,50 @@
+# Lecture 16, Feburary 12, 2024
+
+## Chapter 7 Expectation and Variance
+
+Probability and statistics are closely related to data; we often try to ``extract" additional information from data.
+    
+Some simple way to analyse and visualize data are:
+
+1. frequency table
+2. frequency histogram
+
+
+However, sometimes it is unclear how to define the groups in the frequency or in the histogram. Hence, we often would like to have more concise defined ways to analyse the random variable and its associated distribution. We call those numerical values as the (summary) *statistics*.
+
+::: {.definition name="Sample mean"}
+Let $x_1, \ x_2, \ldots, \ x_n$ be $n$ realizations of a random variable $X$ (such a set is called a **sample**). The *sample mean* is defined as 
+        $$
+\bar{x} = \frac{1}{n}  \sum_{i=1}^n x_i
+$$
+:::
+
+Note: there are other summary 
+
+1. Sample median: a value such that half of the results are below it and the other half above it, when the sample is arranged in numerical order.
+  - Median is more *robust* against some abnormally big/small observations, or recording errors.
+
+2. Sample mode: The most frequently-occuring value in a sample.
+  - We may have more than one mode.
+  
+
+## Theoretical mean and the sample mean
+
+We can compute *statistics* for a random variable $X$ directly if we know its distribution. Such a mean would be *theoretical*, as we are working from its probability distribution rather than an actual sample.
+
+That means, we can do experiment to get sample, then compute the sample mean, while if we know the distribution, we can compute the theoretical mean without any samples.
+
+### Definition 
+
+::: {.definition name="(Theoretical) Mean/Expectation/First moment"}
+Suppose $X$ is a discrete random variable with probability function $f_X(x)$. The expected value of $X$, denoted by $E[X]$, is then the number 
+$$
+E[X] = \sum_{x\in X(S) } x \ f_X(x) = \sum_{x\in X(S) } x \ P(X=x),
+$$
+provided the sum converges absolutely (i.e., if $\sum_{x\in X(S) } |x| \ f_X(x)<\infty$)
+:::
+
+### Interpretation
+
+1. Geometrical interpretation: $E[X]$ is the *balancing point* of the probability function $f(x)$.
+2. $E[X]$ is what the average of many, many independent realizations of the random variable $X$ would approach (**Law of large numbers**).
