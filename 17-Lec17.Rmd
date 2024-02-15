@@ -1,0 +1,69 @@
+# Lecture 17, Feburary 14, 2024
+
+## More about expectation
+
+Some observations we made from the example we went through in class.
+
+1. Suppose $X$ is a random variable satisfying $a \le X(\omega) \le b$ for all $\omega \in S$. Then $a<E[X]<b$.
+
+2. We may think that the expectation is a **weighting** of the values $x\in X(S)$ by its probability function (which is always positive, and sum up to one).
+
+## Law of Unconscious Statistician
+
+If
+$$
+g: {\mathbb R} \to {\mathbb R},
+$$
+and $X$ is a random variable with probability function $f$, then $g(X)$ is a random variable taking values $g(X(S))$ and
+
+$$
+E[g(X)] = \sum_{x \in X(S)} g(x) f(x)
+$$
+
+NOTE: In general, $E[g(X)]\ne g(E[X])$! 
+
+  e.g. For an arbitrary *convex* function $g(X)$, $g\{E(X)\} \le E\{g(x)\}$. This is a famous theorem called **Jansen's inequality**.
+  
+## Tricks
+
+Sometimes, in order to calculate the expectation, some terminologies may help
+
+1. For $x\in X(S)$, $\sum_{x\in X(S)} f_X(x)=1$.
+
+## Property of expectation - linearity
+
+Suppose the random variable $X$ has $E[X]=\mu$. Then for any constants $a,b\in\mathbb{R}$, 
+$$ E[aX+b]= a \mu + b = a E[X]+b$$
+
+If we have 2 random variables $X$ and $Y$, and three constants, $a,b,c\in \mathbb{R}$, then
+$$
+  E[aX+bY + c] = aE[X] + bE[Y] +c.
+$$
+
+### Proof.
+
+::: {.proof }
+By the *Law of unconscious statistician* with $g(x)=ax+b$, we find
+\begin{align*}
+E[aX+b] &=\sum_{x\in X(S)} (ax+b) f(x)\\
+& = a \cdot  \sum_{x\in X(S)} x f(x) + b  \cdot \sum_{x\in X(S)} f(x) \\
+&= a\cdot  E[X]  + b \cdot 1
+\end{align*}
+:::
+
+## Mean of binomial distribution
+If $X \sim Binomial(n,p)$, then $E[X] = np$
+
+
+::: {.proof }
+Suppose $\sim Bin(n,p)$. Then we have
+\begin{align*}
+E[X] &= \sum_{x=0}^n x\cdot \binom{n}{x}  p^x (1-p)^{n-x}\\
+&= \sum_{x=1}^n x\cdot \frac{n!}{(n-x)!x!} \cdot p^x (1-p)^{n-x}\\
+&= \sum_{x=1}^n \frac{x}{x(x-1)!} \frac{n(n-1)!}{(n-x)!} p p^{x-1} (1-p)^{n-x}\\
+&= \sum_{x=1}^n \frac{1}{(x-1)!}\frac{n(n-1)!}{(n-x-1+1)!} p p^{x-1} (1-p)^{n-x-1+1}\\
+&= np \sum_{x=1}^n \frac{1}{(x-1)!}\frac{(n-1)!}{((n-1)-(x-1))! (x-1)!} p\cdot p^{x-1} (1-p)^{(n-1)-(x-1)}\\
+&= np \; \underbrace{\sum_{y=0}^{n-1} \frac{(n-1)!}{((n-1)-y)! y!} \cdot p^{y} (1-p)^{(n-1)-y}}_{=1\text{b/c sum of PF of bin(n-1,p). is 1}}\\
+&= np
+\end{align*}
+:::

@@ -89,7 +89,7 @@
 \subtitle{Winter 2024}
 \author{Chi-Kuang Yeh\\
 University of Waterloo}
-\date{2024-01-28}
+\date{2024-02-15}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -133,7 +133,7 @@ Chi-Kuang Yeh, I am a postdoc at the \emph{Department of Statistics and Actuaria
 \begin{itemize}
 \tightlist
 \item
-  Office: M3--3102 Desk 10. I will hold office hour in another location.
+  Office: M3--3102 Desk 10, but I hold office hour at M3 - 2101 Desk 1, 9:30 -- 10:30 on Tuesday.
 \item
   Email: \href{mailto:chi-kuang.yeh@uwaterloo.ca}{\nolinkurl{chi-kuang.yeh@uwaterloo.ca}}
 \end{itemize}
@@ -169,36 +169,36 @@ Midterm
 
 \begin{itemize}
 \tightlist
-\item
-  Midterm 1: February 08, 16:30--17:50
-\item
-  Midterm 2: March 14, 16:30--17:50
+\item[$\boxtimes$]
+  Midterm 1: February 08, 2024 16:30--17:50 (Coverage Ch. 1 -- 5.1)
+\item[$\square$]
+  Midterm 2: March 14, 2024 16:30--17:50
 \end{itemize}
 
 Final
 
 \begin{itemize}
 \tightlist
-\item
-  To be announced by the university
+\item[$\square$]
+  Tuesday April 16, 2024 19:30 -- 22:00. Location: TBA
 \end{itemize}
 
 Tutorial assessment
 
 \begin{itemize}
 \tightlist
-\item
-  Tutorial quiz 1: January 26
-\item
-  Tutorial test 1: February 02
-\item
-  Tutorial quiz 2: March 01
-\item
-  Tutorial test 2: March 08
-\item
-  Tutorial quiz 3: March 22
-\item
-  Tutorial test 3: April 05
+\item[$\boxtimes$]
+  Tutorial quiz 1: January 26, 2024 (Coverage Ch. 1--3)
+\item[$\boxtimes$]
+  Tutorial test 1: February 02, 2024 (Coverage Ch. 1--4)
+\item[$\square$]
+  Tutorial quiz 2: March 01, 2024
+\item[$\square$]
+  Tutorial test 2: March 08, 2024
+\item[$\square$]
+  Tutorial quiz 3: March 22, 2024
+\item[$\square$]
+  Tutorial test 3: April 05, 2024
 \end{itemize}
 
 \hypertarget{chapters-and-associated-lectures}{%
@@ -217,9 +217,9 @@ Chapter & Title & Lecture Covered \\
 2 & Mathematical Probability Models & 2--3 \\
 3 & Probability and Counting Techniques & 3--6 \\
 4 & Probability rules and Conditional Probability & 6--9 \\
-5 & Discrete Random Variable & 10 -- \\
+5 & Discrete Random Variable & 10 --16 \\
 6 & TBA & TBA \\
-7 & TBA & TBA \\
+7 & Expected Value and Variance & 16 -- \\
 8 & TBA & TBA \\
 9 & TBA & TBA \\
 10 & TBA & TBA \\
@@ -819,7 +819,7 @@ If we can calculate the conditional profitability, then we may calculate the des
 \begin{theorem}[Bayes Theorem]
 Suppose that \(B_1,B_2,...,B_k\) partition \(S\). Then for any event \(A\),
 \[
-P(A) = P(A | B_1) P(B_1) + P(A | B_2) P(B_2) + \cdots +P(A | B_k) P(B_k).
+P(B_i \mid A ) =  \frac{P(A \mid B_i)P(B_i)}{\sum_{j=1}^k P(A \mid B_j) P(B_j) }.
 \]
 \end{theorem}
 
@@ -833,18 +833,614 @@ We begin \textbf{Chapter 5} in this lecture!
 \hypertarget{chapter-5.-discrete-random-variable}{%
 \subsection{Chapter 5. Discrete Random Variable}\label{chapter-5.-discrete-random-variable}}
 
-\begin{theorem}[Random Variable]
+\begin{definition}[Random Variable]
 A \emph{random variable} is a function that maps assigns a real number \(\mathbb{R}\) to each point in a sample space \(S\). That is, \(X\) is a random variable if
 \[X:S\to \mathbb{R}\].
-\end{theorem}
+\end{definition}
 
-\begin{theorem}[Range]
+\begin{definition}[Range]
 The values that a random variables takes is called the \emph{range} of the random variable. We often denote the range of a random variable \(X\) by \(X(S)\).
-\end{theorem}
+\end{definition}
 
-\begin{theorem}[Discrete random variable]
-The *discrete random variables take integer values, or more generally, values in a countable set (i.e.~finite or countably infinite set). That is, its range is a discrete/countable subset of \(\mathbb{R}\).
-\end{theorem}
+\begin{definition}[Discrete random variable]
+The \emph{discrete} random variables take integer values, or more generally, values in a countable set (i.e.~finite or countably infinite set). That is, its range is a discrete/countable subset of \(\mathbb{R}\).
+\end{definition}
+
+\begin{definition}[Continuous random variable]
+A random variable is \emph{continuous} if its range is an interval that is a subset of \({\mathbb R}\) (e.g.~\${[}0,1{]}, (0,\infty), \{\mathbb R\} \$).
+\end{definition}
+
+\begin{definition}[Probability (mass) function]
+The \emph{probability (mass) function} of a \emph{discrete} random variable \(X\) is the function
+\[
+f_X(x) = P(X=x),\quad \text{ for } x\in \mathbb{R},
+\]
+which is non-zero at at most countably many values.
+\end{definition}
+
+Notation: We write \(P(X=x)\) as the shorthanded notation for \(P(\{\omega \in S : X(\omega)=x\})\).
+
+Notation: We can write \(f_X(x)=P(X^{-1}(x))=(P\circ X^{-1})(x)\). We call this as \emph{push-forward probability measure}.
+
+Note: The definition \(f_X\) is valid for all \(x\), but the value is zero when \(x\) is outside the range of the random variable \(X\). (This is called the null set).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+Properties of probability mass function \(f\):
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(f_X(x)\in[0,1]\) for all \(x\), and
+\item
+  \(\sum_{x\in X(\omega)}f_X(x) =1\). i.e.~sum of the probability on ALL the events equal to \(1\).
+\end{enumerate}
+
+\hypertarget{lecture-11-january-31-2024}{%
+\chapter{Lecture 11, January 31, 2024}\label{lecture-11-january-31-2024}}
+
+\hypertarget{distinction-of-the-definition-discrete-of-the-sample-space-and-the-random-variable}{%
+\section{Distinction of the definition ``discrete'' of the sample space and the random variable}\label{distinction-of-the-definition-discrete-of-the-sample-space-and-the-random-variable}}
+
+Recall the definition of the \emph{Range of a random variable} from last lecture:
+::: \{.definition name=``Range''\}
+The values that a random variables takes is called the \emph{range} of the random variable. We often denote the range of a random variable \(X\) by \(X(S)\).
+:::
+
+\begin{itemize}
+\item
+  We say that, a \textbf{random variable} is discrete if its range \(X(\omega)\) is discrete (finite or countable, in another word, we can say it is \emph{at most countable}).
+\item
+  We say, a sample space \(S\) is discrete if \(S\) is finite or countable.
+\end{itemize}
+
+The sample space \(S\) and the range of the random variable are two different things, so do not get confused! We can have a discrete random variable while the sample space \(S\) is continuous!
+
+\hypertarget{cumulative-distribution-function}{%
+\section{Cumulative distribution function}\label{cumulative-distribution-function}}
+
+\begin{definition}[Range]
+The \textbf{cumulative distribution function} (cdf) of a random variable \(X\) is
+\[
+F_X(x) = P(X \le x),\;\; x \in {\mathbb{R}}.
+\]
+\end{definition}
+
+Note: The cumulative distribution function \(F_X\) is \textbf{always defined} over the entire real line \(\mathbb{R}\), while the probability function may not always be defined! Hence, the cumulative distribution function is an useful tool! (but do not worry about it now.)
+
+Notation: \(F_X(x) = P(X\le x) = P(\{\omega \in S : X(\omega)\in x\}).\)
+
+If \(X\) is \emph{discrete with probability function \(f_X\) (i.e.~if \(f_X\) exists)}, then we can calculate the cdf from summing up the pdf as
+\[
+F_X(x)=P( X \le x ) = \sum_{y:\; y\le x}f_X(y).
+\]
+
+\hypertarget{properties-of-the-cumulative-distribution-function}{%
+\subsection{Properties of the cumulative distribution function}\label{properties-of-the-cumulative-distribution-function}}
+
+Let \(F_X(\cdot)\) be a cdf. Then the following holds
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(F_X(x)\in [0,1]\)
+\item
+  \(F_X(x) \le F_x(y)\) whenever \(x<y\) (i.e.~\(F_X(\cdot)\) is a non-increasing function.)
+\item
+  \(\lim\limits_{x \to - \infty } F_X(x)=0\), and \(\lim\limits_{x \to \infty } F_X(x) = 1\).
+\item
+  \(F_X\) is \emph{right continuous}, i.e., \(F(x_0)=\lim_{x\downarrow x_0} F(x)\) for all \(x_0\in\mathbb{R}\).
+\end{enumerate}
+
+\hypertarget{special-distributions-with-names}{%
+\section{Special distributions with names}\label{special-distributions-with-names}}
+
+\hypertarget{discrete-uniform-distribution}{%
+\subsection{Discrete uniform distribution}\label{discrete-uniform-distribution}}
+
+The first named distribution we look at is the \emph{discrete uniform distribution}
+
+\begin{definition}[Discrete uniform distribution]
+uppose the range of the random variable \(X\) is \(\{a,a+1,\dots, b\}\), where \(a,b\in\mathbb{Z}\), and suppose all values are equally likely. Then we say that \(X\) has a \textbf{discrete uniform distribution} on \(\{a,a+1,\dots,b\}\), shorthand: \(X \sim U[a,b]\).
+\end{definition}
+
+\hypertarget{probability-function-and-distribution-function}{%
+\subsubsection{Probability function and distribution function}\label{probability-function-and-distribution-function}}
+
+If \(X \sim U[a,b]\), then its probability function is given by
+\[
+   f_X(x)= P(X = x) = \begin{cases} \frac{1}{b - a + 1}, &\quad\text{ if }x \in\{a,a+1,\dots,b\}, \\ 0, &\quad\text{ otherwise} \end{cases}   \]
+and corresponding (cumulative) distribution function is
+\[
+   F_X(x)= P(X \leq x) = \begin{cases} 0, &\quad\text{ if } x<a\\
+   \frac{\lfloor x\rfloor - a + 1}{b - a + 1}, &\quad\text{ if }x \in\{a,a+1,\dots,b\}, \\ 
+   1, &\quad\text{ if } x\geq b,\end{cases}   \]
+where \(\lfloor x\rfloor=\max\{z\in\mathbb{Z}: z\leq x\}\) is the \emph{floor function}.
+
+\hypertarget{lecture-12-feburary-02-2024}{%
+\chapter{Lecture 12, Feburary 02, 2024}\label{lecture-12-feburary-02-2024}}
+
+\hypertarget{hypergeometric-distribution}{%
+\section{Hypergeometric distribution}\label{hypergeometric-distribution}}
+
+\begin{definition}[Hypergeometric distribution]
+Consider a population that consists of \(N\) objects, of which \(r\) are considered \emph{successes} and the remaining \(N-r\) are considered \emph{failures}. Suppose that a subset of size \(n\) (with \(n\leq N\)) is drawn from the population WITHOUT REPLACEMENT. Let \(X\)=Number of successes obtained, then we say \(X\) follows a \textbf{hypergeometric distribution} with parameters \((N,r,n)\). We sometimes write \(X \sim hyp(N,r,n)\) or \(X\sim HG(N,r,n)\).
+\end{definition}
+
+\hypertarget{range-of-the-hypergeomnetric-distribution}{%
+\subsection{Range of the Hypergeomnetric distribution}\label{range-of-the-hypergeomnetric-distribution}}
+
+\begin{itemize}
+\tightlist
+\item
+  We cannot have more successes than there are (\(r\)) \(\Rightarrow\) \(x\leq r\)
+\item
+  We cannot have more successes than trials (\(n\)) \(\Rightarrow\) \(x\leq n\)
+\item
+  When there are more trials than failures (\(n>(N-r)\)) we will for sure have at least \(n-(N-r)\) successes \(\Rightarrow\) \(x\geq \max\{0, n-(N-r)\}\).
+\item
+  Overall, we have \textbf{\(\max\{0, n-(N-r)\} \leq x \leq \min\{r,n\}\)}.
+\end{itemize}
+
+\hypertarget{probability-function-of-hypergeometric-distribution}{%
+\subsection{Probability function of hypergeometric distribution}\label{probability-function-of-hypergeometric-distribution}}
+
+\begin{itemize}
+\tightlist
+\item
+  Total number of of subsets of size \(n\): \(\binom{N}{n}\).
+\item
+  Number of ways to select \(x\) successes out of \(r\) successes: \(\binom{r}{x}\).
+\item
+  Number of ways to choose remaining \(n-x\) failures from \(N-r\) failures: \(\binom{N-r}{n-x}\).
+\item
+  Thus,
+  \[f(x) = \frac{\binom{r}{x}\binom{N-r}{n-x}}{\binom{N}{n}},\]
+  where \(\max\{0, n-(N-r)\} \leq x \leq \min\{r,n\}\) and 0 otherwise.
+\end{itemize}
+
+\hypertarget{bernoulli-and-binimial-distributions}{%
+\section{Bernoulli and Binimial distributions}\label{bernoulli-and-binimial-distributions}}
+
+\begin{definition}[Bernoulli trail]
+A \textbf{Bernoulli trial} with probability of success \(p\) is an experiment that results in either a success or failure, and the probability of success is \(p\).
+\end{definition}
+
+\begin{definition}[Bernoulli distribution]
+If a random variable \(X\) represents the number of successes in a Bernoulli trial with probability of success \(p\), it follows the \emph{Bernoulli distribution}, and we denote it as
+\[
+X \sim Bernoulli(p).
+\]
+\end{definition}
+
+\hypertarget{probability-function-and-cumulative-distribution-function}{%
+\subsection{Probability function and cumulative distribution function}\label{probability-function-and-cumulative-distribution-function}}
+
+\hypertarget{bernoulli}{%
+\subsection{Bernoulli}\label{bernoulli}}
+
+If \(X\sim Bern(p)\), the pf of \(X\) is
+\[ f_X(0)=1-p,\quad f_X(1)=p,\quad f_X(x)=0\,\,\text{ for }x\not\in\{0,1\}\]
+and the cdf is
+\[ F_X(x)=\begin{cases} 0, &\text{ if }x<0, \\ 1-p, &\text{ if } 0\leq x < 1,\\ 1, &\text{ if }x\geq 1\end{cases}\]
+
+\hypertarget{binomial}{%
+\subsection{Binomial}\label{binomial}}
+
+\begin{definition}[Bernoulli distribution]
+If we have \(N\) independent runs and record the numbers of successes obtained in these \(n\) runs, then \(X\) is said to have a binomial distribution, denoted by \(X\sim Bin(n,p)\).
+\end{definition}
+
+Note: The probability function of \(X\sim Bin(n, p)\) is
+\[ f(x) = \binom{n}{x} p^x(1-p)^{n-x},\quad x=0,1,2,\dots,n\]
+and 0 otherwise.
+
+\hypertarget{relationship-and-difference-between-binomial-and-hypergeometric}{%
+\section{Relationship and difference between binomial and hypergeometric}\label{relationship-and-difference-between-binomial-and-hypergeometric}}
+
+\begin{itemize}
+\tightlist
+\item
+  Binomial and hypergeometric distributions are fundamentally different!
+\item
+  In Binomial models, we pick \textbf{WITH} replacement, in the hypergeometric model \textbf{WITHOUT} replacement.
+\item
+  If \(N\) is large and \(n\) is small, the chance we pick the same object twice is small.
+\item
+  Thus, letting \(r/N=p\), \(X\sim Hyp(N,r,n)\) and \(Y\sim Bin(n,p)\), then we can \textbf{APPROXIMATE}
+  \[ P(X \leq k) \approx P(Y\leq k).\]
+  (more precisely, in the limit as \(N\rightarrow\infty\) with \(r/N\rightarrow p\) (the ratio of successes converges to the success probability).
+\item
+  See pages 86/87 and later in the course for more.
+\item
+  We'll see an example next time.
+\end{itemize}
+
+\hypertarget{lecture-13-feburary-05-2024}{%
+\chapter{Lecture 13, Feburary 05, 2024}\label{lecture-13-feburary-05-2024}}
+
+\hypertarget{binomial-v.s.-hypergeometric}{%
+\section{Binomial v.s. hypergeometric}\label{binomial-v.s.-hypergeometric}}
+
+\begin{itemize}
+\tightlist
+\item
+  \(Bin(n,\frac{r}{N})\) and \(hyp(N,r,n)\) are fundamentally different!
+\item
+  If you have an urn with \(r\) successes and \(N-r\) failures\ldots{}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \ldots{} and you draw \(n\) items, then the number of successes is\ldots{}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      \ldots{} Binomial: drawn \blue{with} replacement, \ldots{}
+    \item
+      \ldots{} Hypergeometric: drawn \blue{without} replacement.
+    \end{itemize}
+  \end{itemize}
+\item
+  \(N\gg n \Rightarrow\) chance we pick same object twice w/ replacement small.
+\item
+  \alert{Approximation:} For \(p=\frac{r}{N}\), \(X\sim Hyp(N,r,n)\) and \(Y\sim Bin(n,p)\)
+  \[ P(X \leq k) \approx P(Y\leq k).\]
+  (more precisely, in the limit as \(N\rightarrow\infty\) with \(r/N\rightarrow p\)).
+\end{itemize}
+
+\hypertarget{negative-binomial-distribution}{%
+\section{Negative binomial distribution}\label{negative-binomial-distribution}}
+
+\begin{definition}[Negative Binomial]
+Consider an experiment with two possible outcomes \emph{success} (Su) or \emph{failure} (F). Without loss of generality, assume that the \(P(Su)=p\) (so \(P(F)=1-P(Su)= 1-p\)). Repeat the experiment \textbf{independently} until a specified number of \(k\) successes have been observed. Denote \(X\) the number of failures before the \(k\)-th suceess, then \(X\sim NegBin(k,p)\).
+\end{definition}
+
+\hypertarget{probability-function}{%
+\subsection{Probability function}\label{probability-function}}
+
+The probability function of \(X\sim NegBin(k,p)\) is
+\[ f(x)=P(X=x)=\binom{x+k-1}{x}p^k(1-p)^x,\quad x=0,1,2,\dots\]
+since there are \(\binom{x+k-1}{x}\) to choose \(x\) positions among the first \(x+k-1\) positions to be a failure (and the remaining ones are automatically success), and each of these sequence of outcomes has probability \(p^k(1-p)^x\).
+
+\hypertarget{binomial-v.s.-negative-binomial}{%
+\section{Binomial v.s. Negative Binomial}\label{binomial-v.s.-negative-binomial}}
+
+\begin{itemize}
+\item
+  Binomial distribution: We know number of trials \(n\), but we do not know how many successes.
+\item
+  Negative Binomial distribution: We know the number of successes \(k\), but we do not know how many trials will be needed.
+\end{itemize}
+
+\hypertarget{geometric-distribution}{%
+\section{Geometric distribution}\label{geometric-distribution}}
+
+\begin{definition}[Geometric]
+Consider an experiment with two possible outcomes \emph{success} (Su) or \emph{failure} (F). Without loss of generality, assume that the \(P(Su)=p\) (so \(P(F)=1-P(Su)= 1-p\)). Repeat the experiment \textbf{independently} \textbf{before the 1st success} has been observed. Denote \(X\) the number of failures before 1st success, then \(X\sim Geo(p)\).
+\end{definition}
+
+Note: The Geometric distribution is a special case of the negative binomial distribution: \(Geo(P) \sim Neg(k=1,p)\).
+
+\hypertarget{probability-function-and-distribution-function-1}{%
+\subsection{Probability function and distribution function}\label{probability-function-and-distribution-function-1}}
+
+\begin{itemize}
+\tightlist
+\item
+  If \(X\sim Geo(p)\), then \(X\) has probability function
+  \[ f(x) = P(X=x)= (1-p)^x p,\quad x\in\{0,1,2,\dots\}.\]
+\end{itemize}
+
+\[ F(x)=P(X\leq x) 
+= P(X\leq \floor{x}) = 
+\sum_{k=0}^{\floor{x}} (1-p)^k p =
+1-(1-p)^{\floor{x}+1}\]
+if \(x\geq 0\) and \(0\) otherwise.
+
+\begin{itemize}
+\tightlist
+\item
+  Note that \(P(X>x)=1-F(x)=(1-p)^{\floor{x}+1}\) which is nice for computations!
+\end{itemize}
+
+\hypertarget{memoryless-property}{%
+\subsection{Memoryless property}\label{memoryless-property}}
+
+Let \(X \sim Geo(p)\) and \(s,t\) be non-negative integers. Then, the following equation holds.
+\[
+P(X \geq s+t | X \geq s) = P(X \geq t).
+\]
+
+\hypertarget{aside-reason-to-call-the-negative-binomial-distribution}{%
+\subsection{Aside, Reason to call the Negative binomial distribution}\label{aside-reason-to-call-the-negative-binomial-distribution}}
+
+(This is contributed by Jeffery!)
+
+Can extend binomial coefficients to \textbf{negative or fractional} ``top'\,' part.
+
+\[\binom{\theta}{x} := \frac{\theta^{(X)}}{x!} = \frac{\theta(\theta-1)(\theta-1)...(\theta-x+1)}{X!}\]
+
+Note: ``bottom'\,' part of coefficient still a non-negative integer.
+
+Then
+\begin{align*}
+    \binom{-k}{x} 
+        & = \frac{-k(-k-1)...(-k-x+1)}{x!} \\
+        & = (-1)^x \frac{(x+k-1)(x+k-2)...((x+k-1)-x+1)}{x!}\\
+        & = (-1)^x \binom{x+k-1}{x}
+\end{align*}
+So
+\[
+    f_X(x) = \binom{x+k-1}{x}p^k(1-p)^x = (-1)^x \binom{-k}{x} p^k(1-p)^x 
+\]
+
+\hypertarget{lecture-14-feburary-07-2024}{%
+\chapter{Lecture 14, Feburary 07, 2024}\label{lecture-14-feburary-07-2024}}
+
+\hypertarget{poisson-distribution}{%
+\section{Poisson distribution}\label{poisson-distribution}}
+
+\begin{definition}[Poisson distribution]
+We say the random variable \(X\) has a \{\bf Poisson\} distribution with parameter \(\mu > 0\) if
+\[
+f(x) = e^{-\mu} \frac{ \mu^x}{x!},\;\;x=0,1,2,\dots\]
+\end{definition}
+
+\hypertarget{notation}{%
+\subsection{Notation}\label{notation}}
+
+We write \(X\sim Poisson(\mu)\) or \(Poi(\mu)\), where \(\mu\) is called the \emph{rate} parameter.
+
+\hypertarget{interpreation-of-the-poisson-distribution}{%
+\subsection{Interpreation of the Poisson distribution}\label{interpreation-of-the-poisson-distribution}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \emph{Limiting case of binomial distribution}, where you fix \(\lambda = np\) , and let \(n \rightarrow \infty\) and \(p \rightarrow 0\) (This can be a consequence of b))
+\item
+  \emph{Poisson Process}
+\end{enumerate}
+
+\hypertarget{poisson-as-the-limiting-distribution-of-the-binomial-distribution}{%
+\section{Poisson as the limiting distribution of the binomial distribution}\label{poisson-as-the-limiting-distribution-of-the-binomial-distribution}}
+
+One way to view the Poisson distribution is to consider the limiting case of binomial distribution, where you fix \(\mu = np\) , and let \(n \rightarrow \infty\) and \(p \rightarrow 0\).
+
+One can show that if \(n\to \infty\) and \(p=p_n \to 0\) as \(n\to \infty\) in such a way that \(n p_n \to \mu\), then
+\[
+{n \choose x} p^x (1-p)^{n-x} \to e^{-\mu} \frac{ \mu^x}{x!},\;\;\;as\;\;\; n\to \infty.
+\]
+Actually here, it is something called the *convergence in distribution**.
+
+\hypertarget{poisson-process}{%
+\section{Poisson process}\label{poisson-process}}
+
+Consider counting the number of occurrences of an event that happens at random points in time (or space). Poisson process is the \emph{counting process} that satisfies the following
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Independence}: the number of occurrences in non-overlapping
+  intervals are independent.
+\item
+  \textbf{Individuality}: for sufficiently short time periods of length
+  \(\Delta t,\) the probability of 2 or more events occurring in the interval is
+  close to zero
+  \[
+  \frac{P\left(  \text{2 or more events in }(t,t+\Delta_t)\right)}{\Delta_t}  \rightarrow 0,\;\; \Delta_t \to 0
+  \]
+\item
+  \textbf{Homogeneity or Uniformity}: events occur at a uniform or
+  homogeneous rate \(\lambda\) and proportional to time interval \(\Delta_t\), i.e.
+  \[
+  \frac{P\left(  \text{one event in }(t,t+\Delta_t)\right) - \lambda\Delta_t }{\Delta_t}  \to 0.
+  \]
+\end{enumerate}
+
+If \(X=\) occurrences in a time period of length \(t\), then
+\[X\sim Poi(\lambda t).\]
+
+\begin{definition}[Poisson process]
+A process that satisfies the prior conditions on the occurrence of events is often called a \textbf{Poisson process}. More precisely, if \(X_t, \; \text{for } t\ge0,\) (a random variable for each \(t\)) denotes the number of events that have occurred up to time \(t\), then \(X_t\) is called a Poisson process.
+\end{definition}
+
+\hypertarget{side-notes-rigorous-definition-of-convergence-in-distribution}{%
+\section{Side notes -- Rigorous definition of convergence in distribution}\label{side-notes-rigorous-definition-of-convergence-in-distribution}}
+
+This section is just served as a reference for those of you who are interested in the rigorous definition of \emph{convergence in distribution}. Do not worry too much if you are not interested in knowing those.
+
+\begin{definition}[Convergence in distribution]
+Let \((F_n)_{n\in\mathbb{N}}\) and \(G\) be CDFs. Let \(c(G) = \{x\in\mathbb{R} : G \text{ is cts. at }x\}\) be the set of continuity points of \(G\). \(F_n\) \emph{converges in distribution} to \(G\) if
+\begin{align}
+    \forall x\in c(G) \quad F_n(x)\to G(x)  \label{eq:convdist}
+\end{align}
+If \(X_n\) has CDF \(F_n\) for each \(n\) and \(Y\) has CDF \(G\) and \eqref{eq:convdist} holds then \(X_n\) converges in distribution to \(Y\). Denoted \(X_n \stackrel{d}{\to} Y\), or \(F_n \stackrel{d}{\to} G\)
+\end{definition}
+
+\hypertarget{lecture-15-feburary-09-2024}{%
+\chapter{Lecture 15, Feburary 09, 2024}\label{lecture-15-feburary-09-2024}}
+
+\hypertarget{review-of-the-distributions-we-covered-before}{%
+\section{Review of the distributions we covered before}\label{review-of-the-distributions-we-covered-before}}
+
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.0739}}
+  >{\centering\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.4877}}
+  >{\centering\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.4384}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+Distribution
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(f(x)=P(X=x)\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Interpretation
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(U[a,b]\) & \(\frac{1}{b-a+1},\, x=a,a+1,\dots,b\) & Sample from \(\{a,a+1,\dots,b\}\) once uniformly at random\textbackslash{} \\
+\(Bin (n,p)\) & \(\binom{n}{x}p^x(1-p)^{n-x},\,x=0,1,\dots,n\) & \(\#\) of successes in \(n\) indep. trials with success prob. \(p\). \\
+\(Hyp(N,r,n)\) & \(\frac{\binom{r}{x}\binom{N-r}{n-x}}{\binom{N}{n}},\) \(\max\{0, n-(N-r)\} \leq x \leq \min\{r,n\}\) & \(\#\) of successes in \(n\) draws without replacement from \(N\) objects with \(r\) successes. \\
+\(NegBin(k,p)\) & \(\binom{x+k-1}{x}p^k(1-p)^x,\, x=0,1,\dots,\) & \(\#\) of failures until \(k\) successes in indep. trials with success prob. \(p\) \\
+\(Geo(p)\) & \(p(1-p)^x,~ x=0,1,\dots \) & \(\#\) of failures until first success in indep. trials with success prob. \(p\) \\
+\(Poi(\mu)\) & \(\exp(-\mu) \mu^x/x!,~ x=0,1,\dots \) & \(\#\) of occurrences in Poi process. \\
+\end{longtable}
+
+\hypertarget{lecture-16-feburary-12-2024}{%
+\chapter{Lecture 16, Feburary 12, 2024}\label{lecture-16-feburary-12-2024}}
+
+\hypertarget{chapter-7-expectation-and-variance}{%
+\section{Chapter 7 Expectation and Variance}\label{chapter-7-expectation-and-variance}}
+
+Probability and statistics are closely related to data; we often try to ``extract'' additional information from data.
+
+Some simple way to analyse and visualize data are:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  frequency table
+\item
+  frequency histogram
+\end{enumerate}
+
+However, sometimes it is unclear how to define the groups in the frequency or in the histogram. Hence, we often would like to have more concise defined ways to analyse the random variable and its associated distribution. We call those numerical values as the (summary) \emph{statistics}.
+
+\begin{definition}[Sample mean]
+Let \(x_1, \ x_2, \ldots, \ x_n\) be \(n\) realizations of a random variable \(X\) (such a set is called a \textbf{sample}). The \emph{sample mean} is defined as
+\[
+\bar{x} = \frac{1}{n}  \sum_{i=1}^n x_i
+\]
+\end{definition}
+
+Note: there are other summary
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Sample median: a value such that half of the results are below it and the other half above it, when the sample is arranged in numerical order.
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  Median is more \emph{robust} against some abnormally big/small observations, or recording errors.
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Sample mode: The most frequently-occuring value in a sample.
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  We may have more than one mode.
+\end{itemize}
+
+\hypertarget{theoretical-mean-and-the-sample-mean}{%
+\section{Theoretical mean and the sample mean}\label{theoretical-mean-and-the-sample-mean}}
+
+We can compute \emph{statistics} for a random variable \(X\) directly if we know its distribution. Such a mean would be \emph{theoretical}, as we are working from its probability distribution rather than an actual sample.
+
+That means, we can do experiment to get sample, then compute the sample mean, while if we know the distribution, we can compute the theoretical mean without any samples.
+
+\hypertarget{definition}{%
+\subsection{Definition}\label{definition}}
+
+\begin{definition}[(Theoretical) Mean/Expectation/First moment]
+Suppose \(X\) is a discrete random variable with probability function \(f_X(x)\). The expected value of \(X\), denoted by \(E[X]\), is then the number
+\[
+E[X] = \sum_{x\in X(S) } x \ f_X(x) = \sum_{x\in X(S) } x \ P(X=x),
+\]
+provided the sum converges absolutely (i.e., if \(\sum_{x\in X(S) } |x| \ f_X(x)<\infty\))
+\end{definition}
+
+\hypertarget{interpretation}{%
+\subsection{Interpretation}\label{interpretation}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Geometrical interpretation: \(E[X]\) is the \emph{balancing point} of the probability function \(f(x)\).
+\item
+  \(E[X]\) is what the average of many, many independent realizations of the random variable \(X\) would approach (\textbf{Law of large numbers}).
+\end{enumerate}
+
+\hypertarget{lecture-17-feburary-14-2024}{%
+\chapter{Lecture 17, Feburary 14, 2024}\label{lecture-17-feburary-14-2024}}
+
+\hypertarget{more-about-expectation}{%
+\section{More about expectation}\label{more-about-expectation}}
+
+Some observations we made from the example we went through in class.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Suppose \(X\) is a random variable satisfying \(a \le X(\omega) \le b\) for all \(\omega \in S\). Then \(a<E[X]<b\).
+\item
+  We may think that the expectation is a \textbf{weighting} of the values \(x\in X(S)\) by its probability function (which is always positive, and sum up to one).
+\end{enumerate}
+
+\hypertarget{law-of-unconscious-statistician}{%
+\section{Law of Unconscious Statistician}\label{law-of-unconscious-statistician}}
+
+If
+\[
+g: {\mathbb R} \to {\mathbb R},
+\]
+and \(X\) is a random variable with probability function \(f\), then \(g(X)\) is a random variable taking values \(g(X(S))\) and
+
+\[
+E[g(X)] = \sum_{x \in X(S)} g(x) f(x)
+\]
+
+NOTE: In general, \(E[g(X)]\ne g(E[X])\)!
+
+e.g.~For an arbitrary \emph{convex} function \(g(X)\), \(g\{E(X)\} \le E\{g(x)}\). This is a famous theorem called \textbf{Jansen's inequality}.
+
+\hypertarget{tricks}{%
+\section{Tricks}\label{tricks}}
+
+Sometimes, in order to calculate the expectation, some terminologies may help
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  For \(x\in X(S)\), \(\sum_{x\in X(S)} f_X(x)=1\).
+\end{enumerate}
+
+\hypertarget{property-of-expectation---linearity}{%
+\section{Property of expectation - linearity}\label{property-of-expectation---linearity}}
+
+Suppose the random variable \(X\) has \(E[X]=\mu\). Then for any constants \(a,b\in\mathbb{R}\),
+\[ E[aX+b]= a \mu + b = a E[X]+b\]
+
+If we have 2 random variables \(X\) and \(Y\), and three constants, \(a,b,c\in \mathbb{R}\), then
+\[
+  E[aX+bY + c] = aE[X] + bE[Y] +c.
+\]
+
+\hypertarget{proof.}{%
+\subsection{Proof.}\label{proof.}}
+
+By the \emph{Law of unconscious statistician} with \(g(x)=ax+b\), we find
+\textbackslash begin\{align*\}
+E{[}aX+b{]} \&=\sum\emph{\{x\in X(S)\} (ax+b) f(x)\textbackslash{}
+\& = a \cdot  \sum}\{x\in X(S)\} x f(x) + b \cdot \sum\_\{x\in X(S)\} f(x) \}\textbackslash{}
+\&= a\cdot  E{[}X{]} +b \cdot 1
 
   \bibliography{book.bib,packages.bib}
 
