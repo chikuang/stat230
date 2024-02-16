@@ -56,7 +56,7 @@ If $X \sim Binomial(n,p)$, then $E[X] = np$
 
 
 ::: {.proof }
-Suppose $\sim Bin(n,p)$. Then we have
+Suppose $X \sim Bin(n,p)$. Then we have
 \begin{align*}
 E[X] &= \sum_{x=0}^n x\cdot \binom{n}{x}  p^x (1-p)^{n-x}\\
 &= \sum_{x=1}^n x\cdot \frac{n!}{(n-x)!x!} \cdot p^x (1-p)^{n-x}\\

@@ -89,7 +89,7 @@
 \subtitle{Winter 2024}
 \author{Chi-Kuang Yeh\\
 University of Waterloo}
-\date{2024-02-15}
+\date{2024-02-16}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -1408,7 +1408,7 @@ E[g(X)] = \sum_{x \in X(S)} g(x) f(x)
 
 NOTE: In general, \(E[g(X)]\ne g(E[X])\)!
 
-e.g.~For an arbitrary \emph{convex} function \(g(X)\), \(g\{E(X)\} \le E\{g(x)}\). This is a famous theorem called \textbf{Jansen's inequality}.
+e.g.~For an arbitrary \emph{convex} function \(g(X)\), \(g\{E(X)\} \le E\{g(x)\}\). This is a famous theorem called \textbf{Jansen's inequality}.
 
 \hypertarget{tricks}{%
 \section{Tricks}\label{tricks}}
@@ -1436,11 +1436,50 @@ If we have 2 random variables \(X\) and \(Y\), and three constants, \(a,b,c\in \
 \hypertarget{proof.}{%
 \subsection{Proof.}\label{proof.}}
 
+\begin{proof}
 By the \emph{Law of unconscious statistician} with \(g(x)=ax+b\), we find
+\begin{align*}
+E[aX+b] &=\sum_{x\in X(S)} (ax+b) f(x)\\
+& = a \cdot  \sum_{x\in X(S)} x f(x) + b  \cdot \sum_{x\in X(S)} f(x) \\
+&= a\cdot  E[X]  + b \cdot 1
+\end{align*}
+\end{proof}
+
+\hypertarget{mean-of-binomial-distribution}{%
+\section{Mean of binomial distribution}\label{mean-of-binomial-distribution}}
+
+If \(X \sim Binomial(n,p)\), then \(E[X] = np\)
+
+\begin{proof}
+Suppose \(X \sim Bin(n,p)\). Then we have
+\begin{align*}
+E[X] &= \sum_{x=0}^n x\cdot \binom{n}{x}  p^x (1-p)^{n-x}\\
+&= \sum_{x=1}^n x\cdot \frac{n!}{(n-x)!x!} \cdot p^x (1-p)^{n-x}\\
+&= \sum_{x=1}^n \frac{x}{x(x-1)!} \frac{n(n-1)!}{(n-x)!} p p^{x-1} (1-p)^{n-x}\\
+&= \sum_{x=1}^n \frac{1}{(x-1)!}\frac{n(n-1)!}{(n-x-1+1)!} p p^{x-1} (1-p)^{n-x-1+1}\\
+&= np \sum_{x=1}^n \frac{1}{(x-1)!}\frac{(n-1)!}{((n-1)-(x-1))! (x-1)!} p\cdot p^{x-1} (1-p)^{(n-1)-(x-1)}\\
+&= np \; \underbrace{\sum_{y=0}^{n-1} \frac{(n-1)!}{((n-1)-y)! y!} \cdot p^{y} (1-p)^{(n-1)-y}}_{=1\text{b/c sum of PF of bin(n-1,p). is 1}}\\
+&= np
+\end{align*}
+\end{proof}
+
+\hypertarget{lecture-18-feburary-16-2024}{%
+\chapter{Lecture 18, Feburary 16, 2024}\label{lecture-18-feburary-16-2024}}
+
+\hypertarget{mean-of-poisson-distribution}{%
+\section{Mean of Poisson distribution}\label{mean-of-poisson-distribution}}
+
+Let \(Z\sim Poi(\mu)\). Then the expectation of \(Z\) is \(E[Z] = \mu\).
+
+\begin{proof}
+Suppose \(X \sim Poi(\mu)\). Then we have
 \textbackslash begin\{align*\}
-E{[}aX+b{]} \&=\sum\emph{\{x\in X(S)\} (ax+b) f(x)\textbackslash{}
-\& = a \cdot  \sum}\{x\in X(S)\} x f(x) + b \cdot \sum\_\{x\in X(S)\} f(x) \}\textbackslash{}
-\&= a\cdot  E{[}X{]} +b \cdot 1
+E{[}X{]} \&= \sum\limits\emph{\text{all $x$} x\cdot f(x) \&\& \text{definition}\textbackslash{}
+\&= \sum}\{x=0\}\^{}\infty x \cdot e\^{}\{-\mu\} \frac{\mu^x}{x!} \&\& \text{P.F.}\textbackslash{}
+\&= \sum\emph{\{x=1\}\^{}\infty x \cdot e\^{}\{-\mu\} \frac{\mu^x}{x!}\textbackslash{}
+\&= \mu \sum}\{x=1\}\textsuperscript{\infty e}\{-\mu\} \frac{\mu^{x-1}}{(x-1)!}\textbackslash{}
+\&= \mu \underbrace{\sum_{y=0}^\infty e^{-\mu} \frac{\mu^{y}}{y!}}\_\{=1\text{ as sum of p.f.}\}\textbackslash{}
+\end{proof}
 
   \bibliography{book.bib,packages.bib}
 

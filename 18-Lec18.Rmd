@@ -1,0 +1,46 @@
+# Lecture 18, Feburary 16, 2024
+
+## Mean of Poisson distribution
+
+Let $Z\sim Poi(\mu)$. Then the expectation of $Z$ is $E[Z] = \mu$.
+
+
+
+::: {.proof }
+Suppose $X \sim Poi(\mu)$. Then we have
+\begin{align*}
+E[X] &= \sum\limits_\text{x \in X(S)} x\cdot f(x) && \text{definition}\\
+&= \sum_{x=0}^\infty x \cdot e^{-\mu} \frac{\mu^x}{x!} && \text{P.F.}\\
+&= \sum_{x=1}^\infty x \cdot e^{-\mu} \frac{\mu^x}{x!}\\
+&= \mu \sum_{x=1}^\infty e^{-\mu} \frac{\mu^{x-1}}{(x-1)!} && \text{let $Y=x-1$}\\
+&= \mu \underbrace{\sum_{y=0}^\infty e^{-\mu} \frac{\mu^{y}}{y!}}_{=1\text{ as sum of p.f.}}\\
+\end{align*}
+:::
+
+## Mean of Hypergeometric and Negative binomial
+
+### Hypergeometric 
+
+If $X \sim hyp(N,r,n)$, then 
+$$E[X]= n \frac{r}{N}.$$
+
+
+Intuitively, $n \cdot r/N$ is the number of trials $n$ times the success probability in the
+
+### Negative binomial
+
+If $Y \sim NB(k,p)$, then 
+$$E[Y] = \frac{k(1-p)}{p}.$$
+
+
+## Note that the expectation does not always exist
+
+::: {.example }
+Consider a random variable $X$ with probability function $f(x)=\frac{1}{x}$ for $x=2, 4, 8, 16,\dots$ and 0 otherwise.
+
+The rv $X$   can only take values $x$ of the form $x=2^n$. Note that we can write $P(X=2^n) = 2^{-n}$ for $n=1,2,\dots$. Thus
+$$\sum\limits_{\text{ all x}} f(x) = \sum_{n=1}^\infty P(X=2^n)= \sum_{n=1}^\infty \left(\frac{1}{2}\right)^n=\frac{1}{1-1/2} -1 = 1.$$
+Then 
+$$ E[X] = \sum_{n=1}^\infty 2^n \left(\frac{1}{2^n}\right)=\sum_{n=1}^\infty 1 = \infty,$$
+:::
+
