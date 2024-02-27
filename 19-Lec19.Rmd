@@ -1,0 +1,115 @@
+# Lecture 19, Feburary 26, 2024
+
+After discussing about the first moment/expectation/expected value, we want to see how other summary statistics we may want in order to describe a distribution/model.
+
+## Motivation to have higher moments
+
+Note: Does look at one summary statistics, the expectation, enough for describing and fully characterize a distribution?
+
+::: {.example }
+Suppose we have two random variables
+
+* $X$ is a r.v. representing the outcome of one fair 6-sided die roll
+* $Y$ is a r.v. representing the number of phone calls over 1 minute at Lenovo call centre, with the rate of 3.5 calls per minute
+
+By looking at their expectations, we have 
+\[
+  E X = 3.5 = E Y.
+\]
+So if we only look at the expectation, we CANNOT DISTINGUISH those two, but clearly those two RV are very different!
+:::
+
+Hence, we may need *other quantities* to describe the random variables. One key thing to study is how the RVs *deviate from its mean/expectation.* 
+
+### Deviations from the mean
+
+Some common used ones are 
+
+1. Deviation
+
+$$\mbox{E}((X- \mu)) = \mbox{E}(X)- \mu = 0$$
+2. Absolute deviation
+$$ \mbox{E} \left(| X - \mu |\right)$$
+
+3. Squared deviation
+$$ \mbox{E} \left((X-\mu)^2\right) $$.
+
+The squared deviation turns out to be particular useful measure of variability, which we coin the term as the **Variance.**
+
+## The defintion of variance
+
+::: {.definition }
+The variance of a random variable $X$ is denoted by $Var(X)$, and is defined by 
+\[
+  Var(X) := E[(X-EX)^2].
+\]
+:::
+
+### Properties of variance
+
+1. Shortcut definition
+\[
+  Var(X) = E[X^2] - (E X)^2.
+\]
+
+2. Variance is always positive. 
+
+This can be easily seen from the definition of the variance, that it is the expectation of the square of $X-EX$. Everything squared is a non-negative number. And expectation can be thought as the weighted average of a random variable. Thus, it is **Always Nonnegative**!
+
+3. Variance is not linear
+
+Let $a,b\in \mathbb{R}$, and $X$ be a RV. Then
+\[
+  Var(aX +b ) = a^2 Var(X).
+\]
+
+4. The case when variance is zero
+
+Suppose a random variable $X$ has $E(X)=\mu$ and $Var(X)=0$. This means, $X$ does not ``vary'' or deviate from its mean at all, and is (with probability 1) always the same value $\mu$, as we show in the following 
+    
+    
+::: {.theorem }
+ $Var(X) = 0$ if and only if $P(X = \mbox{E}(X)) = 1$.
+:::
+
+5. Alternative way to write the variance
+
+We can write the variance of X as 
+\[
+  Var(X) = E[X(X-1)] + E[X] - (EX)^2.
+\]
+
+::: {.proof }
+
+Look at the right-hand-side,
+\begin{align*}
+  &E[X(X-1)]+ E[X] - E^2[X]\\
+  &=E[X^2-X] + E[X] - E^2[X]\\
+  &= E[X^2 -X + X - E^2[X]] \\
+  &= E[X^2 -\mu^2] = E[X^2] - \mu^2,
+\end{align*}
+as in our shortcut formula.
+
+:::
+
+## Variance of a binomial distribution
+
+::: {.theorem }
+Suppose that $X\sim Binomial(n,p)$, then
+
+$$
+Var(X) = np(1-p).
+$$
+:::
+
+::: {.proof}
+We use the formula $$Var(X) = E(X(X-1)) + E(X) - (E(X))^2$$ and note we already know $E(X)=np$.\pause
+ Then we tweek the sum for $E(X(X-1))$ similarly as before:
+
+\begin{align*}
+E&(X(X-1)) =\sum_{x=0}^n x(x-1) \frac{n!}{(n-x)! x!} p^x (1-p)^{n-x} \\
+&= n(n-1) p^2 \sum_{x=2}^n \frac{(n-2)!}{(n-2-(x-2))!(x-2)!} p^{x-2} (1-p)^{n-2-(x-2)}\\
+&= n(n-1) p^2 \underbrace{\sum_{y=0}^{n-2} \frac{(n-2)!}{(n-2-y)!y!} p^{y} (1-p)^{n-2-y}}_{=1\text{ as sum of $Bin(n-2,p)$ p.f.}}\\
+&= n(n-1) p^2
+\end{align*}
+:::
