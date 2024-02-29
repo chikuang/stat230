@@ -38,12 +38,14 @@ The squared deviation turns out to be particular useful measure of variability, 
 
 ## The defintion of variance
 
-::: {.definition }
+::: {.definition name="variance"}
 The variance of a random variable $X$ is denoted by $Var(X)$, and is defined by 
 \[
   Var(X) := E[(X-EX)^2].
 \]
 :::
+
+
 
 ### Properties of variance
 

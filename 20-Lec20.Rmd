@@ -1,0 +1,117 @@
+# Lecture 20, Feburary 28, 2024
+
+
+\newcommand{\var}{\mathbb{V}ar}
+\newcommand{\R}{\mathbb{R}}
+## Variance of Poisson, Hypergeometric and Negative Binomial
+
+Last time, we saw that if $X \sim Bin(m,p)$, then $\var(X) = np(1-p)$. We proved this using the definition of the expectation and with the **summation trick**.
+
+Similarly, one can show that 
+
+* If $X\sim Poi(\lambda)$, then
+
+$$
+\var(X) = \lambda.
+$$
+
+* If $Y \sim hyp(N,r,n)$, then
+$$
+\var(Y) = n \frac{r}{N} \left(1-\frac{r}{N}\right)\left(\frac{N-n}{N-1}\right).
+$$
+
+
+* If $Z \sim NB(k,p)$, then
+$$
+\var(Z) = \frac{k(1-p)}{p^2}.
+$$
+
+## Standard Deviation
+
+Note that $\var(X)$ is in the squared unit (e.g., $X$ in $meters$ $\Rightarrow$ $\var(X)$ is in $meters^2$).  To recover the original unit, we take the square root of variance.\\
+
+
+::: {.definition name="Standard Deviation"}
+The **standard deviation** of a random variable $X$ is denoted $SD(X)$, and defined by
+$$
+SD(X) = \sqrt{\var(X)}.
+$$
+:::
+
+## Last note of the chapter
+
+* The expectation and the variance give a simple \blue{summary of the distribution} giving the center and variability of the distribution 
+
+* We call $E[X]$ and $E[X^2]$ the first and second moment of $X$
+
+* In general, $E[X^k]$ is **the $k$th moment of the distribution of $X$**, while $E[ (X-E(X))^k]$ is **the $k$th central moment of the distribution of $X$**  
+
+* You'll see other statistics later in STAT 231 and onwards, such as 
+  + **Skewness** (measures asymmetry) 
+  $$
+  E\left[\left( \frac{(X - E(X))}{\sqrt{\var(X)}} \right)^3\right].
+  $$
+  
+  + **Kurtosis** (measures heavy tailedness)
+  $$
+  E\left[\left( \frac{(X - E(X))}{\sqrt{\var(X)}} \right)^4\right].
+  $$
+
+## Chapter 8 Continuous Random Variables
+
+### Continuous random variable
+
+Let $X$ be a random variable and  $F_X(x) = P(X\leq x) = P(\{\omega\in S : X(\omega)\leq x\})$ for $x\in\R$ be its cumulative distribution function (cdf). 
+
+We say that the random variable $X$ is
+
++ **discrete** if $F_X$ is *piecewise constant*.
+  + The jumps of $F$ are exactly the range of $X$, $X(S)$. For $x\in X(S)$ (at the jumps of $F$), 
+  + the probability function is $f(x)=P(X=x)=\lim_{h\downarrow 0} F(x+h)-F(x)=\text{size of jump at $x$}$. 
+
++ **continuous** if $F_X$ is a *continuous function*. 
+
++ *absolutely continuous* if 
+       $$ F_X(x) = \int_{-\infty}^x f(t) dt$$
+       
+In this course, when talking about continuous random variables, we mean absolutely continuous. 
+### Probability density function
+
+::: {.definition name="Probability Density Function"}
+We say that an continuous random variable $X$ with distribution function $F$ admits probability \textbf{density} function (PDF) $f(x)$, if
+
+1. $f(x)\geq 0$ for all $x\in\R$;
+2. $\int_{-\infty}^\infty f(x)dx = 1$;
+3. $F(x)=P(X\leq x)= \int_{-\infty}^x f(t)\;d t$.
+
+In other words, $F$ is an antiderivative of $f$, of $f$ is the derivative of $F$, 
+    $$ f(x) = F'(x) = \frac{d}{dx} F(x)$$
+:::
+
+::: {.definition name="Support"}
+ The **support** of a r.v. $X$ with density $F$ is the set
+$$
+supp(f) = \{x \in \R: f(x) \neq 0\}.
+$$
+:::
+   
+   
+If $X$ was a discrete random variable instead, these 4 probabilities could all be different. 
+If $X$ is a continuous rv with probability density function (pdf) $f_X(x)$, then
+
+1. $P(X=x)=0$
+2. $F(x) = \int_{-\infty}^x f_X(t)dt$
+3. $P(a < X \leq b) = \int_a^b f_X(t)dt$
+
+
+We highlight: For a continuous random variable $X$,  $f(x)$ is *not* $P(X=x)$, which is always zero.   
+   
+### Equality does not matter in the continous case
+
+If $X$ is a continuous random variable, then
+$$ P(a<X\leq b) = F(b)-F(a)$$
+$$ P(a\leq X \leq b) =  P(a<X\leq b) +P(X=a)=[F(b)-F(a)]+0$$
+$$ P(a<X<b)=P(a<X\leq b) -P(X=b)=[F(b)-F(a)]-0$$
+$$ P(a\leq X<b) = P(a<X\leq b) +P(X=a)-P(X=b)=[F(b)-F(a)]$$
+so if $X$ is **continuous**, all these probabilities coincide! 
+
