@@ -1,0 +1,37 @@
+# Lecture 21, March 01, 2024
+
+\newcommand{\var}{\mathbb{V}ar}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+## Law of unconciousness of statistician, continuous version
+
+
+::: {.definition name="LOTUS"}
+If $X$ is a continuous random variable with pdf $f(x)$, and $g:\R\to \R$ is a function, then 
+\[
+  \E g(x) = \int_{-\infty}^\infty g(x)f(x)dx
+\]
+provided the expression exists.
+:::
+
+By above, we can calculate the expectation and the variance as follows
+
+1. $\E X = \int_{-\infty}^\infty x f(x) dx$
+
+2. $\var(X) = \E[(X-\E X)^2] = \int_{-\infty}^\infty (x-\E X)^2 f(x)dx$.
+
+Similar to the discrete random variable case, we have the shortcut formula to calculate the variance:
+\[
+  \var(X) = \E[X^2] - (\E X)^2.
+\]
+
+## function of random variable
+
+* If $X$ is a random variable and $g$ is a function, then $Y=g(X)$ is also a random variable
+* By the law of the unconscious statistician, 
+
+$$ \E(Y)=\E(g(X)) = \begin{cases} \sum_{\text{all }x} g(x)\cdot f(x),\quad&\text{if $X$ discrete with pf }f,\\
+\int_{\R} g(x)\cdot f(x)dx,\quad&\text{if $X$ continuous with pdf }f\end{cases}
+$$
+
+*  Next, we are studying how to find the distribution of $Y=g(X)$. 
