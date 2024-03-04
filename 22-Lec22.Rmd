@@ -1,0 +1,41 @@
+# Lecture 22, March 04, 2024
+
+\newcommand{\var}{\mathbb{V}ar}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+
+## Receipt to find the distribution of the transformed random varaible $Y=g(X)$.
+
+In class, we have an easy three steps receipt:
+
+Let $Y=g(X)$. In general, we can use the following steps to find the pdf of $Y=g(X)$:
+    
+1. Using the support of $X$, find the support of $Y=g(X)$ denoted by $\text{supp}(Y)=\{y\in\mathbb{R}:f_Y(y)>0\}$
+
+2.  Express the cdf of $Y=g(X)$ using the cdf of $X$: $F_Y(y)=P(g(X)\leq y)=\dots $. 
+
+3. Compute the pdf of $Y=g(X)$ by differentiating $f_y(y)=F_y'(y)$
+    
+  
+Notes: If the function $g$ is *invertible* and *differentiable* with inverse $g^{-1}$ on the support of $Y$, then 
+    $$ f_Y(y)= |(g^{-1})'(y)| f_X(g^{-1}(y)),\quad y\in\text{supp}(Y)$$
+
+  
+Question: 
+When the function $g$ is *not strictly increasing (or decreasing)* over the support of $X$, then we *must be careful* when rewriting the inequality $P(g(X)\leq y)$. 
+
+## Quantile
+
+::: {.definition name="Quantile"}
+Let $p\in[0,1]$. The $100\times p$th percentile (or $100\times p\%$  quantile) of the distribution of $X$ with cdf $F_X$ is the value $c_p$ given by
+        $$ c_p = \inf\{x\in\R: F_X(x) \geq p \}$$
+:::
+
+
+* The infimum of a set $A$ is the largest lower bound of $A$  (e.g., $\inf\{x\in\R: 0<x<1\}=0$)
+* The quantile function $p\mapsto c_p$ is also called generalized invere function.
+* The probability that $X$ is at most $c_p$ is at least $100\times p$\%. More precisely, $c_p$ is the smallest value $c$ so $P(X\leq c)$ is at least $p$. 
+*The \textbf{median} of a distribution is its 50\% quantile. \pause
+* If the distribution function $F_X$ is continuous and strictly increasing, it has an inverse $F^{-1}$, and we get
+    $$ c_p = F^{-1}(p)$$
+* In the previous clicker question, we computed the 95\% quantile. 
