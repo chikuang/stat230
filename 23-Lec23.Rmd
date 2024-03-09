@@ -1,0 +1,139 @@
+# Lecture 23, March 06, 2024
+
+\newcommand{\var}{\mathbb{V}ar}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+
+## Recap the quantile function
+
+::: {.definition name="Quantile"}
+Let $p\in[0,1]$. The $100\times p$th percentile (or $100\times p\%$  quantile) of the distribution of $X$ with cdf $F_X$ is the value $c_p$ given by
+        $$ c_p = \inf\{x\in\R: F_X(x) \geq p \}$$
+:::
+
++ The infimum of a set $A$ is the largest lower bound of $A$  (e.g., $\inf\{x\in\R: 0<x<1\}=0$)
++ The quantile function $p\mapsto c_p$ is also called generalized invere function.
++ The probability that $X$ is at most $c_p$ is at least $100\times p$\%. More precisely, $c_p$ is the smallest value $c$ so $P(X\leq c)$ is at least $p$.
++ The **median** of a distribution is its 50\% quantile.
++ If the distribution function $F_X$ is continuous and strictly increasing, it has an inverse $F^{-1}$, and we get
+    $$ c_p = F^{-1}(p)$$
++ In the previous clicker question, we computed the 95\% quantile. 
+
+## Quantiles for discrete distributions
+
+If $F$ is strictly increasing and continuous, the $p$-quantile $c_p$ satisfying $F(c_p)=p$ is just  $c_p=F^{-1}(p)$, the (ordinary) inverse of $F$ at $p$ found by solving $F(c_p)=p$ for $c_p$. 
+
+If $F$ has jumps or flat parts, then $F(c_p)=p$ may not have any solution or infinitely many! In this case, we use 
+$$ F^{-1}(p)=\inf_{x\in\R}\{F(x)\geq p\},$$
+though $F^{-1}$ is an abuse of notation here and does not mean the ordinary inverse. 
+
+## Special named distributions
+
+### Continuous uniform distribution
+
+::: {.definition name="Continuous uniform distribution"}
+We say that $X$ has a continuous uniform distribution on $(a,b)$ if $X$ has pdf
+\[ f(x) =\begin{cases}
+      \frac{1}{b-a} & \mbox{ $x \in (a,b)$,} \\
+      0 & \mbox{ otherwise }
+   \end{cases}
+\]
+This is abbreviated $X \sim U(a,b)$.
+:::
+
++ For continuous random variables, $P(X=x)=0$, so it does not matter mathematically if we think of the uniform distribution as sampling uniformly on $(a,b)$ or $[a,b]$ or $(a,b]$ or $[a,b)$
++ Examples:
+  + Cutting a stick of length 1 at a random position (*motivating example*!)
+  + Spinning a wheel in a game show
+  
+  
+#### Expectation and variance
+
+::: {.definition name="Expectation of continuous uniform distribution"}
+Let $X\sim U(a,b)$. Then
+$$E(X) = \frac{a + b}{2}$$
+:::
+
+::: {.proof}
+Recall that $X\sim U(a,b)$ has density $f(x)=\frac{1}{b-a}$ if $x\in(a,b)$ and 0 otherwise. Thus,
+\begin{align*}
+ E(X) &= \int x f(x)\; d x = \int_a^b x \cdot \frac{1}{b-a}\;d x \\
+ &= \frac{1}{2} \frac{b^2-a^2}{b-a}=\frac{(b-a)(b+a)}{2(b-a)}=\frac{a+b}{2}.\end{align*}
+:::
+::: {.definition name="Variance of continuous uniform distribution"}
+Let $X\sim U(a,b)$. Then
+$$Var(X) = \frac{(b-a)^2}{12}$$
+:::
+
+::: {.proof}
+Recall that $X\sim U(a,b)$ has density $f(x)=\frac{1}{b-a}$ if $x\in(a,b)$ and 0 otherwise. ALso from above, we have $E X =\frac{a + b}{2}$. Then
+\begin{align*}
+ E(X^2) &= \int x^2 f(x)\;d x = \int_a^b x^2 \frac{1}{b-a}\;d x \\
+ &= \frac{b^3-a^3}{3(b-a)}=\frac{(b-a)(b^2+ab+a^2)}{3(b-a)}=\frac{b^2+ab+a^2}{3}.\end{align*}
+
+Combining and simplifying gives
+$$ Var(X) = E(X^2)-E(X)^2 = \frac{(b-a)^2}{12}.$$
+:::
+
+### Exponential distribution
+
+::: {.definition name="Rate-parametrization of exponential distribution"}
+We say that $X$ has an exponential distribution with parameter $\lambda$, denoted by $X\sim Exp(\lambda)$, if the density of $X$ is
+
+\[ f(x) =\begin{cases}
+      \lambda e ^{- \lambda x} & \mbox{ $x >0$,} \\
+      0 & \mbox{ $x \le 0$ }.
+   \end{cases}
+\]
+:::
+
++ Since $\int_{\R} f(x) dx = \int_0^\infty \lambda e^{-\lambda x}dx =1$ and $f(x)\geq 0$ for all $x\in\R$, this is a valid pdf.
+
+#### Moments
+When computing $E(X)$ and $Var(X)$, we need to solve integrals
+$$ E(X) = \int_0^\infty x\cdot \frac{1}{\theta} e^{-\frac{x}{\theta}}\;d x$$
+and 
+$$ E(X^2) = \int_0^\infty x^2 \cdot \frac{1}{\theta} e^{-\frac{x}{\theta}}\;d x$$
+which can be done using integration by parts.
+
++ Alternatively, we can use the **gamma function**
+
+::: {.definition name="Gamma function"}
+ The integral
+        $$
+        \Gamma(\alpha) = \int_0^\infty y^{\alpha - 1} e^{-y} dy, \ \alpha > 0
+        $$
+        is called the gamma function of $\alpha$.
+:::
+
+##### Properties of Gamma function
+Some useful properties of $\Gamma(\alpha)$ are
+
++ $\Gamma(\alpha) = (\alpha - 1)\Gamma(\alpha - 1)$ for $\alpha > 1$
++ $\Gamma(\alpha) = (\alpha - 1)!$ for $\alpha \in \mathbb{N}$
++ $\Gamma(1/2) = \sqrt{\pi}$
++ The Gamma function is a continuous function that interpolates the factorial function. 
++ Gamma function is used to derive the Gamma distribution ($\Rightarrow$ STAT 330), which is extremely important in non-life insurance pricing, and it can be used to model certain brain signals in neuroscience.
+
+#### Expectation and variance 
+With the Gamma function at hand, show that if $X\sim Exp(\theta)$, then
+$$ E(X)=\theta$$
+and
+$$Var(X)=\theta^2.$$
+
+
+
+There are other paramaterizations for exponential distribution.
+It is sometimes more convenient to express the parameter as $\frac{1}{\theta}=\lambda$.
+
+::: {.definition name="theta-parametrisation of exponential distribution"}
+We say that $X$ has an exponential distribution with parameter $\theta$ $(X\sim Exp(\theta))$ if the density of $X$ is
+
+\[ f(x) =\begin{cases}
+      \frac{1}{\theta} e ^{- \frac{x}{\theta}} & \mbox{ $x >0$,} \\
+      0 & \mbox{ $x \le 0$ }.
+   \end{cases}
+\]
+:::
+
+If $\lambda$ denotes the *rate* of event occurrence in a Poisson process, then $\theta = 1/\lambda$ denotes the *waiting time* until the first occurrence.

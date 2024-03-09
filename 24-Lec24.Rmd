@@ -1,0 +1,51 @@
+# Lecture 24, March 08, 2024
+
+\newcommand{\var}{\mathbb{V}ar}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+
+## Proof of the moments of exponential distribution
+
+Recall that we can have many ways to show the expectation and the variance of  $X\sim Exp(\theta)$ using the Gamma function. Then we have
+$$ E(X)=\theta$$
+and
+$$Var(X)=\theta^2.$$
+
+Let $X\sim Exp(\theta)$. We use the change of variable $y=x\theta$ with $dx =\theta dy$
+    \begin{align*}
+        E[X]&= \int_0^\infty x \cdot \frac{1}{\theta} e^{-\frac{x}{\theta}}dx \overset{y=x/\theta}{=}  \int_0^\infty y e^{-y} \theta dy\\
+        &= \theta \underbrace{\int_0^\infty y e^{-y}   dy}_{=\Gamma(2)}= \theta \Gamma(2) = \theta \cdot (1!) =\theta 
+    \end{align*}
+    and similarly
+        \begin{align*}
+        E[X^2]&= \int_0^\infty x^2 \cdot \frac{1}{\theta} e^{-\frac{x}{\theta}}dx\overset{y=x/\theta}{=}  \int_0^\infty \theta y^2 e^{-y} \theta dy\\
+        &= \theta^2 \underbrace{\int_0^\infty y^{3-1} e^{-y}   dy}_{=\Gamma(3)}= \theta^2 \Gamma(3) = \theta \cdot (2!) =2\theta^2 
+    \end{align*}
+    so that
+    $$ Var(X) = E[X^2]-E[X]^2=2\theta^2-\theta^2 =\theta^2$$
+
+### Memoryless property of exponential distribution
+
+
+::: {.theorem name="Memoryless property"}
+ If $X \sim Exp(\theta)$, then 
+        $$
+        P(X > s + t | X > s) = P(X > t).
+        $$
+:::
+
++ We've seen the memoryless property for the $Geo(p)$ earlier (and the geometric distribution is the only discrete distribution with this property)
++ If a continuous random variable has memoryless property, it must follow exponential distribution.
++ Intuitively, both the geometric and exponential distributions measure waiting time until first success 
+
+::: {.proof}
+Recall the cdf of $X\sim Exp(\theta)$ is 
+    $$ F(x)=P(X\leq x) =\int_{-\infty}^x f(t)dt = \int_0^x \theta^{-1} e^{-t/\theta}dt = 1-\exp(-x/\theta)$$
+    for $x>0$ and 0 otherwise. Hence, 
+   \begin{align*}
+       P(X > s + t | X > s) &= \frac{P( X>s+t \text{ and }X>s)}{P(X>s)}\\
+       &= \frac{P(X>s+t)}{P(X>s)} = \frac{e^{-(s+t)/\theta}}{e^{-s/\theta}}\\
+       &= e^{-t/\theta} = 1-F(t) = P(X>t)
+   \end{align*}
+   as desired. 
+:::
