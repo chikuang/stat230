@@ -1,0 +1,88 @@
+# Lecture 24, March 11, 2024
+
+\newcommand{\var}{\mathbb{V}ar}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+
+## Sampling realizations of random variables
+
++ In practice, we may often want to sample realizations of random variables, and use those realizations to conduct some estimation of inference ($\Rightarrow$ Monte Carlo Simulation)
++ For instance, suppose we wish to estimate (approximate) the probability $P(X>2)$ for $X\sim Exp(1)$ by simulation 
+    + of course, we can compute $P(X>2)$ by hand, but let's pretend we can't.
+    + In this case, could sample independent realizations $x_1,\dots,x_n$ from $Exp(1)$ (numbers that look like realizations $X(\omega_1),\dots,X(\omega_n)$), and then estimate
+$$P(X>2)\approx \frac{|\{x_1,\dots,x_n: x_i>2\}|}{n}$$
+that is, we estimate $P(X>2)$ by the relative frequency of observations larger than 2. 
+
+## Inversion method
+
+### With strictly increasing and continuous assumption
+
+::: {.lemma}
+If $F$ is a continuous and strictly increasing cdf of some random variable $X$ and if $U\sim Unif(0,1)$, then the random variable $Y=F^{-1}(U)$ has cdf $F$.
+:::
+
+::: {.proof}
+Denote by $F_Y$ the cdf of the random variable $Y = F^{-1}(U)$. Then,
+    $$ F_Y(y) = P(F^{-1}(U)\leq x) = P(F(F^{-1}(U))\leq F(y))=P(U\leq F(y)).$$
+But for any $u\in[0,1]$, we know that $P(U\leq u)=u$, since $U\sim U(0,1)$. Hence,
+    $$ F_Y(x) = P(U\leq F(y))=F(y)$$
+Hence, the random variable $Y = F^{-1}(U)$ has the cdf $F$, as desired. 
+:::
+
+### More general case using the quantile
+
+By using the more general definition of the quantile function
+    $$F^{-1}(y) = \inf\{x\in\R: F(x)\geq y\}$$
+one can show the following generalization:\pause
+
+::: {.theorem}
+Let $F$ be any cumulative distribution function of some random variable $X$ and $U\sim U(0,1)$. Then the random variable $F^{-1}(U)$ has cdf $F$.
+:::
+
++ No matter what cdf $F$ (discrete or continuous), we can sample observations as follows:
+  a.  Sample $U\sim U(0,1)$ (eg via \texttt{runif()})
+  b.  Return $X=F^{-1}(U)$.
+
++ Repeating this $n$ times independently gives $n$ realizations from $F$.
+
+## Normal/Gaussian distribution
+
+Gaussian distribution is named as Gauss, and is perhaps one of the most important distribution, if not the most important one.
+
+::: {.definition}
+$X$ is said to have a \textbf{normal distribution} (or Gaussian distribution) with mean $\mu$ and variance $\sigma^2$ if the density of $X$ is
+$$
+f(x) = \frac{1}{\sqrt{2\pi \sigma^2}} e^{\frac{-(x-\mu)^2}{2\sigma^2}}, \;\;\; x\in {\mathbb R}.
+$$
+We denote it by $X\sim N(\mu,\sigma^2)$.
+:::
+
+### Properties of Gaussian distribution
+
+1/ Symmetric about its mean: If $X \sim N(\mu, \sigma^2)$
+
+$$
+P( X \le \mu - t) = P(X \ge \mu + t).
+$$
+2. Density is unimodal: Peak is at $\mu$.
+
+3. Mean and Variance are the parameters: 
+$$E(X)= \mu$$
+ and 
+ $$Var(X)=\sigma^2.$$
+ 
+4. $N(\mu, \sigma^2)$ is sometimes (STAT 231) also parametrised as Gaussian distribution using $\sigma$ instead of $\sigma^2$, where
+$$
+X \sim G(\mu, \sigma).
+$$
+That is, $X\sim N(1, 4)$ and $X\sim G(1, 2)$ mean the same thing. 
+
+5. Median = mean = mode = first moment.
+
+### Problem
+
+It is difficult to calculate the CDF! If $X\sim N(\mu, \sigma^2)$, then
+$$
+P(a \le X \le b ) = \int_a^b \frac{1}{\sqrt{2\pi \sigma^2}} e^{\frac{-(x-\mu)^2}{2\sigma^2}} dx = ???
+$$
+functions of the form $e^{-x^2}$ do not have elementary anti-derivatives... :(
