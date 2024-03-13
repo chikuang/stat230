@@ -1,0 +1,80 @@
+# Lecture 26, March 13, 2024
+
+\newcommand{\var}{\mathbb{V}ar}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\N}{\mathcal{N}}
+## Normal distribution continue
+
+If we have a random variable follows an arbitrary Gaussian distribution, i.e. $X\sim \N(\mu,\sigma^2)$. How do we obtain the CDF and quantile? It turns out that we can standardize/transform the RV $X$ to $Z\sim\N(0,1)$.
+
+### Standard normal distribution
+
+::: {.defintion name="Standard normal"}
+We say that $Z$ follows the standard normal distribution if $Z \sim \N(0,1)$.
+:::
+
+Frequently in probability and statistics literature, the density of the standard normal random variable is denoted
+
+$$
+\varphi(x)= \frac{1}{\sqrt{2\pi}}e^{\frac{-x^2}{2}},
+$$
+
+and the cdf of a standard normal random variable is denoted
+
+$$
+\Phi(x)= \int_{-\infty}^x  \frac{1}{\sqrt{2\pi}}e^{\frac{-y^2}{2}}dy.
+$$
+
+Aside: Why is there $1/\sqrt{2 \pi}$ in the pdf? That's because
+    $$
+    \int_{-\infty}^\infty e^{\frac{-x^2}{2}} dx = \sqrt{2\pi},
+    $$
+so if we divide $e^{\frac{-x^2}{2}}$ by the integral by $\sqrt{2 \pi}$ we obtain a valid pdf (non-negative, integrates to 1).
+
+Values of $\Phi(z)=P(Z\leq z)=\int_{-\infty}^z \varphi(t)dt$ can be approximated numerically with high accuracy. Here we can either use a function in R, `pnorm()`, or use the **z-table**.
+
+Now we know how to computer the CDF for $\N(0,1)$, how to link it to $\N(\mu,\sigma^2)$?
+
+::: {.theorem name="Standardising normal random variable"}
+     If $X \sim N(\mu, \sigma^2)$, then 
+        $$
+        Z = \frac{X - \mu}{\sigma} \sim \N(0,1),
+        $$
+        and $P(X \leq x) = P\left(Z \leq \dfrac{x - \mu}{\sigma}\right)$.
+:::
+
+### Procedure
+
+for computing $P(X\leq x)$ for $X\sim N(\mu,\sigma^2)$:
+
+1. Compute $z=\frac{x-\mu}{\sigma}$ (``z-score'').
+2. Find $\Phi(z)=P(Z\leq z)$ in the table where $Z\sim N(0,1)$.
+3. Return $P(X\leq x)=\Phi(z)$.
+
+### Quantile
+
+The Z-table can also be used to obtain percentiles and quantiles.
+
++ Let $Z\sim N(0,1)$ and $p\in(0,1)$. Then we can find the value $z_p$ so that $P(Z\leq z_q)=\Phi(z_p)=p$ either by
+    + $\dots$ looking at the top of the $z$-table and selecting the value $z_p$ so that $\Phi(z_p)$ is closest to $p$
+   + $\dots$ looking at the bottom of the table, which directly gives the quantile for selected $p\geq 0.5$ (for $p<0.5$, use $\Phi^{-1}(p)=-\Phi^{-1}(1-p)$). This is \blue{the preferred method}. 
++ If $X \sim \N(\mu,\sigma^2)$ and we want $x_p$ so that $P(X\leq x_p)=p$ \dots
+    + First find $z_p$ for the standard normal distribution $N(0,1)$.
+    + Second, set $x_p= \mu + \sigma z_p$. Then 
+$$P(X\leq x_p) = P(X\leq \mu+\sigma z_p)=P\left( \underbrace{(X-\mu)/\sigma}_{\sim N(0,1)} \leq z_p\right)=\Phi(z_p)=p$$
+
+### 68-95-99.7 rule for 1-2-3 standard deviation(s)
+
+An interesting empirical rule about normal distribution is the **68-95-99.7** rule, which states:
+
+If $X \sim N(\mu, \sigma^2)$, then
+$$
+P( \mu - \sigma \le X \le \mu + \sigma) \approx 0.68
+$$
+$$
+P( \mu - 2\sigma \le X \le \mu + 2\sigma) \approx 0.95
+$$
+$$
+P( \mu - 3\sigma \le X \le \mu + 3\sigma) \approx  0.997.
+$$
