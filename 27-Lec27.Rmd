@@ -1,0 +1,90 @@
+# Lecture 27, March 15, 2024
+
+\newcommand{\var}{\mathbb{V}ar}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\N}{\mathcal{N}}
+
+Recap:
+
+In previous lecture, we discussed about the relationship between a standard normal $\N(0,1)$ and an arbitrary normal $\N(\mu,\sigma^2)$. The steps are as fellows.
+
+1. Transform/standardize $X\sim\N(\mu,\sigma^2)$ to $Z\sim\N(0,1)$ by let $Z=\frac{x-\mu}{\sigma}$.
+
+2. Use the `z-table` or the *R* `pronrm()` and `qnorm()` functions.
+
+3. If you use the `z-table` in this class, we only provide the standard normal CDF for $Z>0$, so you may want to use the symmetric property of the normal distribution when you are asked to calculate the CDF for $P(Z\le z)$ where $z<0$.
+
+The other things to remember is the 68-95-99.7 rule for $\pm$ 1,2, and 3 standard deviation away from the mean $\mu$. 
+
+## Chapter 9: Multivariate distributions
+
+Often, we may face problems that may have have multiple factors/covariates/features/causes. In those situations, only using **one** random variable is not sufficient to model the outcome. Hence, we need two or more random variables in those situations. When we have more than one random variables, we say we have a **multivariate distribution**. 
+
+Q: How to extend what we have learned from univariate (i.e. one variable) to the multivariate case? 
+
+A: We can extend the definitions we have before from the univariate case to the multivariate case!
+
+::: {.definition name="Random Vector"}
+Let $X_1,\dots,X_n$ be random variables defined on a common probability space. The vector $(X_1,\dots,X_n)$ is called a **random vector**. 
+:::
+
+::: {.definition name="Joint Distribution"}
+Suppose that $X$ and $Y$ are *discrete* random variables defined on the same sample space (in general, when we consider two or more random variables it is assumed they are defined on the same sample space.)
+
+The **joint probability function** of $X$ and $Y$ is
+$$
+f(x,y) = P( \{\omega\in S:X(\omega)=x\} \cap \{\omega\in S:Y(\omega)=y\} )
+$$
+for $x\in X(S),y\in Y(S)$ and 0 otherwise. 
+
+As in the univariate case, a shorthand notation for this is
+$$
+f(x,y) = P(X=x,Y=y).
+$$
+:::
+
+Q: What if we have more than two random variables?
+
+For a collection of $n$ discrete random variables, $X_1,...,X_n$, the joint probability function is defined as
+
+$$
+f(x_1,x_2,...,x_n)=P(X_1=x_1,X_2=x_2,...,X_n=x_n).
+$$
+
+and we call the vector $(X_1,\dots,X_n)$ a random vector. 
+
+### Properties of the joint probability function 
+
+Let $f(x,y)$ be a joint probability function. Then 
+
+1. $0\leq f(x,y) \le 1$
+2. $\sum_{x,y} f(x,y) = 1$.
+
+### Marginal distribution of the joint distribution function
+
+The joint probability function $f(x,y)$ gives us probabilities $P(X=x, Y=y)$. What if we just care about the probability $P(X=x)$ (without caring about $Y$?) 
+
+
+::: {.definition name="Marginal probability function"}
+Suppose that $X$ and $Y$ are {\it discrete} random variables with joint probability function $f(x,y)$.
+
+The **marginal probability function** of $X$ is
+
+$$
+f_X(x) = P( X=x )= \sum_{y \in Y(S)} f(x,y).
+$$
+Similarly, the marginal probability function of $Y$ is
+$$
+f_Y(y) = P( Y=y )= \sum_{x \in X(S)} f(x,y).
+$$
+:::
+
+
+### Comments
+
+* A common mistake is to think that there is a difference between the marginal distribution of $X$ and the probability function of $X$. They are the same!
+
+* When we only have one random variable, say $X$, you may write the CDF and PF as $f$, $F$ to represent $f_X$ and $F_X$. However, if you have two or more random variables, say if two, denote by $X$ and $Y$. Then we **NEED** to write the subscript, $f_X$, $f_Y$, $F_X$ and $F_Y$ to distinguish which random variable you are mentioning.
+
+        

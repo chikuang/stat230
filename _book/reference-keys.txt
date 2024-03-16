@@ -64,6 +64,9 @@ lem:unlabeled-div-71
 thm:unlabeled-div-73
 def:unlabeled-div-74
 thm:unlabeled-div-75
+def:unlabeled-div-76
+def:unlabeled-div-77
+def:unlabeled-div-78
 information-of-the-course
 course-description
 instructor
@@ -195,3 +198,8 @@ standard-normal-distribution
 procedure
 quantile-1
 rule-for-1-2-3-standard-deviations
+lecture-27-march-15-2024
+chapter-9-multivariate-distributions
+properties-of-the-joint-probability-function
+marginal-distribution-of-the-joint-distribution-function
+comments
