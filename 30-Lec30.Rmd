@@ -1,0 +1,99 @@
+# Lecture 30, March 22, 2024
+
+\newcommand{\var}{\mathbb{V}ar}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\N}{\mathcal{N}}
+
+In this lecture, we will finish up where we left over -- the properties of multinomial distribution.
+
+::: {.theorem name="Conditional distribution of multinomial"}
+Let $(X_1, X_2, \ldots, X_k) \sim Mult(n, p_1, \ldots, p_k)$.
+Then,
+$$
+X_i|X_i + X_j = t \sim Bin\left(t, \frac{p_i}{p_i + p_j}\right),
+$$
+for $i \neq j$.
+:::
+
+### Summary statistics of multivariate distributions
+
+Akin the univaraite distributions, we want to use the moments to *summaries* the multivariate distributions. First, we define the Mulvariate Law of Unconciouss Statistician (mLOTUS).
+
+::: {.definition name="Bivariate LOTUS"}
+Suppose $X$ and $Y$ are discrete random variables with joint probability function $f(x,y)$. Then for a function $g: {\mathbb R}^2 \to {\mathbb R}$,
+
+$$
+\mbox{E} \left[g(X,Y) \right] = \sum_{(x,y)} g(x,y)f(x,y).
+$$
+:::
+
+::: {.definition name="Multivariate LOTUS"}
+More generally, if $g:  {\mathbb R}^n \to  {\mathbb R}$, and $X_1,...,X_n$ are discrete random variables with joint probability function $f(x_1,...,x_n)$, then
+
+$$
+\mbox{E} \left[g(X_1,...,X_n)\right] = \sum_{(x_1,...,x_n)} g(x_1,...,x_n)f(x_1,...,x_n).
+$$
+:::
+
+With mLOTUS, we may define the expectation for multivariate distributions. In addition, the expectation has the linearity property as in the univariate case.
+
+1. $\mbox{E}[ a g_1(X,Y) + b g_2(X,Y) ] = a \cdot \mbox{E}[g_1(X,Y)] + b \cdot \mbox{E}[g_2(X,Y)].$
+2. $\mbox{E}[X+Y] = \mbox{E}[X] + \mbox{E}[Y]$
+
+Observation: Regardless of the relationship between the random variables $X$ and $Y$, we HAVE the linearity property!
+
+Proofs are left as exercises.
+
+::: {.lemma name="Expectation for trivariate multinomial"}
+Let $(X_1, X_2, X_3) \sim Mult(n, p_1, p_2, p_3)$. Then
+$$
+E[X_1 X_2] = n(n-1) p_1 p_2.
+$$
+:::
+
+### Relationship betwen the random variables
+
+So far, we only discuss about the independence between the ranodm variables. E.g. if $X$ and $Y$ are independent, we have $f(x,y) = f_X(x)f_Y(y)$. However, what if they are not independent? In this case, we say they are dependent. We want to first determine if two random variables are dependent, and then measure how strong the *correlation* is. To do so, we use the terminology **covariance**.
+
+::: {.definition name="Covariance"}
+For two random variables $X$ and $Y$, we define 
+$$
+Cov(X,Y) = \E \left[ (X - E(X))(Y-E(Y)) \right].
+$$
+as the covariance between $X$ and $Y$, provided the expression exists. 
+:::
+
+Similarly to $Var(X)=E(X^2)-E(X)^2$, we have a *shortcut formula* for the covariance:
+
+$$
+Cov(X,Y) = \E[XY] - \E[X] \E[Y].
+$$
+
+Actually, we can write the variance as a covariance as follows:
+
+* $\var(X) = cov(X,X) = \E[(X-\E X)(Y-\E Y)] = \E[XX] - \E X \E X$, which can be simplified as what we have above.
+
+**Intuition**:
+Why do we look at $E \left[ (X - E(X))(Y-E(Y)) \right]$?
+
+Positive correlation: In this case, $Cov(X,Y)>0$
+
+* Suppose $X,Y$ are positively related (when $X$ large, $Y$ likely large; when $X$ small, $Y$ likely small)
+* If $(X-E(X))>0$ (so $X$ large), then likely $(Y-E(Y))>0$ (so $Y$ also large), hence the product $(X-E(X))(Y-E(Y))>0$
+* If conversely $(X-E(X))<0$ (so $X$ small), then likely $(Y-E(Y))<0$ (so $Y$ also small), hence the product is likely $(X-E(X))(Y-E(Y))>0$
+
+
+Negative correlation:
+
+* Conversely, suppose $X,Y$ are negatively related (when $X$ large, $Y$ likely small; when $X$ small, $Y$ likely large). Then $Cov(X,Y)<0$. 
+
+### Relationship between independence and covariance
+
+One may wonder that does indpendence and covariance relate, if so, in what way?
+
+::: {.theorem}
+If $X$ and $Y$ are independent, then $Cov(X,Y)=0$.
+:::
+
+**NOTE**: **The converse statement is FALSE!!!* That is, if $Cov(X,Y)=0$ then $X$ and $Y$ are not necessarily independent. For instance,  let $X\sim U(-1,1)$, and let $Y =X^2$. Then $Cov(X,Y)=0$ but $X$ and $Y$ are not independent.
