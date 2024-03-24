@@ -1,0 +1,100 @@
+# Lecture 28, March 18, 2024
+
+\newcommand{\var}{\mathbb{V}ar}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\N}{\mathcal{N}}
+
+In the previous lecture, we introduced the **multivariate** case (i.e. to have more than one random variables). This lecture, we want to see how some concepts we saw before can be used here.
+
+::: {.definition name="Independence between random variables"}
+$X$ and $Y$ are \textbf{independent} random variables if 
+$$
+f(x,y) = f_X(x) f_Y(y)
+$$
+for all values of $(x,y)$.
+        
+More generally, $X_1, X_2, \ldots, X_n$ are \textbf{independent} if 
+$$
+f(x_1, x_2, \ldots, x_n) = f_1(x_1) f_2(x_2) \ldots f_n(x_n)
+$$
+for all values of $(x_1, \ldots, x_n)$.
+:::
+
+**Not**e: This means that if you find a **single realization** of $(x_1, \ldots, x_n)$ values that doesn't satisfy the above equation, then $X_1, \ldots, X_n$ are not independent.
+
+
+### Conditional probability function for multivaraite random variable
+
+::: {.definition name="conditional probability function for bivariate case"}
+ The **conditional probability function** of $X$ given $Y=y$ is denoted $f_X(x|y)$, and is defined to be
+$$
+f_X(x|y)= P(X=x|Y=y) = \frac{P(X=x,Y=y)}{P(Y=y)} = \frac{f(x,y)}{f_Y(y)},
+$$
+Given that $f_Y(y) > 0$.
+$f_Y(y|x)$ can be defined similarly.
+:::
+
+
+### Probably function of $U=g(X_1,\cdots,X_n)$
+
+With multiple random variables, we are even more interested in \textbf{functions} of such variables. For example, Let $A, M, F$ be the random variables for your assignment, midterm and final grades respectively. Then, it's natural to consider the overall grade $G = g(A,M,F)$ as a function of random variables $A, M, F$.
+
+In general, we have the following formula for the **probability function of $U = g(X_1, X_2, \ldots, X_n).$**
+$$
+P(U = u) = \sum_{\substack{(x_1, \ldots x_n) \text{ such that }\\ g(x_1, \ldots, x_n) = u}} f(x_1, \ldots, x_n)
+$$
+Of course, we restrict ourselves to $(x_1,\dots,x_n)$ in the range of $(X_1,\dots,X_n)$ and omit terms with $f(x_1, \ldots, x_n)=0$
+
+### Known results for named distributions
+
+::: {.theorem name="Sum of independent Poisson is Poisson"}
+If $X \sim Poi(\lambda_1)$ and $Y \sim Poi(\lambda_2)$ independently, then $T = X + Y \sim Poi(\lambda_1 + \lambda_2)$.
+:::
+        
+::: {.proof}
+ \begin{align*}
+    P(X+Y=t) &= \sum_{(x,y):x+y= t} P(X=x, Y=y) \\
+    &= \sum_{x=0}^t P(X=x, Y=t-x)\\
+    &=   \sum_{x=0}^t  \underbrace{f(x,t-x)}_{=f_X(x)f_Y(t-x)}\\
+    & =\sum_{x=0}^t e^{-\lambda_1} \frac{\lambda_1^x}{x!}e^{-\lambda_2} \frac{\lambda_2^{t-x}}{(t-x)!}  \dots\end{align*}
+    \dots rest is *exercise* and in the course notes. 
+:::
+
+::: {.theorem name="Sum of 2 independent binomial is binomial"}
+If $X \sim Bin(n, p)$ and $Y \sim Bin(m, p)$ independently, then $T = X + Y \sim Bin(n + m, p)$
+:::
+
+Proof is left for an exercise.
+
+This can be easily extended to the $n$-case.
+
+::: {.theorem names="Sum of n independent binomial is binomial"}
+Let $X_1, X_2, \ldots, X_n$ each follow $Bernoulli(p)$ independently. Then,
+$$
+X_1 + X_2 + \ldots + X_n \sim Bin(n,p).
+$$
+:::
+
+This should not come as a surprise as it is the meaning of binomial distribution -- run $n$ independent Bernoulli trials with the same probability of success $p$. Similar, we may have the same relationship between the Negative binomial distribution and the geometric distribution.
+
+::: {.theorem name="Sum of n independent geometric is Negative binomial"}
+Let $X_1, X_2, \ldots, X_k$ each follow $Geo(p)$ independently. Then,
+$$
+X_1 + X_2 + \ldots + X_k \sim NB(k,p).
+$$
+:::
+
+
+::: {.theorem name="Conditional distribution of two independent poisson"}
+Let $X \sim Poi(\lambda_1)$ and $Y \sim Poi(\lambda_2)$ independently. Then, given $X + Y = n$, $X$ follows binomial distribution. That is,
+$$
+X|X+Y = n \sim Bin\left(n, \frac{\lambda_1}{\lambda_1 + \lambda_2}\right).
+$$
+Similarly, for $Y$, we have
+$$
+Y|X+Y = n \sim Bin\left(n, \frac{\lambda_2}{\lambda_1 + \lambda_2}\right).
+$$
+:::
+
+The proof is left as an exercise. Hint is to use $X+Y\sim Poi(\lambda_1+\lambda_2)$. 
