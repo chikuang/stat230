@@ -1,0 +1,107 @@
+# Lecture 29, March 20, 2024
+
+\newcommand{\var}{\mathbb{V}ar}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\N}{\mathcal{N}}
+
+
+In this lecture, we are going to introduce a named multivariate distribution -- the *multinomial distribution*.
+
+## Multinomial distribution
+
+The multinomial distribution is a generalization of the binomial distribution.
+
+::: {.definition name="Multinomial distribution"}
+Consider an experiment in which:
+
+\begin{enumerate}
+\item Individual trials have *$k$ possible outcomes*, and the probabilities of each individual outcome are denoted $p_i,\;1\le i \le k$, so that *$p_1+p_2+\cdots+p_k=1$*.
+
+\item *Trials* are *independently repeated $n$* times, with $X_i$ denoting the number of times outcome $i$ occurred, so that $X_1+X_2+\cdots+X_k = n$.
+\end{enumerate}
+\pause
+In this case we say $X_1,...,X_k$ have a **Multinomial distribution** with parameters $n$ and $p_1,...,p_k$. We use the notation $(X_1,...,X_k) \sim Mult(n,p_1,...,p_k)$. 
+:::
+
+**Note**: The binomial distribution has only 2 class/categories, i.e. the success/failture, head/tail...with the associated probability $p_1$ and $p_2=(1-p_1)$ Whereas in the multinomial distribution, we have $n$-different classes/categories, $1,2,\cdots,n$, with the associated probabilities $p_1,p_2,\cdots,p_n=1-\sum_{i=1}^{n-1}p_i$.
+
+### The probability distribution function
+
+If $X_1,...,X_k$ have a joint multinomial distribution with parameters $n$ and $p_1,...,p_k$, then their **joint probability function** is
+
+$$
+f(x_1,...,x_k) = \frac{n!}{x_1!x_2!\cdots x_k!} p_1^{x_1}\cdots p_k^{x_k},
+$$
+
+where $x_1,...,x_k$ satisfy $x_1+\cdots+x_k = n$, $x_i \ge 0$. \\
+\pause
+\medskip
+
+The terms
+
+$$
+\binom{n}{x_1, x_2, \cdots,x_k} := \frac{n!}{x_1!x_2!\cdots x_k!}, \quad\text{where } x_1+\cdots+x_k = n,
+$$
+are called the **multinomial coefficients**
+
+Just like the binomial coefficient where we can use one variable to two outcomes/class/categories, we can write the multinomial with $k$-class as $k-1$ random variables:
+
+Multinomial distribution over $(X_1, \ldots, X_k)$ can also be written in terms of $k-1$ variables.
+    
+If $x_1 + \ldots + x_n = n$, and we know $x_1, \ldots x_{k-1}$, then we can let
+$$
+x_k = n - x_1 - x_2 - \ldots - x_{k-1}.
+$$
+
+Similarly, we can let
+$$
+p_k = 1 - p_1 - p_2 - \ldots - p_{k-1}.
+$$
+    
+Thus, we can write the probability function of $Mult(n, p_1, \ldots, p_k)$ as
+$$
+f(x_1,...,x_{k-1}) = \frac{n! p_1^{x_1}\cdots p_{k-1}^{x_{k-1}} \left(1 - \sum_{i=1}^{k-1}p_i\right)^{n - \sum_{i=1}^{k-1} x_i}}{x_1!x_2!\cdots x_{k-1}! (n - \sum_{i=1}^{k-1} x_i)!}
+$$
+### Marginal ditribution and associated probability
+
+We often wonder what is the marginal distribution of a multivariate joint distribution. So what's the marginal distribution of the multinomial random variable $(X_1, X_2, \ldots, X_k)$?
+
+
+::: {.theorem name=Marginal distribution of multinomial"}
+ Let $(X_1, X_2, \ldots, X_k) \sim Mult(n, p_1, \ldots, p_k)$.
+        Then,
+        $$
+        X_j \sim Bin(n, p_j),
+        $$
+        for $j = 1, 2, \ldots, k$.
+:::
+This follows either by construction (since $X_j$ counts the number of successes in $n$ independent trials with constant success prob $p_j$, or by computing the sum
+    $$ P(X_j=x_j)=f_j(x_j)= \sum\limits_{\text{all }x_1,x_2,\dots,x_{j-1},x_{j+1},\dots,x_k} f(x_1,\dots,x_{j-1},x_j,\x_{j+1},\dots, x_k)$$
+which is illustrated in the case $k=3$ in the course notes. 
+
+We can also write out the marginal distribution for 2 random variables in a multinomial distribution:
+
+::: {.theorem name="Sum of individual rvs in multinomial"}
+Let $(X_1, X_2, \ldots, X_k) \sim Mult(n, p_1, \ldots, p_k)$. Then,
+        $$
+        X_i + X_j \sim Bin(n, p_i + p_j),
+        $$
+        for $i \neq j$.
+:::
+
+Again, the rationale behind it is either by construction (since $X_i+X_j$ counts the number of successes in $n$ independent trials with constant success prob $p_i+p_j$,
+or by computing the sum
+$$ P(X_i + X_j=t)= \sum\limits_{\text{all }x_1,x_2,\dots,x_k:x_i+x_j=t} f(x_1,\dots, x_k)$$
+### Conditional distribution of multinomial
+
+The other things that we are often interested in, when we have multivariate distribution, is the conditional distribution. For multinomial distribution, we have the following theorem:
+
+::: {.theorem name="Conditional distribution of multinomial"}
+Let $(X_1, X_2, \ldots, X_k) \sim Mult(n, p_1, \ldots, p_k)$.
+Then,
+$$
+X_i|X_i + X_j = t \sim Bin\left(t, \frac{p_i}{p_i + p_j}\right),
+$$
+for $i \neq j$.
+:::

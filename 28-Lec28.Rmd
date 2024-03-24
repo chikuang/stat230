@@ -8,13 +8,13 @@
 In the previous lecture, we introduced the **multivariate** case (i.e. to have more than one random variables). This lecture, we want to see how some concepts we saw before can be used here.
 
 ::: {.definition name="Independence between random variables"}
-$X$ and $Y$ are \textbf{independent} random variables if 
+$X$ and $Y$ are **independent** random variables if 
 $$
 f(x,y) = f_X(x) f_Y(y)
 $$
 for all values of $(x,y)$.
         
-More generally, $X_1, X_2, \ldots, X_n$ are \textbf{independent} if 
+More generally, $X_1, X_2, \ldots, X_n$ are **independent** if 
 $$
 f(x_1, x_2, \ldots, x_n) = f_1(x_1) f_2(x_2) \ldots f_n(x_n)
 $$
@@ -38,7 +38,7 @@ $f_Y(y|x)$ can be defined similarly.
 
 ### Probably function of $U=g(X_1,\cdots,X_n)$
 
-With multiple random variables, we are even more interested in \textbf{functions} of such variables. For example, Let $A, M, F$ be the random variables for your assignment, midterm and final grades respectively. Then, it's natural to consider the overall grade $G = g(A,M,F)$ as a function of random variables $A, M, F$.
+With multiple random variables, we are even more interested in *functions* of such variables. For example, Let $A, M, F$ be the random variables for your assignment, midterm and final grades respectively. Then, it's natural to consider the overall grade $G = g(A,M,F)$ as a function of random variables $A, M, F$.
 
 In general, we have the following formula for the **probability function of $U = g(X_1, X_2, \ldots, X_n).$**
 $$
