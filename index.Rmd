@@ -70,15 +70,15 @@ knitr::write_bib(c(
 
 Those chapters are based on the lecture notes. The lecture covered is based on *Section 002*. This part will be updated frequently.
 
-|  Chapter  |  Title |  Lecture Covered | 
-|---|---|---|
-| 1  |  Introduction to Probability | 1 | 
-| 2  |  Mathematical Probability Models | 2--3 | 
-| 3  |  Probability and Counting Techniques | 3--6 | 
-| 4 | Probability rules and Conditional Probability | 6--9| 
-| 5 | Discrete Random Variable |  10 --16 |
-| 6 | Computational Methods and the Statistical Software R |  In tutorial (not testable) |
-| 7 | Expected Value and Variance |  16 --20|
-| 8 | Continuous Random Variable |  20 -- 27 |
-| 9 | Multivariate  Distributions |  27 -- |
-| 10 | TBA |  TBA|
+|  Chapter |  Lecture Covered | 
+|---|---|
+| 1. Introduction to Probability | L1 | 
+| 2. Mathematical Probability Models | L2--3 | 
+| 3. Probability and Counting Techniques | L3--6 | 
+| 4. Probability rules and Conditional Probability | 6--9| 
+| 5. Discrete Random Variable |  L10 --16 |
+| 6. Computational Methods and the Statistical Software R |  In tutorial (not testable) |
+| 7. Expected Value and Variance |  L16 --20|
+| 8. Continuous Random Variable |  L20 -- 27 |
+| 9. Multivariate  Distributions |  L27 -- |
+| 10. TBA |  TBA|

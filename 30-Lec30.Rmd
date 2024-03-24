@@ -96,4 +96,4 @@ One may wonder that does indpendence and covariance relate, if so, in what way?
 If $X$ and $Y$ are independent, then $Cov(X,Y)=0$.
 :::
 
-**NOTE**: **The converse statement is FALSE!!!* That is, if $Cov(X,Y)=0$ then $X$ and $Y$ are not necessarily independent. For instance,  let $X\sim U(-1,1)$, and let $Y =X^2$. Then $Cov(X,Y)=0$ but $X$ and $Y$ are not independent.
+**NOTE**: **The converse statement is FALSE!!!** That is, if $Cov(X,Y)=0$ then $X$ and $Y$ are not necessarily independent. For instance,  let $X\sim U(-1,1)$, and let $Y =X^2$. Then $Cov(X,Y)=0$ but $X$ and $Y$ are not independent.
