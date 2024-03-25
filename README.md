@@ -8,4 +8,5 @@
 
 ---
 
+[Link](https://chikuang.github.io/course/stat230/)
 
