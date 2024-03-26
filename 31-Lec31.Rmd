@@ -1,0 +1,139 @@
+# Lecture 31, March 25, 2024
+
+\newcommand{\var}{\mathbb{V}ar}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\N}{\mathcal{N}}
+
+In today's lecture, we continue to investigate the covariance and its *standaridized" version, the correlation. We will then look at the special form of the $g(X_1,\cdots,X_n)$ to be a linear function
+
+
+## Covariance and Correlation
+
+::: {.theorem name="Independence implies uncorrelated"}
+If $X$ and $Y$ are independent, then $Cov(X,Y)=0$.
+:::
+
+NOTE: the coverse is in general NOT TRUE.
+
+::: {.proof}
+We show that if $X,Y$ are independent, then $E(X\cdot Y)=E(X)E(Y)$. This implies
+$$ Cov(X,Y)=E(XY)-E(X)E(Y)=E(X)E(Y)-E(X)E(Y)=0.$$
+And indeed, because $X,Y$ are independent, 
+$$ f(x,y)=f_X(x)f_Y(y),$$
+so
+\begin{align*}
+  E(XY)&=\sum_x \sum_y x\cdot y \cdot f(x,y)\\
+  &= \sum_x \sum_y x\cdot y \cdot f_X(x)f_Y(y)\\
+  &= \sum_x x \cdot f_X(x) \sum_y y \cdot f_Y(y)\\
+  &= E(X) E(Y)
+\end{align*}
+:::
+
+::: {.corollary}
+If $X_1,\dots,X_n$ are independent random variables, then 
+$$ E(X_1\cdot X_2 \cdot \dots \cdot X_n) = E(X_1) E(X_2)\cdot \dots \cdot E(X_n).$$
+:::
+
+Problem: What does the numeric value tell us when we calculate the covariance? Does big number corresponding to a strong correlation? If two covariance are big, which one is bigger? Do we have an universal way to compare? **YES** we do! We want to look at the standardized covariance, which we called the **correlation**.
+
+
+::: {.definition name="Correlation"}
+The **correlation** of $X$ and $Y$, denoted $corr(X,Y)$, is defined by
+
+$$
+corr(X,Y) = \rho = \frac{Cov(X,Y)}{SD(X)SD(Y)}.
+$$
+
+We say that X and Y are **uncorrelated** if $Cov(X,Y) = 0$ (or equivalently $corr(X,Y)=0$).
+:::
+
+Remark:
+
+1.  It follows from the Cauchy-Schwarz inequality that $-1 \le corr(X,Y) \le 1$, and if $|corr(X,Y)|=1$, $X=aY+b$. We will look at this in the next open tutorial. 
+2. If $X$ and $Y$ are independent, then $X$ and $Y$ are
+uncorrelated.
+3. $Cov(X,X)=Var(X)$
+4. The correlation is unit-free.
+
+Thus, we can conclude the following properties:
+
+1. $\rho = corr(X,Y)$ has the same sign as $Cov(X,Y)$
+2. $-1 \leq \rho \leq 1$
+3. $|\rho| = 1 \ \Leftrightarrow \ X = aY + b$ 
+4. $X,Y$ independent $\Rightarrow$ $corr(X,Y) = 0$
+5. $corr(X,Y)=0$ \red{$\not\Rightarrow$} $X,Y$ independent in general
+6. $corr(X,X) = cov(X,X)/SD(X)^2 = Var(X)/Var(X) = 1$
+
+Cautious: Correlation DOES NOT implies CAUSALITY! Two variables being correlated does not always imply that one variable causes another to behave in certain ways.
+
+## Linear combination of random variables
+
+::: {.defintion name="Linear combination of random variables"}
+Suppose that $X_1,...,X_n$ are jointly distributed RVs with joint probability function $f(x_1,...,x_n)$. A {\bf linear combination} of the RVs $X_1,...,X_n$ is any random variable of the form
+$$
+\sum_{i=1}^{n} a_i X_i
+$$
+where $a_1,...,a_n \in \mathbb{R}$. 
+:::
+
+### Some examples
+
+a. The total, obtained for $a_i=1$ for all $i$, 
+$$
+  T = \sum_{i=1}^{n} X_i .
+$$
+The sample mean, obtained for $a_i=1/n$ for all $i$, 
+$$
+  \bar{X} = \sum_{i=1}^{n} \frac{1}{n} X_i .
+$$
+  When needed, we write $\bar{X}_n$ instead of $\bar{X}$ to highlight that it is the average of $n$ many $X_1,\dots,X_n$. 
+
+Question: How do we summary the linear combination of the random variables? Similar as before, we use the *moments* to do this. In particular, we use the first and the second moments (i.e. the expectation adn the variance).
+
+::: {.theorem name="Expected Value of a Linear Combination"}
+For any random variables $X_1,\dots,X_n$ and any constants $a_1,\dots,a_n\in\R$, we have 
+$$
+E \left( \sum_{i=1}^{n} a_i X_i  \right) = \sum_{i=1}^{n} a_i E(X_i)
+$$
+:::
+This follows directly from the linearity of expected value.
+
+NOTE: We **DO NOT make any assumption regarding the (in)dependence** of the $X_1,\dots,X_n$ here.
+
+
+::: {.theorem name="Bilinearity of $Cov$"}
+Let $X, Y, U, V$ be random variables, and $a, b, c, d \in \mathbb{R}$. Then,
+%pause
+\begin{align*}
+    &Cov(aX + bY, cU + dV)\\ 
+    &= acCov(X,U) + adCov(X,V) + bcCov(Y,U) + bdCov(Y,V)
+\end{align*}
+:::
+
+NOTE: You can generalise this to a linear combination of arbitrary length, but the formula becomes messy.
+
+::: {.theorem name="Variance of a linear combination"}
+Let $X,Y$ be random variables, and $a,b \in \mathbb{R}$. Then,
+$$
+Var(aX + bY) = a^2 Var(X) + b^2 Var(Y) + 2ab Cov(X,Y).
+$$
+%pause
+In general,
+$$
+Var\left(\sum_{i=1}^n a_i X_i\right) 
+= \sum_{i=1}^n a_i^2 Var(X_i) + 2\sum_{1\le i < j \le n} a_ia_j Cov(X_i,X_j).
+$$
+:::
+
+::: {.theorem name="linear function of a normal $X$ is still normal"}
+Let $X \sim N(\mu, \sigma^2)$ and $Y = aX + b$, where $a,b \in \mathbb{R}$. Then,
+%pause
+$$
+Y \sim \N(a\mu + b, a^2 \sigma^2).
+$$
+:::
+
+::: {.proof}
+This can be easily shown by using the moment generating function (MGF).
+:::
