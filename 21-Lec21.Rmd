@@ -1,8 +1,5 @@
 # Lecture 21, March 01, 2024
 
-\newcommand{\var}{\mathbb{V}ar}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\E}{\mathbb{E}}
 ## Law of unconciousness of statistician, continuous version
 
 

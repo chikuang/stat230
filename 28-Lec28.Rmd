@@ -1,9 +1,5 @@
 # Lecture 28, March 18, 2024
 
-\newcommand{\var}{\mathbb{V}ar}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\E}{\mathbb{E}}
-\newcommand{\N}{\mathcal{N}}
 
 In the previous lecture, we introduced the **multivariate** case (i.e. to have more than one random variables). This lecture, we want to see how some concepts we saw before can be used here.
 

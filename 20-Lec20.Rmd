@@ -1,8 +1,5 @@
 # Lecture 20, Feburary 28, 2024
 
-
-\newcommand{\var}{\mathbb{V}ar}
-\newcommand{\R}{\mathbb{R}}
 ## Variance of Poisson, Hypergeometric and Negative Binomial
 
 Last time, we saw that if $X \sim Bin(m,p)$, then $\var(X) = np(1-p)$. We proved this using the definition of the expectation and with the **summation trick**.

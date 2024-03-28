@@ -1,0 +1,111 @@
+# Lecture 32, March 27, 2024
+In this lecture, we will see 1) more examples and properties of the linear combinations of **independent normal** random variables, and 2) indicators 
+
+
+## Linear combination (continue)
+
+::: {.definition}
+Suppose that $X_1,...,X_n$ are jointly distributed RVs with joint probability function $f(x_1,...,x_n)$. A **linear combination** of the RVs $X_1,...,X_n$ is any random variable of the form
+$$
+\sum_{i=1}^{n} a_i X_i
+$$
+where $a_1,...,a_n \in \R$.
+:::
+
+We have seen
+$$ \E\left(\sum_{i=1}^n a_i X_i\right)=\sum_{i=1}^n a_i \E(X_i)$$
+and
+ $$
+        \var\left(\sum_{i=1}^n a_i X_i\right) 
+        = \sum_{i=1}^n a_i^2 \var(X_i) + 2\sum_{1\le i < j \le n} a_ia_j Cov(X_i,X_j)
+        $$
+In particular,
+$$ \var(X+Y) = \var(X) + \var(Y) + 2 Cov(X,Y).$$
+
+
+#### Variance of a linear combination of random variables
+
+Since independent random variables have zero covariance, we have the following corollary:
+
+::: {.corollary}
+Suppose $X_1,\dots,X_n$ are **independent**. Then
+    $$\var\left(\sum_{i=1}^n X_i\right)=\sum_{i=1}^n \var(X_i).$$
+:::
+
+
+### Linear Combination of Gaussian random variables
+
+We have already seen the following theorem when we were standardizing normals:
+
+::: {.theorem}
+Let $X \sim \N(\mu, \sigma^2)$ and $Y = aX + b$, where $a,b \in \R$. Then,
+%pause
+$$
+Y \sim \N(a\mu + b, a^2 \sigma^2).
+$$
+:::
+
+
+Previous discussion focused on the mean and variance of $\sum_{i=1}^n a_iX_i$. If the $X_i$ are independent and normally distributed, then we can even state explicitly the distribution of $\sum_{i=1}^n a_iX_i$. 
+
+::: {.theorem}
+Let $X_i \sim \N(\mu_i, \sigma_i^2), \ i = 1, 2, \ldots, n$ \textbf{independently}, and $a_1, a_2, \ldots, a_n, b_1, b_2, \ldots, b_n \in \R$. Then,
+$$
+\sum_{i=1}^n (a_i X_i + b_i) \sim \N \left( \sum_{i=1}^n a_i \mu_i + b_i, \sum_{i=1}^n a_i^2 \sigma_i^2 \right).
+$$
+:::
+        
+
+We really do need that the $X_i$ are normally distributed. A common mistake is to think that if $\E(X_i)=\mu_i$ and $\var(X_i)=\sigma_i^2$, then we can apply the theorem. But this is false (take, for instance, the $X_i$ as independent exponentials as an example). 
+
+
+NOTE: If $X,Y\sim F$, $X+Y$ and $2X$ does not follow the same distribution (because of the variance of the joint distribution has non-linear relationship)!!
+
+::: {.corollary}
+Let $X_1,\dots,X_n$ be independent and $X_i\sim \N(\mu,\sigma^2)$ for all $i=1,\dots,n$. Then
+$$\bar{X}_n = \frac{1}{n} \sum_{i=1}^n X_i \sim \N\left(\mu, \frac{\sigma^2}{n}\right). $$
+:::
+
+As $n$ increases, the variance $\sigma^2/n$ decreases, so the distribution of $\bar{X}_n$ becomes more concentrated around $\mu$.
+
+## Indicator variable
+::: {.definition}
+Let $A \subset S$ be an event. We say that $\mathbb{1}_{ A}$ is the \textbf{indicator} random variable of the event $A$. $\mathbb{1}_{ A}$ is defined by:
+
+\[ \mathbb{1}_{ A}(\omega) =\begin{cases}
+      1 & \mbox{ $\omega \in A$,} \\
+      0 & \mbox{ $\omega \in \bar{A}$ }
+   \end{cases}
+\]
+
+:::
+
+NOTE: Actually, it's another way of defining a **Bernoulli random variable**. 
+
+### Properties of the indicator variable
+
+Indicator (Bernoulli) variable has a few interesting properties:
+
+1. $\E[\mathbb{1}_A] = P(A)$
+2. $\var(\mathbb{1}_A) = P(A)(1-P(A))$
+3. $\mbox{cov}(\mathbb{1}_A,\mathbb{1}_B) = P(A\cap B ) - P(A)P(B)$
+
+::: {.proof}
+These quantities are easy to compute as the random variable $\mathbb{1}_A$ only takes 2 values. Indeed,
+$$\E(\mathbb{1}_A) = 1 \cdot P(\mathbb{1}_A = 1) + 0 \cdot P(\mathbb{1}_A=0) = 1 \cdot P(A) $$
+and
+$$E(\mathbb{1}_A^2) = 1^2 \cdot P(A) + 0^2 \cdot (1-P(A)) = P(A)$$
+so 
+$$ \var(\mathbb{1}_A)=E(\mathbb{1}_A^2)-E(\mathbb{1}_A)^2=p-p^2=p(1-p)$$
+Similarly,
+\begin{align*}
+    \E(\mathbb{1}_A\cdot \mathbb{1}_B) &= 1\cdot P(\mathbb{1}_A =1,\mathbb{1}_B=1)+0=P(A\cap B)
+  \end{align*}
+giving us
+$$ Cov(\mathbb{1}_A,\mathbb{1}_B)=\E(\mathbb{1}_A\cdot \mathbb{1}_B)-\E(\mathbb{1}_A)\E(\mathbb{1}_B)=P(A\cap B)-P(A)P(B)$$
+:::
+
+Q: Why do we care whatsoever about indicator random variables?? 
+
+A: To make many calculations (like computing the mean and variance) vastly easier, and to gain intuition about how random variables are constructed/behave.
+

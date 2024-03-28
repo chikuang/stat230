@@ -1,9 +1,5 @@
 # Lecture 30, March 22, 2024
 
-\newcommand{\var}{\mathbb{V}ar}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\E}{\mathbb{E}}
-\newcommand{\N}{\mathcal{N}}
 
 In this lecture, we will finish up where we left over -- the properties of multinomial distribution.
 
@@ -32,14 +28,14 @@ $$
 More generally, if $g:  {\mathbb R}^n \to  {\mathbb R}$, and $X_1,...,X_n$ are discrete random variables with joint probability function $f(x_1,...,x_n)$, then
 
 $$
-\mbox{E} \left[g(X_1,...,X_n)\right] = \sum_{(x_1,...,x_n)} g(x_1,...,x_n)f(x_1,...,x_n).
+\E \left[g(X_1,...,X_n)\right] = \sum_{(x_1,...,x_n)} g(x_1,...,x_n)f(x_1,...,x_n).
 $$
 :::
 
 With mLOTUS, we may define the expectation for multivariate distributions. In addition, the expectation has the linearity property as in the univariate case.
 
-1. $\mbox{E}[ a g_1(X,Y) + b g_2(X,Y) ] = a \cdot \mbox{E}[g_1(X,Y)] + b \cdot \mbox{E}[g_2(X,Y)].$
-2. $\mbox{E}[X+Y] = \mbox{E}[X] + \mbox{E}[Y]$
+1. $\E[ a g_1(X,Y) + b g_2(X,Y) ] = a \cdot \E[g_1(X,Y)] + b \cdot \E[g_2(X,Y)].$
+2. $\E[X+Y] = \E[X] + \E[Y]$
 
 Observation: Regardless of the relationship between the random variables $X$ and $Y$, we HAVE the linearity property!
 
@@ -64,7 +60,7 @@ $$
 as the covariance between $X$ and $Y$, provided the expression exists. 
 :::
 
-Similarly to $Var(X)=E(X^2)-E(X)^2$, we have a *shortcut formula* for the covariance:
+Similarly to $\var(X)=\E(X^2)-\E(X)^2$, we have a *shortcut formula* for the covariance:
 
 $$
 Cov(X,Y) = \E[XY] - \E[X] \E[Y].
@@ -75,13 +71,13 @@ Actually, we can write the variance as a covariance as follows:
 * $\var(X) = cov(X,X) = \E[(X-\E X)(Y-\E Y)] = \E[XX] - \E X \E X$, which can be simplified as what we have above.
 
 **Intuition**:
-Why do we look at $E \left[ (X - E(X))(Y-E(Y)) \right]$?
+Why do we look at $E \left[ (X - \E(X))(Y-\E(Y)) \right]$?
 
 Positive correlation: In this case, $Cov(X,Y)>0$
 
 * Suppose $X,Y$ are positively related (when $X$ large, $Y$ likely large; when $X$ small, $Y$ likely small)
-* If $(X-E(X))>0$ (so $X$ large), then likely $(Y-E(Y))>0$ (so $Y$ also large), hence the product $(X-E(X))(Y-E(Y))>0$
-* If conversely $(X-E(X))<0$ (so $X$ small), then likely $(Y-E(Y))<0$ (so $Y$ also small), hence the product is likely $(X-E(X))(Y-E(Y))>0$
+* If $(X-\E(X))>0$ (so $X$ large), then likely $(Y-E(Y))>0$ (so $Y$ also large), hence the product $(X-\E(X))(Y-\E(Y))>0$
+* If conversely $(X-\E(X))<0$ (so $X$ small), then likely $(Y-\E(Y))<0$ (so $Y$ also small), hence the product is likely $(X-\E(X))(Y-\E(Y))>0$
 
 
 Negative correlation:

@@ -1,11 +1,5 @@
 # Lecture 29, March 20, 2024
 
-\newcommand{\var}{\mathbb{V}ar}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\E}{\mathbb{E}}
-\newcommand{\N}{\mathcal{N}}
-
-
 In this lecture, we are going to introduce a named multivariate distribution -- the *multinomial distribution*.
 
 ## Multinomial distribution

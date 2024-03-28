@@ -4,8 +4,6 @@
 
 Let $Z\sim Poi(\mu)$. Then the expectation of $Z$ is $E[Z] = \mu$.
 
-
-
 ::: {.proof }
 Suppose $X \sim Poi(\mu)$. Then we have
 \begin{align*}

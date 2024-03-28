@@ -1,9 +1,5 @@
 # Lecture 24, March 11, 2024
 
-\newcommand{\var}{\mathbb{V}ar}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\E}{\mathbb{E}}
-
 ## Sampling realizations of random variables
 
 + In practice, we may often want to sample realizations of random variables, and use those realizations to conduct some estimation of inference ($\Rightarrow$ Monte Carlo Simulation)

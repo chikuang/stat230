@@ -1,8 +1,5 @@
 # Lecture 23, March 06, 2024
 
-\newcommand{\var}{\mathbb{V}ar}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\E}{\mathbb{E}}
 
 ## Recap the quantile function
 

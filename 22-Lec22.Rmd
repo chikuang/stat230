@@ -1,8 +1,5 @@
 # Lecture 22, March 04, 2024
 
-\newcommand{\var}{\mathbb{V}ar}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\E}{\mathbb{E}}
 
 ## Receipt to find the distribution of the transformed random varaible $Y=g(X)$.
 

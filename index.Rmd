@@ -16,6 +16,11 @@ link-citations: yes
 github-repo: rstudio/bookdown-demo
 ---
 
+\newcommand{\var}{\mathbb{V}ar}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\N}{\mathcal{N}}
+
 # Information of the course
 The purpose of this page is to hold some of the additional materials provided by myself. Students should consult UW [Learn](https://api-4ccc589b.duosecurity.com/frame/v4/preauth/healthcheck?sid=frameless-c0657e9d-cb86-4ac9-a6a7-fd054ae21fd5) system.
 

@@ -1,15 +1,11 @@
 # Lecture 24, March 08, 2024
 
-\newcommand{\var}{\mathbb{V}ar}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\E}{\mathbb{E}}
-
 ## Proof of the moments of exponential distribution
 
 Recall that we can have many ways to show the expectation and the variance of  $X\sim Exp(\theta)$ using the Gamma function. Then we have
-$$ E(X)=\theta$$
+$$ \E(X)=\theta$$
 and
-$$Var(X)=\theta^2.$$
+$$\var(X)=\theta^2.$$
 
 Let $X\sim Exp(\theta)$. We use the change of variable $y=x\theta$ with $dx =\theta dy$
     \begin{align*}
