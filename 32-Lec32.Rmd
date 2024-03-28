@@ -96,7 +96,7 @@ $$\E(\mathbb{1}_A) = 1 \cdot P(\mathbb{1}_A = 1) + 0 \cdot P(\mathbb{1}_A=0) = 1
 and
 $$E(\mathbb{1}_A^2) = 1^2 \cdot P(A) + 0^2 \cdot (1-P(A)) = P(A)$$
 so 
-$$ \var(\mathbb{1}_A)=E(\mathbb{1}_A^2)-E(\mathbb{1}_A)^2=p-p^2=p(1-p)$$
+$$ \var(\mathbb{1}_A)=\E(\mathbb{1}_A^2)-\E(\mathbb{1}_A)^2=p-p^2=p(1-p)$$
 Similarly,
 \begin{align*}
     \E(\mathbb{1}_A\cdot \mathbb{1}_B) &= 1\cdot P(\mathbb{1}_A =1,\mathbb{1}_B=1)+0=P(A\cap B)

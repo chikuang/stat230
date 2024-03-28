@@ -17,15 +17,15 @@ for $i \neq j$.
 Akin the univaraite distributions, we want to use the moments to *summaries* the multivariate distributions. First, we define the Mulvariate Law of Unconciouss Statistician (mLOTUS).
 
 ::: {.definition name="Bivariate LOTUS"}
-Suppose $X$ and $Y$ are discrete random variables with joint probability function $f(x,y)$. Then for a function $g: {\mathbb R}^2 \to {\mathbb R}$,
+Suppose $X$ and $Y$ are discrete random variables with joint probability function $f(x,y)$. Then for a function $g: \R^2 \to \R$,
 
 $$
-\mbox{E} \left[g(X,Y) \right] = \sum_{(x,y)} g(x,y)f(x,y).
+\E \left[g(X,Y) \right] = \sum_{(x,y)} g(x,y)f(x,y).
 $$
 :::
 
 ::: {.definition name="Multivariate LOTUS"}
-More generally, if $g:  {\mathbb R}^n \to  {\mathbb R}$, and $X_1,...,X_n$ are discrete random variables with joint probability function $f(x_1,...,x_n)$, then
+More generally, if $g:  \R^n \to  \R$, and $X_1,...,X_n$ are discrete random variables with joint probability function $f(x_1,...,x_n)$, then
 
 $$
 \E \left[g(X_1,...,X_n)\right] = \sum_{(x_1,...,x_n)} g(x_1,...,x_n)f(x_1,...,x_n).
@@ -44,7 +44,7 @@ Proofs are left as exercises.
 ::: {.lemma name="Expectation for trivariate multinomial"}
 Let $(X_1, X_2, X_3) \sim Mult(n, p_1, p_2, p_3)$. Then
 $$
-E[X_1 X_2] = n(n-1) p_1 p_2.
+\E[X_1 X_2] = n(n-1) p_1 p_2.
 $$
 :::
 
@@ -55,7 +55,7 @@ So far, we only discuss about the independence between the ranodm variables. E.g
 ::: {.definition name="Covariance"}
 For two random variables $X$ and $Y$, we define 
 $$
-Cov(X,Y) = \E \left[ (X - E(X))(Y-E(Y)) \right].
+Cov(X,Y) = \E \left[ (X - \E(X))(Y-\E(Y)) \right].
 $$
 as the covariance between $X$ and $Y$, provided the expression exists. 
 :::
@@ -76,7 +76,7 @@ Why do we look at $E \left[ (X - \E(X))(Y-\E(Y)) \right]$?
 Positive correlation: In this case, $Cov(X,Y)>0$
 
 * Suppose $X,Y$ are positively related (when $X$ large, $Y$ likely large; when $X$ small, $Y$ likely small)
-* If $(X-\E(X))>0$ (so $X$ large), then likely $(Y-E(Y))>0$ (so $Y$ also large), hence the product $(X-\E(X))(Y-\E(Y))>0$
+* If $(X-\E(X))>0$ (so $X$ large), then likely $(Y-\E(Y))>0$ (so $Y$ also large), hence the product $(X-\E(X))(Y-\E(Y))>0$
 * If conversely $(X-\E(X))<0$ (so $X$ small), then likely $(Y-\E(Y))<0$ (so $Y$ also small), hence the product is likely $(X-\E(X))(Y-\E(Y))>0$
 
 
