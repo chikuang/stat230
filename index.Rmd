@@ -44,16 +44,7 @@ Contact Divya Lala
 
 + Email: [divya.lala@uwaterloo.ca](mailto:divya.lala@uwaterloo.ca) or the undergrad advising email [sasugradadv@uwaterloo.ca](mailto:sasugradadv@uwaterloo.ca).
 
-### EXAM and Tutorial assessment Date
-
-Midterm (12.5% each)
-
-* [x] Midterm 1: February 08, 2024 16:30--17:50 (Coverage: Ch. 1 -- 5.1)
-* [x] Midterm 2: March 14, 2024 16:30--17:50 (Coverage: Ch. 1--5, 7-8, up to Sec. 8.3)
-
-Final (50%)
-
-* [ ] Tuesday April 16, 2024 19:30 -- 22:00. Location: DC 1350 and DC 1351
+### Assessments and Dates
 
 Tutorial Quiz (3% each)
 
@@ -66,7 +57,27 @@ Tutorial Test (5% each)
 * [x] Tutorial test 1: February 02, 2024 (Coverage: Ch. 1--4)
 * [x] Tutorial test 2: March 08, 2024 (Coverage: Ch. 1-5, 7-8 up to Sec. 8.1)
 * [ ] Tutorial test 3: April 05, 2024 (Coverage: Up to the end of Sec. 9.6 inclusive, excluding Sec. 9.3 Markov Chains)
+
+Midterm (12.5% each)
+
+* [x] Midterm 1: February 08, 2024 16:30--17:50 (Coverage: Ch. 1 -- 5.1)
+* [x] Midterm 2: March 14, 2024 16:30--17:50 (Coverage: Ch. 1--5, 7-8, up to Sec. 8.3)
  
+
+Final (50%)
+
+* [ ] Tuesday April 16, 2024 19:30 -- 22:00. Location: DC 1350 and DC 1351
+
+Real World Assignment (1%)
+
+* 0.5-1 pages with group of up to 3 students: Due April 8th, 23:59 EST.
+
+BONUS: iClicker Participation (2%)
+
+* 1% for answering and 1% for correctness.
+
+
+
 ```{r include=FALSE}
 # automatically create a bib database for R packages
 knitr::write_bib(c(
@@ -86,7 +97,7 @@ Those chapters are based on the lecture notes. The lecture covered is based on *
 | 4. Probability rules and Conditional Probability | 6--9| 
 | 5. Discrete Random Variable |  L10 --16 |
 | 6. Computational Methods and the Statistical Software R |  In tutorial (not testable) |
-| 7. Expected Value and Variance |  L16 --20|
-| 8. Continuous Random Variable |  L20 -- 27 |
-| 9. Multivariate  Distributions |  L27 -- |
-| 10. TBA |  TBA|
+| 7. Expected Value and Variance |  L16--20|
+| 8. Continuous Random Variable |  L20--27 |
+| 9. Multivariate  Distributions |  L27--33 |
+| 10. Central Limit Theorem and Moment Generating Function | L33--36|
