@@ -3,6 +3,7 @@
 ## Distinction of the definition "discrete" of the sample space and the random variable
 
 Recall the definition of the *Range of a random variable* from last lecture:
+
 ::: {.definition name="Range"}
 The values that a random variables takes is called the *range* of the random variable. We often denote the range of a random variable $X$ by $X(S)$.
 :::

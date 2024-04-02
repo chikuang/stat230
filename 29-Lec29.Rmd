@@ -70,6 +70,7 @@ We often wonder what is the marginal distribution of a multivariate joint distri
         $$
         for $j = 1, 2, \ldots, k$.
 :::
+
 This follows either by construction (since $X_j$ counts the number of successes in $n$ independent trials with constant success prob $p_j$, or by computing the sum
     $$ P(X_j=x_j)=f_j(x_j)= \sum\limits_{\text{all }x_1,x_2,\dots,x_{j-1},x_{j+1},\dots,x_k} f(x_1,\dots,x_{j-1},x_j,\x_{j+1},\dots, x_k)$$
 which is illustrated in the case $k=3$ in the course notes. 

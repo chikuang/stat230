@@ -1,0 +1,187 @@
+# Lecture 33, April 01, 2024
+
+In this lecture, we will continue our discussion in indicator function. This marks the end of Chapter 9. We will then begin Chapter 10 with a very important concept, the **Central Limit Theorem**.
+
+::: {.example}
+A carton of wine consists of 20 winebottles. Suppose we can model the volume of wine in each bottle as independent normal random variables $X_1,\dots,X_{20}$ where mean 1.05 litres and and standard deviation $\sqrt{0.0004}$. What is the distribution of the total amount of wine in a carton, say $T_{20} = \sum_{i=1}^{20} X_i$?
+:::
+
+This can be easily answered using the terminology of linear combinations theory.
+
+
+## Indicator funcrions
+
+For an event $A \subset S$ we call $\mathbb{1}_{ A}$ is the **indicator** random variable of the event $A$; it is given by 
+\[ \mathbb{1}_{ A}(\omega) =\begin{cases}
+      1 & \mbox{ $\omega \in A$,} \\
+      0 & \mbox{ $\omega \in \bar{A}$ }
+   \end{cases}
+\]
+and just another definition of a $Bern(P(A))$ random variable
+
+**Properties**:
+
+1. $\E[\mathbb{1}_A] = P(A)$
+2. $\var(\mathbb{1}_A) = P(A)(1-P(A))$
+3. $\cov(\mathbb{1}_A,\mathbb{1}_B) = P(A\cap B ) - P(A)P(B)$
+
+
+Question: Why do we care whatsoever about indicator random variables?? 
+
+Answer: To make many calculations (like computing the mean and variance) vastly easier, and to gain intuition about how random variables are constructed/behave.
+
+::: {.example}
+Suppose $X \sim Binomial(n,p)$. We can then easily see $\E(X)=np$, and $\var(X)=np(1-p)$ using indicator random variables: 
+
+* Consider $n$ independent trials with success prob $p$, and let $A_i$=success in trial $i$ (then the $A_i$ are independent). 
+* Then $X$, the number of successes, is
+$$ X = \sum_{i=1}^n \mathbb{1}_{A_i}$$
+* The mean of $X$ is
+    $$ \E\left( \sum_{i=1}^n \mathbb{1}_{A_i}\right) = \sum_{i=1}^n E(\mathbb{1}_{A_i})=\sum_{i=1}^n p=np$$
+* Since the $A_i$ are independent, the indicators $\mathbb{1}_{A_i}$ have zero covariance, hence we find 
+    $$ Var(X)=Var\left(\sum_{i=1}^n \mathbb{1}_{A_i}\right)=\sum_{i=1}^n \var(\mathbb{1}_{A_i})=\sum_{i=1}^np(1-p)=np(1-p).$$
+:::
+
+
+::: {.example name="Marriage/Pairing Problem"}
+$N$ passengers board a plane with $N$ seats, where $N>1$.  Despite every passenger having an assigned seat, when they board the plane they sit in one of the remaining available seats at random. Show that the mean and variance of the number of people sitting in the correct seat once everyone is on board are both 1 (independent of the number $N$ of passengers, weirdly). 
+
+To solve this problem, we break the steops into a few parts.
+
+Step 1: Defining indicators. Define indicator random variables as follows:
+\begin{eqnarray*}
+X_i &=& 1 \text{ if passenger $i$ is in the correct seat, and}\\
+X_i &=& 0 \text{ if passenger $i$ is in the wrong seat}
+\end{eqnarray*}
+Then $\sum\limits_{i=1}^N X_i$ is the number of correctly seated people.
+
+Step 2: Finding the mean. 
+
+First, we will need to find $E[X_i]$. But we know a general result:
+\[
+\blue{E[X_i] = P(X_i = 1) = \frac{1}{N}}
+\]
+This may seem suspiciously straightforward, but think about the first passenger - they have $N$ seats to choose from and pick 1, so their probability is clearly $\frac{1}{N}$.\bigskip
+
+There's nothing `special' about the first passenger so this must be the same for all passengers.
+
+Having established $E[X_i]$ we can determine the expected number of people in the correct seat:
+\[
+\orange{E\left[\sum\limits_{i=1}^N X_i\right] = \sum\limits_{i=1}^N E[X_i] = \sum\limits_{i=1}^N \frac{1}{N} = 1}
+\]
+and so in fact the average number of people in the correct seat is 1 regardless of how many people there are. 
+
+Step 3: Finding the variance.
+We're not quite done, though - we also want the variance:
+\[
+Var\left(\sum\limits_{i=1}^N X_i \right) = \sum\limits_{i=1}^N Var(X_i) + 2 \sum\limits_{i < j} Cov(X_i, X_j)
+\]
+
+Note that \red{$Cov(X_i, X_j) \neq 0$} because if passenger $i$ is in the correct seat, passenger $j$ is also more likely to be in the correct seat since $i$ cannot be in his seat.
+
+\bigskip
+
+Since $X_i$ are indicator variables with success probability $p=1/N$, the variance of each $X_i$ is easily computed as 
+\[
+Var(X_i) = p(1-p) = \frac{1}{N}\left(1 - \frac{1}{N}\right).
+\]
+
+Computing the Covariance
+
+ Next, we need
+    $$ P(X_i =1 \cap X_j=1),\quad i\not= j
+$$
+
+Let's think about it carefully:
+\begin{itemize}
+\item We have a $\frac{1}{N}$ chance of person $i$ being seated correctly.
+\item And once they're seated, there's a $\frac{1}{N-1}$ chance for person $j$ (as we've `used up' one of the possible remaining seats).
+\end{itemize}
+
+Therefore
+\[
+P(X_i =1 \cap X_j=1) = \frac{1}{N}\frac{1}{N-1}
+\]
+So we find
+
+$$ Cov(X_i, X_i) = P(A_i \cap A_j)-P(A_i)P(A_j)=\frac{1}{N}\frac{1}{N-1} - \frac{1}{N} \cdot \frac{1}{N}$$
+Now we combine them together:
+Recall, we're trying to find the variance
+\[
+Var\left(\sum\limits_{i=1}^N X_i \right) = \sum\limits_{i=1}^N Var(X_i) + 2 \sum\limits_{i < j} Cov(X_i, X_j)
+\]
+where we've now determined
+\begin{itemize}
+\item $Var(X_i) = \frac{1}{N}\left(1 - \frac{1}{N}\right)$
+\item $Cov(X_i, X_j) = \frac{1}{N(N-1)} - \frac{1}{N}\frac{1}{N} = \frac{1}{N^2(N-1)}$
+\end{itemize}
+Thus,
+\begin{eqnarray*}
+Var\left(\sum\limits_{i=1}^N X_i \right) &=& \sum\limits_{i=1}^N Var(X_i) + 2 \sum\limits_{i < j} Cov(X_i, X_j)\\
+&=& \sum\limits_{i=1}^N \frac{1}{N}\left(1 - \frac{1}{N}\right) + \frac{2}{N^2(N-1)} \sum\limits_{i < j} 1
+\end{eqnarray*}
+
+That last term is tricky, we know $Cov(X_i, X_j)$ is a constant, but how many do we have to count it under the sum $i < j$?
+
+
+There are ${N \choose 2}$ ways to choose 2 numbers ($i$ and $j$) from $N$ where order does not matter (and so $i < j$). Hence,
+
+    \begin{eqnarray*}
+\orange{Var\left(\sum\limits_{i=1}^N X_i \right)} &=& \sum\limits_{i=1}^N Var(X_i) + 2 \sum\limits_{i < j} Cov(X_i, X_j)\\
+&=& \sum\limits_{i=1}^N \frac{1}{N}\left(1 - \frac{1}{N}\right) + 2 \sum\limits_{i < j} \frac{1}{N^2(N-1)}\\
+&=& \sum\limits_{i=1}^N \frac{1}{N}\left(1 - \frac{1}{N}\right) + 2 {N \choose 2} \frac{1}{N^2(N-1)}\\
+&=& N \frac{1}{N}\left(1 - \frac{1}{N}\right) + 2 \frac{N(N-1)}{2}\frac{1}{N^2(N-1)}\\
+&=& 1 - \frac{1}{N} + N(N-1)\frac{1}{N^2(N-1)}\\
+&\orange{=}&\orange{1}.
+\end{eqnarray*}
+:::
+
+## Chapter 10: Central Limit Theorem and Moment Generating Functions
+
+Recall: If $X_1,...,X_n$ are independent with $X_i \sim N(\mu, \sigma^2)$, then
+$$
+    \bar{X} = \frac{1}{n} \sum_{i=1}^n X_i \sim N \left(\mu,\frac{\sigma^2}{n} \right)
+$$
+and
+$$ \sum_{i=1}^n X_i \sim N(n\mu, n\sigma^2)$$
+    
+    
+Question: What if $X_1,...,X_n$ are not normally distributed? Then what is the *distribution** of the sample mean and the sum, as $n$ gets large?
+
+From $\var(\bar{X}_n)=\sigma^2/n\rightarrow0$ as $n\rightarrow\infty$, we can see that the distribution of $\bar{X}_n$ becomes more concentrated around $\mu$. But what about the distribution? 
+
+::: {.theorem name="Central Limit Theorem"}
+Suppose that $X_1,...,X_n$ are independent random variables, each with a common cumulative distribution function $F$. Suppose further that $E(X_i)=\mu$, and $Var(X_i)= \sigma^2 < \infty $. Then for all $x \in {\mathbb R}$
+$$
+P\left( \frac{\bar{X} - \mu}{\sigma/\sqrt{n}} \le x \right) \to  \varPhi(x),
+$$
+as $n\to \infty$.
+:::
+In other words, if $n$ is large
+$$
+    \bar{X} \stackrel{approx}{\sim} N\left( \mu, \frac{\sigma^2}{n}\right) \;\;and\;\; \sum_{i=1}^n X_i  \stackrel{approx}{\sim} N \left( n\mu, n\sigma^2\right)
+$$
+
+::: {.exercise}
+Harold is eating a box of chocolate right now (yes, right now). Each box contains 20 cubes, and it is supposed to have a total of 500 grams of chocolate in it. The weight of each chocolate cube varies a little because they are hand-made from Switzerland. The weight $W$ of each cube is a random variable with mean $\mu = 25$ grams, and the standard deviation $\sigma = 0.1$ grams. Find the probability that a box has at least 500 grams of chocolate in it, assuming that the weight of each cube is independent.
+:::
+
+::: {.solution}
+* Let $W_1,\dots,W_{20}$ be the weights of the cubes and $T=\sum_{i=1}^{20}W_i$ the total weight
+\item Then $W_1,\dots,W_{20}$ are independent with mean $\mu=25$, $\sigma=0.1$, and by the CLT, $T$ is approximately $N(20\mu, 20\sigma^2)$, so 
+\begin{align*}
+P(T\geq 500) &= P\left(\frac{T - 20\cdot\mu}{\sqrt{20\sigma^2}} \geq \frac{500-20\cdot\mu}{\sqrt{20\sigma^2}}\right)\\
+&\approx P(Z\geq 0)=1-\Phi(0)=0.5
+\end{align*}
+* Note that $T$ is only approximately normally distributed: Under the true distribution, $P^{true}(T<0)=0$ (weights are never negative), but under the approximated normal distribution, $P^{CLT}(T<0)>0$ (though tiny).
+:::
+
+The point of this example is that, as long as you:
+
+* have a set of \blue{independent and identically distributed} random variables,
+* have finite \blue{common mean $\mu$ and finite common variance}, the distribution of their sample mean can be \alert{approximated} by normal distribution.
+
+    
+If the random variables are normal, then the sample mean is **exactly** normal.
+
+If they aren't, then their sample mean is **approximately** normal, and the approximation gets better as $n$ increases. 
