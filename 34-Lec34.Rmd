@@ -1,0 +1,243 @@
+# Lecture 34, April 03, 2024
+
+Today we will keep looking at 1) more applications of the CLT, 2) Continuity correction. Then we will introduce an important concept called the **momnent generating function**.
+
+::: {.example}
+In February this year, various Youtubers participated in a `100 cup challenge' related to the Roll Up the Rim to Win promotion at Tim Hortons. Participants bought 100 promotional cups, and filmed themselves as they found out how many times they'd won. Use the central limit theorem to approximate the probability a participant recorded between
+\begin{enumerate}
+    \item 15 and 20 wins (inclusive). 
+    \item 14.5 and 20.5 wins (inclusive).
+\end{enumerate}
+
+Which one is a better approximation for the true probability that a participant records between 15 and 20 wins?
+
+**Solution**: 
+\begin{itemize}
+\item Let $X_i \sim Binomial\left(1, \frac{1}{6}\right)$, $i = 1, ..., 100$.
+\item $E[X_i] = \frac{1}{6}$ and $Var(X_i) = \frac{1}{6}\left(1 - \frac{1}{6}\right) = \frac{5}{36}$
+\item Then $X = S_n = \sum\limits_{i=1}^{100} X_i$ gives the total number of wins.
+\end{itemize}
+
+CLT tells us
+\[
+\frac{X - n\mu}{\sigma \sqrt{n}}
+\]
+is approximately $N(0,1)$, with $\mu = p = \frac{1}{6}$ and $\sigma = \sqrt{p(1-p)} = \sqrt{\frac{5}{36}}$.
+
+\frametitle{Solution a)}
+We want $P(15 \leq X \leq 20)$, and have $n = 100$, $p = \frac{1}{6}$, $\sigma = \sqrt{\frac{5}{36}}$.\bigskip
+
+Therefore, if we let $Z\sim N(0,1)$, then, 
+\begin{eqnarray*}
+P(15 \leq X \leq 20) &=& P(X \leq 20) - P(X < 15)\\
+&=& P\left(\frac{X - np}{\sqrt{np(1-p)}} \leq \frac{20 - np}{\sqrt{np(1-p)}}\right)\\
+&& - P\left(\frac{X - np}{\sqrt{np(1-p)}} < \frac{15 - np}{\sqrt{np(1-p)}}\right)\\
+&\approx& P\left(Z \leq 0.894 \right) - P\left(Z < -0.447\right)\\
+&=& 0.487,
+\end{eqnarray*}
+
+If we calculate the **true probability**, we have the following:
+
+Let's come back to the original question: if we roll 100 cups, what's the probability we see between 15 and 20 wins?\bigskip
+
+The central limit theorem gave us a (approximate) probability of 0.487.\bigskip
+
+But! We can compute this exactly via the binomial distribution:
+
+We have $X \sim Binomial(100, 1/6)$, and so
+\begin{eqnarray*}
+P(15 \leq X \leq 20) &=& \sum\limits_{x = 15}^{20} {100 \choose x} \left(\frac{1}{6}\right)^x \left(1 - \frac{1}{6}\right)^{100-x}\\
+&=& 0.561
+\end{eqnarray*}
+
+This is quite a long way off our CLT approximation of 0.487!
+
+We need something called the **continuity correction**.
+
+
+We must be careful with the CLT when dealing with discrete random variables.\bigskip
+
+We computed
+\[
+P(15 \leq X \leq 20)
+\]
+via a normal (i.e., continuous) approximation. But we know that $X$ can't take non-integer values.\bigskip
+
+Therefore
+\[
+P(14.5 \leq X \leq 20.5)
+\]
+should give us a better estimate!
+
+So if we calculate the probabilities with the continuity corretion, what do we get?
+
+
+We want $P(14.5 \leq X \leq 20.5)$, and have $n = 100$, $p = \frac{1}{6}$, $\sigma = \sqrt{\frac{5}{36}}$.\bigskip
+
+Therefore
+\begin{eqnarray*}
+P(14.5 \leq X \leq 20.5) &=& P(X \leq 20.5) - P(X < 14.5)\\
+&=& P\left(\frac{X - np}{\sqrt{np(1-p)}} \leq \frac{20.5 - np}{\sqrt{np(1-p)}}\right)\\
+&& - P\left(\frac{X - np}{\sqrt{np(1-p)}} < \frac{14.5 - np}{\sqrt{np(1-p)}}\right)\\
+&\approx& P\left(Z \leq 1.029 \right) - P\left(Z < -0.581\right)\\
+&=& 0.568. 
+\end{eqnarray*}
+where $Z \sim N(0,1)$.
+
+If we compare the two, we have the following:
+\[
+P(14.5 \leq X \leq 20.5) \approx P\left(W \leq 1.029 \right) - P\left(W < -0.581\right)
+\]
+whereas previously we had
+\[
+P(15 \leq X \leq 20) \approx P\left(W \leq 0.894 \right) - P\left(W < -0.447\right)
+\]
+And we find that
+\[
+P(14.5 \leq X \leq 20.5) \approx 0.568
+\]
+compared with
+\[
+P(15 \leq X \leq 20) \approx 0.487
+\]
+and a ``true'' probability of 0.561.
+:::
+
+### Rule of continuity correction
+
+*  We have just applied what is known as a \textbf{continuity correction}.
+* To apply it, we subtract or add 0.5 to our various inequalities.
+* This is applied when approximating \textbf{discrete} distributions using the CLT.\item It should \textbf{not} be applied when approximating continuous distributions.
+
+For example, if we use the CLT to approximate the distribution of a discrete r.v. $X$:
+
+\begin{itemize}
+\item For $P(a \leq X \leq b)$, compute $P(a - 0.5 \leq X \leq b + 0.5)$
+\item For $P(X < b)$, compute $P(X < b - 0.5)$
+\item For $P(X = x)$, compute $P(x - 0.5 \leq X \leq x + 0.5)$
+\end{itemize}
+
+
+### Normal approximation to Binomial
+
+We have just seen that the CLT allows us to approximate Binomial probabilities with the normal distribution. More formally:
+
+::: {.theorem}
+If $X \sim Binomial(n,p)$, then for large $n$ we have
+    $$
+\frac{ X-np}{\sqrt{np(1-p)}} \stackrel{approx}{\sim} \N(0,1).
+$$
+:::
+The rationale behind: Note that  $X\sim Binomial(n,p)$ can be written as $X=\sum_{i=1}^n X_i$ where the $X_1,\dots,X_n$ are independent $Binomial(1, p)$ (or equivalently $Bern(p)$). The result then follows by applying the CLT to $\sum_{i=1}^n X_i$.
+
+### Rule of thumb for using the central limit theorem!!!
+
++ In general if the number of observations exceeds 30, then the central limit theorem often provides a reasonable approximation
++ If the distribution of the observations is *close* to being unimodal, not too skewed, and is *close* to being continuous, then the central limit approximation can be reasonable for even smaller values of $n$ (5-15).
++ If the distribution is highly skewed, or very discrete, then a larger value of $n$ might be necessary: ($n>50$) 
++ When approximating a *continuous* distribution with the CLT, we do **NOT use a continuity correction**.
++ When approximating a *discrete* distribution with the CLT, we do **use a continuity correction**.
+
++ The continuity correction (+0.5 or -0.5) is **applied before** standardizing (i.e., before subtracting the mean and dividing by the standard deviation). 
+
+
+### Normal approximation to Poisson
+
+We can also use the normal distribution to approximate Poisson probabilities, provide the parameter is large:
+
+::: {.theorem}
+If $X  \sim Poi(\lambda)$, then for large $\lambda$
+$$
+\frac{ X -\lambda}{\sqrt{\lambda}} \stackrel{approx}{\sim} \N(0,1).
+$$
+:::
+
+**Intuition**: If $\lambda$ is a large integer, say $n$, then $X\sim Poi(n)$ can be written as $X=\sum_{i=1}^n X_i$ where the $X_1,\dots,X_n$ are independent $Poi(1)$. The result then follows by applying the CLT to $\sum_{i=1}^n X_i$ 
+
+
+::: {.example}
+Suppose $X \sim Poisson(\mu)$. Use the normal approximation to approximate
+\[
+P(X > \mu),
+\]
+once with, and once without continuity correction, and compare this approximation with the true value when $\mu = 9$.
+
+Can we make an intuitive guess for the first part of this? Hint: this example illustrates another case where the continuity correction is important!
+
+Without continuity correct:
+
+We want $P(X > \mu)$, and so if we apply the normal approximation:
+\[
+Z = \frac{X - \mu}{\sqrt{\mu}}
+\]
+we can see that without applying the continuity correction 
+\begin{eqnarray*}
+P(X > \mu) &=& P\left(\frac{X - \mu}{\sqrt{\mu}} > \frac{\mu - \mu}{\sqrt{\mu}}\right)\\
+&\approx& P(Z > 0),
+\end{eqnarray*}
+where $Z \sim N(0,1)$. This probability is simply 0.5.
+
+Exact solution:
+
+What is $P(X > \mu)$ exactly? We can compute it via the probability function:
+
+\begin{eqnarray*}
+P(X > 9) &=& 1 - P(X \leq \mu)\\
+&=& 1 - \left(e^{-9} + 9e^{-9} + ... + \frac{9^9}{9!}e^{-9}\right)\\
+&=& 0.4126
+\end{eqnarray*} quite a long way from the 0.5 we just computed!
+
+With continuity correction:
+
+We want $P(X > 9.5)$, and so if we apply the normal approximation:
+\[
+Z = \frac{X - \mu}{\sqrt{\mu}}
+\]
+we can see that, with $\mu = 9$:
+\begin{eqnarray*}
+P(X > 9.5) &=& P\left(\frac{X - \mu}{\sqrt{\mu}} > \frac{9.5 - \mu}{\sqrt{\mu}}\right)\\
+&\approx& P(Z > 0.17) = 0.432
+\end{eqnarray*}
+where $Z \sim N(0,1)$. Recall: the exact solution was 0.4126.
+
+:::
+
+## Moment Generating functions
+
+So far, we have two functions that can define/characterise the distribution of a RV:
+
+1. probability function/probability density function $f(x)$,
+2. cumulative distribution function $F(x)$.
+    
+Another one will be the moment generating function!
+
+::: {.definition name="Moment generating function"}
+The **moment generating function** (mgf or MGF) of a random variable $X$ is given by the function 
+$$
+  M_X(t) = \E[e^{tX}], 
+$$
+provided the expression exists in a neighbourhood of zero, say for $t\in(-a,a)$. 
+:::
+ 
+
+ If $X$ is discrete with pf $f(x)$, then
+
+$$
+M_X(t) = \sum_{x \in X(S) }e^{tx}f(x) 
+$$
+and if $X$ is continuous with PDF $f(x)$, then 
+$$
+M_X(t) = \int_{-\infty}^{\infty}e^{tx}f(x)dx 
+$$
+    
+### Properties of the MGF
+
+The following shows why this is called a *moment* generating function 
+
+1. $M_X(0)=1$ 
+2. So long as $M_X(t)$ is defined in a neighbourhood of $t=0$,
+      $$
+      \frac{d}{dt^k}M_X(0) = \E[X^k]
+      $$
+3. So long as $M_X(t)$ is defined in a neighbourhood of $t=0$, by Taylor 
+      $$M_X(t) = \sum_{j=0}^{\infty} \frac{t^j\E[X^j]}{j!} $$
