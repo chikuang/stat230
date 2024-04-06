@@ -166,7 +166,7 @@ In the course, we saw the moment generating function. But there exists other gen
 #### Factorial Moment Generating function (FMGF)
 
 \[
-    G_X(t) \coloneqq \E[ t^X ],
+    G_X(t):= \E[ t^X ],
 \]
 provided the expectation exists for all $t$ in some interval of the form $1-h<t<1+h$.\\
 
@@ -227,7 +227,7 @@ What else can we do if we know a random variable follows a normal distribution? 
 
 The proof is using the 2nd order Taylor expansion.
 
-::: {.example name="Example of the usage of delta method}
+::: {.example name="Example of the usage of delta method"}
 Suppose that $X_1,\cdots,X_N\sim F$ are i.i.d. with a common mean $\mu$  and a finite variance.
 
 Consider a linear combination that $\bar{X}_N := N^{-1}\sum_{i=1}^NX_i$.
