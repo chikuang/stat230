@@ -1,0 +1,259 @@
+# Lecture 35, April 05, 2024
+
+Last lecture, we started introducing the last concept of the course, the moment generating function (MGF). Today, we will keep looking the properties of the MGF, and extend MGF to the multivariate case (i.e. MGF for 2 or more random variables).
+
+## Properties of MGF
+
+The following shows why this is called a **moment** generating function 
+
+1. $M_X(0)=1$: 
+
+2. So long as $M_X(t)$ is defined in a neighbourhood of $t=0$,
+      $$
+      \frac{d}{dt^k}M_X(0) = \E[X^k]
+      $$
+3. So long as $M_X(t)$ is defined in a neighbourhood of $t=0$, by Taylor 
+      $$M_X(t) = \sum_{j=0}^{\infty} \frac{t^j\E[X^j]}{j!} $$
+
+::: {.example name="MGF of Poisson"}
+Let $X \sim Poi(\lambda)$. Show that the MGF of $X$ is given by
+ $$ M_X(t)= e^{\lambda(e^t-1)},\quad t\in\R,$$
+and use the MGF to show that
+$$
+\E[X] = \lambda = \var(X).
+$$
+
+**Solution**:
+
+The mgf is computed using the exponential sum as 
+\begin{align*}
+M_X(t) &= E(e^{tX})=\sum_{x=0}^\infty e^{tx} e^{-\lambda} \frac{\lambda^x}{x!}\\
+&=e^{-\lambda}  \sum_{x=0}^\infty  \frac{ (e^t \lambda)^x}{x!}\\
+&= e^{-\lambda} e^{e^t \lambda}=e^{\lambda(e^t-1)}
+\end{align*}
+and we get
+$$M_X'(t)=e^{\lambda(e^t-1)} \lambda e^t \Rightarrow E(X)=M_X'(0)=\lambda$$
+and similarly
+$$ E(X^2)=M_X''(0)=\lambda^2+\lambda$$
+so that
+$$ Var(X) = E(X^2)-E(X)^2=\lambda^2+\lambda-\lambda^2=\lambda$$
+:::
+ 
+The significance of MGF is that, under certain conditions, it can show equivalence of two distributions:
+
+::: {.theorem name="Continuity theorem"}
+If $X$ and $Y$ have MGFs $M_X(t)$ and $M_Y(t)$ defined in neighbourhoods of the origin, and satisfying
+$M_X(t) = M_Y(t)$ for all $t$ where they are defined, then
+$$
+X \stackrel{D}{=} Y.
+$$
+:::
+
+\frametitle{Poisson to binomial approximation}
+\blue{Recall:} For large $n$ and small $p$ such that $\mu=np$, we can approximate the $Bin(n,p)$ distribution with a $Poi(\mu)$ distribution.
+
+\bigskip
+
+We can prove this by showing that the mgf of $Bin(n,p)$ converges to the mgf of $Poi(\mu)$ as $n\rightarrow\infty$ where $\mu=np$:
+
+\begin{align*}
+M_{Bin(n,p)}(t) &= (pe^t + 1-p)^n\\
+&= (1+p(e^t-1))^n\\
+&= \left(1+\frac{\mu}{n}(e^t-1)\right)^n\\
+&\rightarrow e^{\mu(e^t-1)}=M_{Poi(\mu)}(t),\quad n\rightarrow\infty
+\end{align*}
+\end{frame}
+
+
+\begin{frame}{Multivariate Moment Generating Functions}
+
+\begin{definition}
+
+The \textbf{joint moment generating function} of two random variables, $X$ and $Y$, is
+
+$$M(s,t) = E(e^{sX+tY}).$$\\\medskip
+
+And so if $X$ and $Y$ are independent
+
+$$M(s,t) = E(e^{sX})E(e^{tY}).$$
+\end{definition}
+%We can use the last result to prove the theorem on the next slide.
+
+\end{frame}
+
+\begin{frame}
+\begin{theorem}
+Suppose that $X$ and $Y$ are independent and each have moment generating functions $M_X(t)$ and $M_Y(t)$. Then the moment generating function of $X+Y$ is
+
+$$
+M_{X+Y}(t) = E\left(e^{t(X+Y)}\right) = E\left(e^{tX}\right)E\left(e^{tY}\right)  = M_X(t) M_Y(t).
+$$\bigskip
+
+In general, for more than 2 random variables, the MGF of the sum is the product of the individual MGFs.
+
+\end{theorem}
+\end{frame}
+
+\begin{frame}
+\frametitle{Comments}
+\bi
+\item The result from the previous slide can be used to prove the Central Limit Theorem (a simpler form of it) !!!\bigskip
+\item It can also be used to show that\dots
+\bi
+\item the sum of independent Poissons is Poisson;
+\item the sum of independent Binomials with the same $p$ is again Binomial;
+\item the sum of independent Normals is again normal;
+\item etc etc 
+\ei
+\ei
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Exercise}
+Use mgfs to show that if $X\sim Poi(\lambda)$ is independent of $Y\sim Poi(\mu)$, then $X+Y\sim Poi(\lambda+\mu)$. \\
+\pause
+
+
+\ifshowsol \bigskip \blue{\textbf{Solution:}} 
+\bi
+\item We know that $M_X(t)=e^{\lambda(e^t-1)}$ and $M_Y(t)=e^{\mu(e^t-1)}$. 
+\item Since $X$ and $Y$ are independent, the mgf of $X+Y$ is
+\begin{align*}
+M_{X+Y}(t) &= M_X(t) M_Y(t)\\
+&= e^{\lambda(e^t-1} e^{\mu(e^t-1)}\\
+&= e^{(\lambda+\mu)(e^t-1)}
+\end{align*}
+\item This is the mgf of $Poi(\lambda+\mu)$. 
+\item By uniqueness of the mgf, we conclude $X+Y\sim Poi(\lambda+\mu)$. 
+\ei
+\fi
+\end{frame}
+
+
+## Chapter 999 Additional Topics (will not be on the exam unless otherwise specified)
+
+### Distributions that do not have moments
+
+**Cauchy distribution**: All the distributions we have seen in the course have well-defined moments. However, it is not always the case.
+
+::: {.definition name="Cauchy distribution"}
+The Cauchy distribution is a symmetric, bell-shaped distribution on $(-\infty,\infty)$ with PDF
+\[
+    f_X(x) = \frac{1}{\pi} \frac{1}{1+(x-\theta)^2},\quad -\infty <x<\infty ,\quad -\infty<\theta < \infty.
+\]
+:::
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.75\linewidth]{lec/YCK-copy/fig-YCK/cauchy.png}
+    \caption{Picture from Casella and Berger (2002)}
+    % \label{fig:enter-label}
+\end{figure} 
+
+But $$\E[|X|]= \int_{-\infty}^\infty \frac{1}{\pi}\frac{|x|}{1+(x-\theta)^2}dx = \infty$$, which is the neccessary condition for the expectation to exist. Also, if the first moment does not exist, the higher moments also do not exist!
+
+**Conclusion**: No moments exist!!
+
+Comment: in this case, we do not have $\E[X]$, and MGF is essentially a special form of the LOTUS $\E[g(X)]$, where $g(X)=\exp(X t)$. Does it exist in this case??  If not, what do we do? Can we still use the MGF? The answers are **NO**!!!
+
+If this is the case, can we use other ways to characterize these kind of distribution?
+
+### Other generating functions
+
+In the course, we saw the moment generating function. But there exists other generating functions.
+
+#### Factorial Moment Generating function (FMGF)
+
+\[
+    G_X(t) \coloneqq \E[ t^X ],
+\]
+provided the expectation exists for all $t$ in some interval of the form $1-h<t<1+h$.\\
+
+The relationship between the FMGF and MGF is as follows:
+\[
+    G_X(t) = \E[t^X] = E[e^{X\ln(t)}] = M_X\{\ln(t)\}
+\]
+
+
+FMGF can be used to calculate:
+\[
+\frac{d^r}{dt^r} G_X(t)|_{t=1} = \E[X(X-1)\cdots (X-r+1)].
+\]
+In particular we have
+\begin{enumerate}
+    \item $G_X^\prime(1) = \E[X]$
+    \item $G_X^{\prime\prime}(1) = \E[X(X-1)]$
+\end{enumerate}
+
+
+What if we want to have the central moments, say $\E[X^2]$?
+
+\begin{align*}
+\E[X^2] &= \E[X] + \E\left\{X(X-1)\right\} \\
+&= \E[X] + G_X^{\prime\prime}(1).
+\end{align*}
+    
+
+#### Characteristic function
+
+Characteristic function:
+\[
+    \phi_X(t) = \E[e^{itX}],
+\]
+where $i$ is the complex number $\sqrt{-1}$. Note that this definition requires a complex integration. It **ALWAYS EXISTS** and completely determines the distribution, that is, every (C)DF has a unique characteristic function.
+\[
+\phi_X(-it) =  M_X(t).
+\]
+E.g. if $X\sim N(0,1),~Y\sim U(-1,1)$ and $Z$ follows a Cauchy distribution, then we have
+$\phi_X(t) = \exp(-t^2/2)$, $\phi_Y(t)=\sin(t)/t$ and $\phi_Z(t)=\exp(-|t|)$
+
+#### Cumulant generating function (CGF):
+\[
+    \ln\{M_X(t)\}
+\]
+This is used to generated the *cumulants* of $X$, which is defined as the coefficients of the Taylor series of the CGF.
+
+
+### Delta Method
+
+What else can we do if we know a random variable follows a normal distribution?  **YES**!!!
+::: {.theorem name="Delta method"}
+    Let $Y$ be a random variable that satisfies $\sqrt{n}(Y-\theta)\to \N(0,\sigma^2)$. For a given function $g(\cdot)$ and a specific value of $\theta$, suppose that $g^\prime(\theta)$ exist and is not 0. Then
+    \[
+    \sqrt{n}(g(Y)-g(\theta)\ \to \N(0,\sigma^2[g^\prime(\theta)]^2).
+    \]
+:::
+
+The proof is using the 2nd order Taylor expansion.
+
+::: {.example name="Example of the usage of delta method}
+Suppose that $X_1,\cdots,X_N\sim F$ are i.i.d. with a common mean $\mu$  and a finite variance.
+
+Consider a linear combination that $\bar{X}_N := N^{-1}\sum_{i=1}^NX_i$.
+What is the distribution of 
+$\sqrt{N}\left\{(\bar{X}_N)^{-1}-\mu^{-1}\right\}$?
+
+Since we know from the CLT that 
+\[
+    \sqrt{N}(\bar{X}_N - \mu) \to \N(0,\var(X_1))
+\]
+Then, applying the delta method, we have
+\[
+    \sqrt{N}((\bar{X}_N)^{-1} - \mu^{-1}) \to \sqrt{N}\left\{0, (\mu)^{-4} \var(X_1)\right\}.
+\]
+:::
+
+### Other interesting results
+
+**TODO**: 
+
+I wlll add something during the weekend, if not on Monday so stay tune!
+
+Things I plan to add
+
+1. Result of Taylor expansion, review and its usage in proving the Delta method
+
+2. The proof for CLT, this also involves the Taylor expansion
+
+3. TBA. Feel feel to write me what you are interesting to see!

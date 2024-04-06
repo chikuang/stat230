@@ -1,6 +1,6 @@
 # Lecture 34, April 03, 2024
 
-Today we will keep looking at 1) more applications of the CLT, 2) Continuity correction. Then we will introduce an important concept called the **momnent generating function**.
+Today we will keep looking at 1) more applications of the CLT, 2) Continuity correction. Then we will introduce an important concept called the **moment generating function**.
 
 ::: {.example}
 In February this year, various Youtubers participated in a `100 cup challenge' related to the Roll Up the Rim to Win promotion at Tim Hortons. Participants bought 100 promotional cups, and filmed themselves as they found out how many times they'd won. Use the central limit theorem to approximate the probability a participant recorded between
