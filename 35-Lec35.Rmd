@@ -16,6 +16,7 @@ The following shows why this is called a **moment** generating function
       $$M_X(t) = \sum_{j=0}^{\infty} \frac{t^j\E[X^j]}{j!} $$
 
 ::: {.example name="MGF of Poisson"}
+
 Let $X \sim Poi(\lambda)$. Show that the MGF of $X$ is given by
  $$ M_X(t)= e^{\lambda(e^t-1)},\quad t\in\R,$$
 and use the MGF to show that
@@ -49,10 +50,10 @@ X \stackrel{D}{=} Y.
 $$
 :::
 
-\frametitle{Poisson to binomial approximation}
-\blue{Recall:} For large $n$ and small $p$ such that $\mu=np$, we can approximate the $Bin(n,p)$ distribution with a $Poi(\mu)$ distribution.
+#### Poisson to binomial approximation
 
-\bigskip
+Recall: For large $n$ and small $p$ such that $\mu=np$, we can approximate the $Bin(n,p)$ distribution with a $Poi(\mu)$ distribution.
+
 
 We can prove this by showing that the mgf of $Bin(n,p)$ converges to the mgf of $Poi(\mu)$ as $n\rightarrow\infty$ where $\mu=np$:
 
@@ -62,73 +63,55 @@ M_{Bin(n,p)}(t) &= (pe^t + 1-p)^n\\
 &= \left(1+\frac{\mu}{n}(e^t-1)\right)^n\\
 &\rightarrow e^{\mu(e^t-1)}=M_{Poi(\mu)}(t),\quad n\rightarrow\infty
 \end{align*}
-\end{frame}
 
 
-\begin{frame}{Multivariate Moment Generating Functions}
+#### Multivariate Moment Generating Functions
 
-\begin{definition}
+::: {.definition}
+The **joint moment generating function** of two random variables, $X$ and $Y$, is
 
-The \textbf{joint moment generating function} of two random variables, $X$ and $Y$, is
-
-$$M(s,t) = E(e^{sX+tY}).$$\\\medskip
+$$M(s,t) = E(e^{sX+tY}).$$
 
 And so if $X$ and $Y$ are independent
 
 $$M(s,t) = E(e^{sX})E(e^{tY}).$$
-\end{definition}
-%We can use the last result to prove the theorem on the next slide.
+:::
 
-\end{frame}
-
-\begin{frame}
-\begin{theorem}
+::: {.theorem}
 Suppose that $X$ and $Y$ are independent and each have moment generating functions $M_X(t)$ and $M_Y(t)$. Then the moment generating function of $X+Y$ is
 
 $$
 M_{X+Y}(t) = E\left(e^{t(X+Y)}\right) = E\left(e^{tX}\right)E\left(e^{tY}\right)  = M_X(t) M_Y(t).
-$$\bigskip
-
+$$
 In general, for more than 2 random variables, the MGF of the sum is the product of the individual MGFs.
 
-\end{theorem}
-\end{frame}
+:::
 
-\begin{frame}
-\frametitle{Comments}
-\bi
-\item The result from the previous slide can be used to prove the Central Limit Theorem (a simpler form of it) !!!\bigskip
-\item It can also be used to show that\dots
-\bi
-\item the sum of independent Poissons is Poisson;
-\item the sum of independent Binomials with the same $p$ is again Binomial;
-\item the sum of independent Normals is again normal;
-\item etc etc 
-\ei
-\ei
-\end{frame}
+#### Comments
 
++ The result from the previous slide can be used to prove the Central Limit Theorem (a simpler form of it) !!!\bigskip
++ It can also be used to show that\dots   
+    + the sum of independent Poissons is Poisson;
+    + the sum of independent Binomials with the same $p$ is again Binomial;
+    + the sum of independent Normals is again normal;
+    + etc
+    
+::: {.example}
 
-\begin{frame}[fragile]
-\frametitle{Exercise}
 Use mgfs to show that if $X\sim Poi(\lambda)$ is independent of $Y\sim Poi(\mu)$, then $X+Y\sim Poi(\lambda+\mu)$. \\
-\pause
 
+Solution:
 
-\ifshowsol \bigskip \blue{\textbf{Solution:}} 
-\bi
-\item We know that $M_X(t)=e^{\lambda(e^t-1)}$ and $M_Y(t)=e^{\mu(e^t-1)}$. 
-\item Since $X$ and $Y$ are independent, the mgf of $X+Y$ is
-\begin{align*}
++ We know that $M_X(t)=e^{\lambda(e^t-1)}$ and $M_Y(t)=e^{\mu(e^t-1)}$. 
++ Since $X$ and $Y$ are independent, the mgf of $X+Y$ is
+    \begin{align*}
 M_{X+Y}(t) &= M_X(t) M_Y(t)\\
 &= e^{\lambda(e^t-1} e^{\mu(e^t-1)}\\
 &= e^{(\lambda+\mu)(e^t-1)}
-\end{align*}
-\item This is the mgf of $Poi(\lambda+\mu)$. 
-\item By uniqueness of the mgf, we conclude $X+Y\sim Poi(\lambda+\mu)$. 
-\ei
-\fi
-\end{frame}
+\end{align*} 
++ This is the mgf of $Poi(\lambda+\mu)$. 
++ By uniqueness of the mgf, we conclude $X+Y\sim Poi(\lambda+\mu)$. 
+:::
 
 
 ## Chapter 999 Additional Topics (will not be on the exam unless otherwise specified)
@@ -209,6 +192,7 @@ E.g. if $X\sim N(0,1),~Y\sim U(-1,1)$ and $Z$ follows a Cauchy distribution, the
 $\phi_X(t) = \exp(-t^2/2)$, $\phi_Y(t)=\sin(t)/t$ and $\phi_Z(t)=\exp(-|t|)$
 
 #### Cumulant generating function (CGF):
+
 \[
     \ln\{M_X(t)\}
 \]
@@ -218,11 +202,12 @@ This is used to generated the *cumulants* of $X$, which is defined as the coeffi
 ### Delta Method
 
 What else can we do if we know a random variable follows a normal distribution?  **YES**!!!
+
 ::: {.theorem name="Delta method"}
-    Let $Y$ be a random variable that satisfies $\sqrt{n}(Y-\theta)\to \N(0,\sigma^2)$. For a given function $g(\cdot)$ and a specific value of $\theta$, suppose that $g^\prime(\theta)$ exist and is not 0. Then
-    \[
-    \sqrt{n}(g(Y)-g(\theta)\ \to \N(0,\sigma^2[g^\prime(\theta)]^2).
-    \]
+Let $Y$ be a random variable that satisfies $\sqrt{n}(Y-\theta)\to \N(0,\sigma^2)$. For a given function $g(\cdot)$ and a specific value of $\theta$, suppose that $g^\prime(\theta)$ exist and is not 0. Then
+\[
+  \sqrt{n}(g(Y)-g(\theta)\ \to \N(0,\sigma^2[g^\prime(\theta)]^2).
+\]
 :::
 
 The proof is using the 2nd order Taylor expansion.
@@ -240,11 +225,121 @@ Since we know from the CLT that
 \]
 Then, applying the delta method, we have
 \[
-    \sqrt{N}((\bar{X}_N)^{-1} - \mu^{-1}) \to \sqrt{N}\left\{0, (\mu)^{-4} \var(X_1)\right\}.
+    \sqrt{N}(\bar{X}_N^{-1} - \mu^{-1}) \to \N\left\{0, \mu^{-4} \var(X_1)\right\}.
 \]
 :::
 
 ### Other interesting results
+
+
+#### Taylor expansion
+
+Taylor expansion/approximate/series (power series) is a very important tools in many fields, including statistics. We can use Taylor series to prove many results including the CLT, delta method, approximating the moments, and many more.
+
+::: {.definition name="(One dimensional) Taylor expansion"}
+If a function $h(x)$ has derivative up to order $r$, that is $\frac{d^r}{dx^r}h(x)|_{x=a} :=h^{(r)}(x)$ exists, then for any constant $a\in\R$, the Taylor polynomial of order $r$ about $a$ is given as 
+\[
+  T_r(x):= \sum_{j=1}^r \frac{h^{(j)}(a)}{j!}(x-a)^j.
+\]
+:::
+
+If we use the Taylor series to make approximate on $h(x)$, one may wonder what is the error of this approximate.
+
+::: {.definition name="Remainder/Error of Taylor expansion"}
+The remainder/error of the Taylor expansion on the function $h(x)$ with order $r$ is given by
+\[
+  R(x) := h(x) - T_r(x) = \int_a^x \frac{h^{(r+1)}(t)}{r!}(x-t)^r dt.
+\]
+:::
+
+We have another theorem that is useful in the discussion
+
+::: {.theorem}
+If $h^{(r)}(a) =\frac{d^r}{dx^r}h(x)|_{x=a}$ exists, then
+\[
+  \lim_{x\to a} \frac{h(x)-T_r(x)}{(x-a)^r} =0.
+\]
+:::
+
+Most of the statistical application only uses the first or the second order approximation. We may show how to use those approximations to estimate the mean and the variance.
+
+::: {.example name="Approximate of mean and variance using first/second order Taylor series"}
+Assume $X$ is a random variable with the first moment not equal to zero, i.e. $\E[X] \ne 0$. Then if we do the Taylor expansion, we have
+\[
+  h(X) = h(\mu) + h^\prime(\mu)(X-\mu).
+\]
+If $h(X)$ is an estimator of $h(\mu)$  (i.e. when the sample size is large, $h(X)$ is approximately equals to $h(\mu)$), then we have
+\begin{align*}
+  E[h(X)] &\approx E[h(\mu)] + h^\prime(\mu) \E[X-\mu]\\
+  &= h(\mu) + h^\prime (\mu) \{\E X - \mu\}\\
+  &=h(\mu) + h^\prime (\mu) \{\mu - \mu\}\\
+  &=h(\mu).
+\end{align*}
+Thus, we can approximate the expectation of $g(X)$ using $g(\mu)$.
+
+Similar for the variance $\var(g(X))$, we can use $g^{\prime \prime}(\mu)$ to approximate. This two approximate lead us to the **delta method** we have seen above.
+:::
+
+#### Proof for CLT
+
+First we recall/restate the CLT
+
+::: {.theorem name="CLT revisit"}
+Let $X_1,\cdots,X_n$ be a sequence of i.i.d. random variables with the existence of MGF in a neighbour of $0$ (i.e. $M_{X_i}(t)$ exists for $|t|<h$ for an arbitrary $h>0$. Let $\E X_i= \mu<\infty$ and $\var(X_i) = \sigma^2 <\infty$. Denote the mean be $\bar{X}_n=n^{-1}\sum_{i=1}^n X_i$. Let $G_n(x)$ be the CDF of $Z_n:= \sqrt{n}(\bar{X}_n-\mu)/\sigma$. Then for any $x\in(-\infty,\infty)$, 
+\[
+  \lim_{n\to \infty} G_n(x) = \int_{-\infty}^x \frac{1}{\sqrt{2\pi}}\exp(\frac{-y^2}{2})dy,
+\]
+which means $Z_n\to \N(0,1)$ as $n\to \infty$.
+
+:::
+
+::: {.proof name="Proof for CLT"}
+Disclaimer: This proof is based on Casella and Berger (2002).
+
+First, define the standardized random variables $Y_i:= (X-\mu)/\sigma$ with common MGF $M_Y(t)$ that exists for $|t|<\sigma h$. We can further write 
+\[
+  \frac{\sqrt{n}(\bar{X}_n-\mu)}{\sigma} = \frac{1}{\sqrt{n}}\sum_{i=1}^nY_i.
+\]
+Using the uniqueness of MGF, we know that
+\begin{align*}
+M_{Z_n}(t) &= M_{\sqrt{n}(\bar{X}_n - \mu)/\sigma}(t) = M_{\frac{1}{\sqrt{n}}\sum_{i=1}^nY_i}(t)\\
+&=M_{\sum_{i=1}^n Y_i} (\frac{t}{\sqrt{n}})\\
+&=\left\{ M_Y\left(\frac{t}{\sqrt{n}}\right)\right\}^n.
+\end{align*}
+We will then do the Taylor expansion on  $M_Y\left(\frac{t}{\sqrt{n}}\right)$ around $0$. Using the Taylor series, we have
+\[
+  M_Y\left(\frac{t}{\sqrt{n}}\right) = \sum_{j=0}^\infty \frac{d^j}{dt^j}M_Y(t)|_{t=0}\frac{(t/\sqrt{n})^j}{j!},
+\]
+where it exists when $t< \sqrt{n}\sigma h$. Since we know the mean and variance for the standard normal is $0$ and $1$ respectively, and the 0-th moment is $1$, we have
+$\frac{d^0}{dt^0}M_Y(t)|_{t=0} = 1$, $\frac{d}{dt}M_Y(t)|_{t=0} = 0$ and $\frac{d^2}{dt^2}M_Y(t)|_{t=0} = 1$. Using those facts, we can write out the Taylor series as 
+\[
+  M_Y(\frac{t}{\sqrt{n}})= 1 + \frac{(t/\sqrt{n})^2}{2!} + R_Y(\frac{t}{\sqrt{n}}),
+\]
+where $R_Y(\cdot)$ is the remainder/approximation error such that
+\[
+  R_Y(\frac{t}{\sqrt{n}}) = \sum_{j=1}\frac{d^j}{dt^j}M_Y(t)|_{t=0} \cdot \frac{(t/\sqrt{n})^j}{j!}. 
+\]
+By Theorem 36.4, we have, for $t\ne0$,
+\[
+  \lim_{n\to \infty} \frac{R_Y(t/\sqrt{n})}{(t/\sqrt{n})^2}=0.
+\]
+For other terms, we also may also elminiate them as
+\[
+  \lim_{n\to \infty}\frac{R_Y(t/\sqrt{n})}{(1/\sqrt{n})^2} = \lim_{n\to \infty}R_y(\frac{t}{\sqrt{n}}) = 0,
+\]
+and for $t=0$, we have $R_Y(0/\sqrt{n})=0$. Thus, for any fixed $t$, we can write the Taylor expansion of the MGF as
+\begin{align*}
+  \lim_{n\to \infty} \left\{ M_Y\left(\frac{t}{\sqrt{n}}\right)\right\}^n
+  &= \lim_{n\to\infty}\left\{1+\frac{(t/\sqrt{n})^2}{2!} + R_Y(\frac{t}{\sqrt{n}})\right\}^n\\
+  &=\lim_{n\to\infty}\left\{1+\frac{1}{n}\left(\frac{t^2}{2} + nR_Y(\frac{t}{\sqrt{n}})\right)\right\}^n\\
+  &= \exp\left(\frac{t^2}{2}\right),
+\end{align*}
+where the last equality is from the identity of exponential function. By the uniqueness of the MGF, and the fact that $\exp\left(\frac{t^2}{2}\right)$ is the MGF of the standard normal distribution, we conclude that we $Z_n= \sqrt{n}(\bar{X}_n-\mu)/\sigma$ follows a standard normal distribution $\N(0,1)$. This concludes the proof.
+:::
+
+Reference: 
+
+* Casella, G., and Berger, R.L. (2002). *Statistical lnference*. Duxbury Press.
 
 **TODO**: 
 
@@ -252,8 +347,8 @@ I wlll add something during the weekend, if not on Monday so stay tune!
 
 Things I plan to add
 
-1. Result of Taylor expansion, review and its usage in proving the Delta method
+* [x] Result of Taylor expansion, review and its usage in proving the Delta method
 
-2. The proof for CLT, this also involves the Taylor expansion
+* [x] The proof for CLT, this also involves the Taylor expansion
 
-3. TBA. Feel feel to write me what you are interesting to see!
+* [ ] TBA. Feel feel to write me what you are interesting to see!
