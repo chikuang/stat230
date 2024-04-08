@@ -56,7 +56,7 @@ Tutorial Test (5% each)
 
 * [x] Tutorial test 1: February 02, 2024 (Coverage: Ch. 1--4)
 * [x] Tutorial test 2: March 08, 2024 (Coverage: Ch. 1-5, 7-8 up to Sec. 8.1)
-* [ ] Tutorial test 3: April 05, 2024 (Coverage: Up to the end of Sec. 9.6 inclusive, excluding Sec. 9.3 Markov Chains)
+* [x] Tutorial test 3: April 05, 2024 (Coverage: Up to the end of Sec. 9.6 inclusive, excluding Sec. 9.3 Markov Chains)
 
 Midterm (12.5% each)
 
