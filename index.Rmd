@@ -70,11 +70,11 @@ Final (50%)
 
 Real World Assignment (1%)
 
-* 0.5-1 pages with group of up to 3 students: Due April 8th, 23:59 EST.
+* [x] 0.5-1 pages with group of up to 3 students: Due April 8th, 23:59 EST.
 
 BONUS: iClicker Participation (2%)
 
-* 1% for answering and 1% for correctness.
+* [x] 1% for answering and 1% for correctness.
 
 
 
@@ -100,4 +100,4 @@ Those chapters are based on the lecture notes. The lecture covered is based on *
 | 7. Expected Value and Variance |  L16--20|
 | 8. Continuous Random Variable |  L20--27 |
 | 9. Multivariate  Distributions |  L27--33 |
-| 10. Central Limit Theorem and Moment Generating Function | L33--36|
+| 10. Central Limit Theorem and Moment Generating Function | L33--35|

@@ -350,5 +350,3 @@ Things I plan to add
 * [x] Result of Taylor expansion, review and its usage in proving the Delta method
 
 * [x] The proof for CLT, this also involves the Taylor expansion
-
-* [ ] TBA. Feel feel to write me what you are interesting to see!
